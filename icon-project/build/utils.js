@@ -54,11 +54,37 @@ exports.cssLoaders = function (options) {
     }
   }
 
+  //增加的一个函数，替换return里的less:后面的8.23
+  function lessResourceLoader() {
+    var loaders = [
+        cssLoader,
+        'less-loader',
+        {
+            loader: 'sass-resources-loader',
+            options: {
+                resources: [
+                    path.resolve(__dirname, '../static/flex/fontSize.less'),
+                ]
+            }
+                    }
+    ];
+    if (options.extract) {
+        return ExtractTextPlugin.extract({
+            use: loaders,
+            fallback: 'vue-style-loader'
+        })
+    } else {
+        return ['vue-style-loader'].concat(loaders)
+    }
+}
+
+
   // https://vue-loader.vuejs.org/en/configurations/extract-css.html
   return {
     css: generateLoaders(),
     postcss: generateLoaders(),
-    less: generateLoaders('less'),
+    // less: generateLoaders('less'),
+    less: lessResourceLoader(),//8.23
     sass: generateLoaders('sass', { indentedSyntax: true }),
     scss: generateLoaders('sass'),
     stylus: generateLoaders('stylus'),
