@@ -1,86 +1,16 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li>
-        <a
-          href="https://vuejs.org"
-          target="_blank"
-        >
-          Core Docs
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://forum.vuejs.org"
-          target="_blank"
-        >
-          Forum
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://chat.vuejs.org"
-          target="_blank"
-        >
-          Community Chat
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://twitter.com/vuejs"
-          target="_blank"
-        >
-          Twitter
-        </a>
-      </li>
-      <br>
-      <li>
-        <a
-          href="http://vuejs-templates.github.io/webpack/"
-          target="_blank"
-        >
-          Docs for This Template
-        </a>
-      </li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li>
-        <a
-          href="http://router.vuejs.org/"
-          target="_blank"
-        >
-          vue-router
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vuex.vuejs.org/"
-          target="_blank"
-        >
-          vuex
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vue-loader.vuejs.org/"
-          target="_blank"
-        >
-          vue-loader
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/awesome-vue"
-          target="_blank"
-        >
-          awesome-vue
-        </a>
-      </li>
-    </ul>
+  <div flexcontainer>
+    <div class="hello"
+         aspectratio
+         w-750-235
+         aspect-ratio="750/235">
+      <div aspectratio-content
+           class="content">
+        <div class="aa">我是内容</div>
+      </div>
+    </div>
   </div>
+
 </template>
 
 <script>
@@ -95,19 +25,29 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1, h2 {
-  font-weight: normal;
+<style  lang="postcss" scoped>
+[w-750-235] {
+    width: 500px;
+    height: 80px;
+    line-height: 80px;
+    margin: 0 auto;
+    z-index: 5000;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
+[w-750-235] {
+    aspect-ratio: '750:250';
 }
-li {
-  display: inline-block;
-  margin: 0 10px;
+@svg square {
+    @rect {
+        fill: var(--color, black);
+        width: 100%;
+        height: 100%;
+        fill: none;
+        stroke: var(--color, #ddd);
+        stroke-width: 1px;
+    }
 }
-a {
-  color: #42b983;
+.hello {
+    font-size: 22px;
+    background: white svg(square param(--color #00b1ff));
 }
 </style>
