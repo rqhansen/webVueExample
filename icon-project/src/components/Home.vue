@@ -12,15 +12,15 @@ export default {
 </script>
 
 <style lang="less" scoped>
+@rem:75rem;
 .wrap {
-    // .home {
-    width: 3rem;
-    height: 1rem;
-    line-height: 1rem;
+    width: 40/@rem;
+    height: 60px;
+    line-height: 60px;
     border: 1px solid red;
-    border-radius: 12px;
+    border-radius: 12PX;
     margin: 50px auto;
-    .px2px(font-size,22px);
+    .px2px(font-size,22PX);/*PX大写不转为rem*/
 }
 </style>
 

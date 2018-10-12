@@ -19,6 +19,7 @@ export default {
 </script>
 
 <style lang="less">
+@rem:75rem;
 /*
 *使用less需要安装less,less-loader
 */
@@ -35,7 +36,7 @@ export default {
     text-align: center;
     color: #2c3e50;
     margin-top: 60px;
-    .px2px(font-size, 20px); //字体适配
+    .px2px(font-size, 20PX); //字体适配
 }
 //通用icon样式
 .icon {
@@ -46,8 +47,8 @@ export default {
     overflow: hidden;
 }
 .icon-wrap {
-    height: 2rem;
-    width: 2rem;
+    height:1rem;
+    width: 1rem;
     border: 1px solid blue; //border直接用
     border-radius: 12px;
     color: @primary-color;
