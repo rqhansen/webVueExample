@@ -49,7 +49,7 @@ export default {
 .icon-wrap {
     height:1rem;
     width: 1rem;
-    border: 1px solid blue; //border直接用
+    border: 1PX solid blue; //border直接用
     border-radius: 12px;
     color: @primary-color;
     .px2px(font-size,26px); //计算字体
