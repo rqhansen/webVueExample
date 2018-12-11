@@ -1,0 +1,37 @@
+// $dpr: data-dpr !global;
+// @function px2px($name, $px) {
+//     $name: round($px / 2) * 1px;
+//     @if $dpr == '2' {
+//         $name: $px * 1px;
+//     } @else if $dpr == '2.5' {
+//         $name: round($px * 2.5 / 2) * 1px;
+//     } @else if $dpr == '2.75' {
+//         $name: round($px * 2.75 / 2) * 1px;
+//     } @else if $dpr == '3' {
+//         $name: round($px * 3 / 2) * 1px;
+//     } @else if $dpr == '4' {
+//         $name: $px * 2px;
+//     }
+//     @return $name;
+// }
+@mixin font-dpr($font-size) {
+    font-size: $font-size * 1px;
+    [data-dpr='2'] & {
+        font-size: $font-size * 1px;
+    }
+    // for mx3
+    [data-dpr='2.5'] & {
+        font-size: round($font-size * 2.5 / 2) * 1px;
+    }
+    // for 小米note
+    [data-dpr='2.75'] & {
+        font-size: round($font-size * 2.75 / 2) * 1px;
+    }
+    [data-dpr='3'] & {
+        font-size: round($font-size * 3 / 2) * 1px;
+    }
+    // for 三星note4
+    [data-dpr='4'] & {
+        font-size: $font-size * 2px;
+    }
+}

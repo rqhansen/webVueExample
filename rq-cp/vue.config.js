@@ -21,11 +21,15 @@ module.exports = {
   // chainWebpack:Function
   //将接收ChainableConfig由webpack-chain提供支持的实例的函数。允许对内部webpack配置进行更细粒度的修改。
   css: {
-    extract: true, //true在生产中，false在开发中
+    extract: false, //true在生产中，false在开发中
     sourceMap: false, //是否为css启用源映射，将此设置为true可能会影响构建性能
     loaderOptions: {
       // css:{},
-      // postcss:{},
+      postcss: {
+        plugins: [
+          require("postcss-px2rem")({ remUnit: 75, baseDpr: 2 }) // 换算的基数
+        ]
+      },
       sass: {
         // data: `@import "@/variables.scss"` //全局变量
       }
@@ -38,7 +42,7 @@ module.exports = {
     port: 9000,
     useLocalIp: true,
     // compress: true, //为服务的一切启用gzip压缩
-    contentBase: path.join(__dirname, "static"),
+    // contentBase: path.join(__dirname, "static"),
     // proxy: "https://api2.tgceshi.com:6869/lottery-api"
     proxy: {
       "^/api": {
