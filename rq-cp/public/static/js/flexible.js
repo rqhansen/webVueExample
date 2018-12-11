@@ -1,11 +1,12 @@
-var dpr, rem, scale
-var docEl = document.documentElement //html;
-var fontEl = document.createElement('style')
-var metaEl = document.querySelector('meta[name="viewport"]')
 
-dpr = window.devicePixelRatio || 1
-rem = (docEl.clientWidth * dpr) / 10 //320*2/10=64px;
-scale = 1 / dpr
+var dpr, rem, scale;
+var docEl = document.documentElement //html;
+var fontEl = document.createElement('style');
+var metaEl = document.querySelector('meta[name="viewport"]');
+
+dpr = window.devicePixelRatio || 1;
+rem = (docEl.clientWidth * dpr) / 10; //320*2/10=64px;
+scale = 1 / dpr;
 
 // 设置viewport，进行缩放，达到高清效果
 metaEl.setAttribute(
