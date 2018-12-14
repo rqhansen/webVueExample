@@ -1,4 +1,11 @@
 const path = require("path");
+// const vConsolePlugin = require("vconsole-webpack-plugin");
+const CompressionPlugin = require("compression-webpack-plugin"); //Gzip
+function resolve(dir) {
+  return path.join(__dirname, dir);
+}
+// const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin; //Webpack包文件分析器
+// const baseUrl = process.env.NODE_ENV === "production" ? "/static/" : "/"; //font scss资源路径 不同环境切换控制
 module.exports = {
   lintOnSave: false,
   baseUrl: "/",
@@ -12,34 +19,74 @@ module.exports = {
   productionSourceMap: false, //false表示不生成map文件
   crossorigin: undefined, //默认
   integrity: false, //默认
-  //configureWebpack: Object|Function
-  // configureWebpack: {
-  // plugins: [
-  //   new MyAwesomeWebpackPlugin()
-  // ]
-  // }
-  // chainWebpack:Function
+  configureWebpack: config => {
+    //生产和测试
+    let pluginsPro = [
+      new CompressionPlugin({
+        // filename: "[path].gz[query]",
+        algorithm: "gzip",
+        test: new RegExp("\\.(" + ["js", "css"].join("|") + ")$"),
+        threshold: 8192, //对超过8k的数据进行压缩
+        minRatio: 0.8,
+        deleteOriginalAssets: false //是否删除源文件
+      })
+      // new BundleAnalyzerPlugin()
+    ];
+
+    //开发环境
+    let pluginsDev = [
+      //移动端模拟开发者工具
+      // new vConsolePlugin({
+      //   filter: [],
+      //   enable: true //发布代码前记得改回false
+      // })
+    ];
+    if (process.env.NODE_ENV === "production") {
+      config.plugins = [...config.plugins, ...pluginsPro];
+    } else {
+      config.plugins = [...config.plugins, ...pluginsDev];
+    }
+  },
+
+  chainWebpack: config => {
+    /**
+     * 删除懒加载模块的prefetch，降低宽带压力
+     */
+    config.plugins.delete("prefetch");
+    config.resolve.alias
+      .set("@", resolve("src"))
+      .set("assets", resolve("src/assets"))
+      .set("components", resolve("src/components")); //可以链式操作
+    if (process.env.NODE_ENV === "production") {
+      //为生产环境修改配置
+    } else {
+      //为开发环境修改配置
+    }
+  },
   //将接收ChainableConfig由webpack-chain提供支持的实例的函数。允许对内部webpack配置进行更细粒度的修改。
   css: {
     extract: false, //true在生产中，false在开发中
     sourceMap: false, //是否为css启用源映射，将此设置为true可能会影响构建性能
+    modules: false, //启用css modules
     loaderOptions: {
       // css:{},
       postcss: {
         plugins: [
+          require("autoprefixer"),
           require("postcss-px2rem")({ remUnit: 75, baseDpr: 2 }) // 换算的基数
         ]
       },
       sass: {
-        // data: `@import "@/variables.scss"` //全局变量
+        ////设置css中引用文件的路径，引入通用使用的scss文件（如包含的@mixin）
+        data: `@import "@/assets/scss/reset.scss";@import "@/assets/scss/fontSize.scss";`
       }
-    },
-    modules: false
+    }
   },
   devServer: {
     publicPath: "/", //始终以斜杠开始斜杠结束
     host: "0.0.0.0",
     port: 9000,
+    https: false,
     useLocalIp: true,
     // compress: true, //为服务的一切启用gzip压缩
     // contentBase: path.join(__dirname, "static"),
@@ -64,12 +111,22 @@ module.exports = {
       "X-custom-Foo": "rq"
     },
     open: "chrome",
+    hotOnly: true,
     overlay: {
       warnings: true,
       errors: true
     }
   },
-  parallel: require("os").cpus().length > 1,
+  parallel: require("os").cpus().length > 1
   // pwa:{}
-  pluginOptions: {}
+  //第三方插件
+  // pluginOptions: {
+  //   "style-resources-loader": {
+  //     proProcessor: "scss",
+  //     patterns: [
+  //       //path.resolve(__dirname,'./src/assets/scss/_common.scss');
+  //     ]
+  //     //injector:'append'
+  //   }
+  // }
 };

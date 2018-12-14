@@ -21,5 +21,6 @@ export default {
     bottom: 0;
     height: 96px;
   }
+  // @include font-dpr(20);
 }
 </style>

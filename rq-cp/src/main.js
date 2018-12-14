@@ -3,7 +3,9 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import "./registerServiceWorker";
-import "../static/js/flexible.js"; //index.html中引入失败
+import "assets/js/flexible";
+import "./axios/axios";
+
 Vue.config.productionTip = false;
 
 new Vue({

@@ -5,8 +5,8 @@
 </template>
 
 <style lang="scss">
-@import "../static/css/reset.scss";
-@import "../static/css/fontSize.scss";
+// @import "./assets/scss/reset.scss";
+// @import "./assets/scss/fontSize.scss";
 .clearfix {
   *zoom: 1;
   &:after {
@@ -15,8 +15,5 @@
     clear: both;
     height: 0;
   }
-}
-a {
-  @include font-dpr(20);
 }
 </style>
