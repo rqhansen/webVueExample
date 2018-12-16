@@ -5,8 +5,6 @@
 </template>
 
 <style lang="scss">
-// @import "./assets/scss/reset.scss";
-// @import "./assets/scss/fontSize.scss";
 .clearfix {
   *zoom: 1;
   &:after {

@@ -81,10 +81,4 @@ function uuid(len, radix) {
     return uuid.join('');
 }
 
-export default {
-  uuid,
-  AESDec,
-  AESEnc
-}
-
 

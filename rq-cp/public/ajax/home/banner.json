@@ -1,0 +1,22 @@
+{
+    "code": 1,
+    "msg": "获取数据成功",
+    "bannerList": [
+        {
+            "id": "01",
+            "imgUrl": "img/home/banner1.png"
+        },
+        {
+            "id": "02",
+            "imgUrl": "img/home/banner2.png"
+        },
+        {
+            "id": "03",
+            "imgUrl": "img/home/banner3.png"
+        },
+        {
+            "id": "04",
+            "imgUrl": "img/home/banner4.png"
+        }
+    ]
+}

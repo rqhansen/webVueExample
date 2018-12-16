@@ -1,15 +1,15 @@
-import Vue from "vue";
-import App from "./App.vue";
-import router from "./router";
-import store from "./store";
-import "./registerServiceWorker";
-import "assets/js/flexible";
-import "./axios/axios";
+import Vue from 'vue'
+import App from './App.vue'
+import router from './router'
+import store from './store'
+import './registerServiceWorker'
+import 'assets/js/axios'
+import './globalComponent/global'
 
-Vue.config.productionTip = false;
+Vue.config.productionTip = false
 
 new Vue({
-  router,
-  store,
-  render: h => h(App)
-}).$mount("#app");
+    router,
+    store,
+    render: h => h(App)
+}).$mount('#app')

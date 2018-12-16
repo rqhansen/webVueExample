@@ -78,6 +78,3 @@ encrypt.setPublicKey(publicKey);
 function RSA(content){
     return encrypt.encrypt(content);
 }
-export default {
-    RSA
-}
