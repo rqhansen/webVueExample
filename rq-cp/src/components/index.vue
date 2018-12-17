@@ -2,7 +2,7 @@
   <div class="wrapper">
     <router-view />
     <!-- 页脚 -->
-    <footer class="rq-footer">我是页脚</footer>
+    <!-- <footer class="rq-footer">我是页脚</footer> -->
   </div>
 </template>
 

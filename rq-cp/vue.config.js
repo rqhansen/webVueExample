@@ -1,6 +1,6 @@
 const path = require('path')
-const vConsolePlugin = require('vconsole-webpack-plugin') //移动端调试插件
-const CompressionPlugin = require('compression-webpack-plugin') //Gzip
+// const vConsolePlugin = require('vconsole-webpack-plugin') //移动端调试插件
+// const CompressionPlugin = require('compression-webpack-plugin') //Gzip
 function resolve(dir) {
     return path.join(__dirname, dir)
 }
@@ -22,24 +22,24 @@ module.exports = {
     configureWebpack: config => {
         //生产和测试
         let pluginsPro = [
-            new CompressionPlugin({
-                // filename: "[path].gz[query]",
-                algorithm: 'gzip',
-                test: new RegExp('\\.(' + ['js', 'css'].join('|') + ')$'),
-                threshold: 8192, //对超过8k的数据进行压缩
-                minRatio: 0.8,
-                deleteOriginalAssets: false //是否删除源文件
-            })
+            // new CompressionPlugin({
+            //     // filename: "[path].gz[query]",
+            //     algorithm: 'gzip',
+            //     test: new RegExp('\\.(' + ['js', 'css'].join('|') + ')$'),
+            //     threshold: 8192, //对超过8k的数据进行压缩
+            //     minRatio: 0.8,
+            //     deleteOriginalAssets: false //是否删除源文件
+            // })
             // new BundleAnalyzerPlugin()
         ]
 
         //开发环境
         let pluginsDev = [
             //移动端模拟开发者工具
-            new vConsolePlugin({
-                filter: [],
-                enable: true //发布代码前记得改回false
-            })
+            // new vConsolePlugin({
+            //     filter: [],
+            //     enable: true //发布代码前记得改回false
+            // })
         ]
         if (process.env.NODE_ENV === 'production') {
             config.plugins = [...config.plugins, ...pluginsPro]
@@ -53,8 +53,16 @@ module.exports = {
          * 删除懒加载模块的prefetch，降低宽带压力
          */
         config.plugins.delete('prefetch')
+        config.resolve.symlinks(true) //修复热更新
+        config.externals = {
+            //防止将某些 import 的包(package)打包到 bundle 中，而是在运行时(runtime)再去从外部获取这些扩展依赖
+            vue: 'Vue',
+            vant: 'Vant',
+            'vue-router': 'VueRouter',
+            vuex: 'Vuex',
+            axios: 'axios'
+        }
         config.resolve.alias
-            .set('@', resolve('src'))
             .set('assets', resolve('src/assets'))
             .set('components', resolve('src/components'))
             .set('public', resolve('public'))
