@@ -1,11 +1,10 @@
 const path = require('path')
 // const vConsolePlugin = require('vconsole-webpack-plugin') //移动端调试插件
-// const CompressionPlugin = require('compression-webpack-plugin') //Gzip
+const CompressionPlugin = require('compression-webpack-plugin') //Gzip
 function resolve(dir) {
     return path.join(__dirname, dir)
 }
 // const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin; //Webpack包文件分析器
-// const baseUrl = process.env.NODE_ENV === "production" ? "/static/" : "/"; //font scss资源路径 不同环境切换控制
 module.exports = {
     lintOnSave: false,
     baseUrl: '/',
@@ -22,14 +21,14 @@ module.exports = {
     configureWebpack: config => {
         //生产和测试
         let pluginsPro = [
-            // new CompressionPlugin({
-            //     // filename: "[path].gz[query]",
-            //     algorithm: 'gzip',
-            //     test: new RegExp('\\.(' + ['js', 'css'].join('|') + ')$'),
-            //     threshold: 8192, //对超过8k的数据进行压缩
-            //     minRatio: 0.8,
-            //     deleteOriginalAssets: false //是否删除源文件
-            // })
+            new CompressionPlugin({
+                // filename: "[path].gz[query]",
+                algorithm: 'gzip',
+                test: new RegExp('\\.(' + ['js', 'css'].join('|') + ')$'),
+                threshold: 8192, //对超过8k的数据进行压缩
+                minRatio: 0.8,
+                deleteOriginalAssets: false //是否删除源文件
+            })
             // new BundleAnalyzerPlugin()
         ]
 
@@ -62,12 +61,7 @@ module.exports = {
             vuex: 'Vuex',
             axios: 'axios'
         }
-        config.resolve.alias
-            .set('assets', resolve('src/assets'))
-            .set('components', resolve('src/components'))
-            .set('public', resolve('public'))
-            .set('ajax', resolve('public/ajax'))
-        //可以链式操作
+        config.resolve.alias.set('public', resolve('public'))
         if (process.env.NODE_ENV === 'production') {
             //为生产环境修改配置
         } else {

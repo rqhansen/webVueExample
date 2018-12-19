@@ -3,9 +3,8 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import './registerServiceWorker'
-import 'assets/js/axios'
+import '@/assets/js/axios'
 import './globalComponent/global'
-import './plugins/iview.js'
 
 Vue.config.productionTip = false
 
