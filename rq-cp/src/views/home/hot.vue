@@ -63,7 +63,7 @@ $bt: border-bottom;
       #{$br}: $border-attr;
     }
     &:nth-last-child(2) {
-      #{bt}: none;
+      #{$bt}: none;
     }
   }
   dl {

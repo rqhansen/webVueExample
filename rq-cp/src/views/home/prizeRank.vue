@@ -8,9 +8,11 @@
       <span>最新中奖榜</span>
     </header>
     <section>
-      <div class="rq-srcoll-wrapper">
+      <div class="rq-srcoll-wrapper"
+           ref="scroll-wrapper">
         <ul class="scroll-content"
-            ref="scroll-ul">
+            :style="'transform:translateY('+scrollTop+'px)'"
+            ref="scroll-inner">
           <li v-for="item of prizeRankList"
               :key="item.rankingNo">
             <span>{{item.userCode}}</span>
@@ -29,14 +31,57 @@ export default {
   name: "prizeRank",
   data () {
     return {
-      prizeRankList: []
+      prizeRankList: [],
+      scrollTop: -200,
+      scrollInner: '',
+      scrollWrap: ''
+    }
+  },
+  methods: {
+    setScroll () {
+      let vm = this;
+      setTimeout(() => {
+        vm.scrollTop -= 4;
+        if (!vm.getScrollObjPos()) {
+          vm.setScroll();
+        } else {
+          vm.scrollTop = 0;
+          vm.setScroll();
+        }
+      }, 25)
+    },
+    /**
+     * 获取元素的Bounding信息
+     */
+    getBoundingInfo (ele) {
+      return ele.getBoundingClientRect();
+    },
+    /**
+     * 判断内容是否超出容器
+     */
+    getScrollObjPos () {
+      let [content, wrap] = ['', ''];
+      if (this.scrollInner && this.scrollWrap) {
+        content = this.scrollInner;
+        wrap = this.scrollWrap;
+      } else {
+        content = this.$refs['scroll-inner'];
+        wrap = this.$refs["scroll-wrapper"];
+      }
+      let [{ bottom: btm1 }, { bottom: btm2 }] = [this.getBoundingInfo(content), this.getBoundingInfo(wrap)];
+      if (btm1 <= btm2) {
+        return true
+      }
+      return false;
     }
   },
   mounted () {
-    this.$nextTick(() => {
-      console.log(this.$refs["scroll-ul"].height);
-    })
-
+    setTimeout(() => {
+      let [innerHeight, outHeight] = [this.$refs["scroll-inner"].offsetHeight, this.$refs["scroll-wrapper"].offsetHeight];
+      if (innerHeight - outHeight > 0) { //内容超出容器则滚动
+        this.setScroll();
+      }
+    }, 100)
   },
   created () {
     this.$http.get("/ajax/home/prizeRank.json").then(res => {
@@ -61,24 +106,31 @@ export default {
     }
   }
   .rq-srcoll-wrapper {
+    position: relative;
     height: 480px;
     overflow: hidden;
   }
-  li {
-    height: 60px;
-    line-height: 60px;
-    font-size: 26px;
-    span {
-      display: inline-block;
-      width: 30%;
-      text-align: center;
-      &:first-child {
-        padding-left: 40px;
-        text-align: left;
-      }
-      &:nth-child(2) {
-        width: 40%;
-        color: #ec0022;
+  .scroll-content {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    li {
+      height: 60px;
+      line-height: 60px;
+      font-size: 26px;
+      span {
+        display: inline-block;
+        width: 30%;
+        text-align: center;
+        &:first-child {
+          padding-left: 40px;
+          text-align: left;
+        }
+        &:nth-child(2) {
+          width: 40%;
+          color: #ec0022;
+        }
       }
     }
   }
