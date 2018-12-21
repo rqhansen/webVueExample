@@ -1,10 +1,7 @@
 <template>
   <div class="rq-home-prize-rank">
     <header>
-      <svg class="icon"
-           aria-hidden="true">
-        <use xlink:href="#icon-prize-cup"></use>
-      </svg>
+      <svg-icon icon-class="cup"></svg-icon>
       <span>最新中奖榜</span>
     </header>
     <section>
@@ -32,7 +29,7 @@ export default {
   data () {
     return {
       prizeRankList: [],
-      scrollTop: -200,
+      scrollTop: 0,
       scrollInner: '',
       scrollWrap: ''
     }
@@ -41,25 +38,22 @@ export default {
     setScroll () {
       let vm = this;
       setTimeout(() => {
-        vm.scrollTop -= 4;
+        vm.scrollTop -= 10;
         if (!vm.getScrollObjPos()) {
           vm.setScroll();
         } else {
           vm.scrollTop = 0;
           vm.setScroll();
         }
-      }, 25)
-    },
-    /**
-     * 获取元素的Bounding信息
-     */
-    getBoundingInfo (ele) {
-      return ele.getBoundingClientRect();
+      }, 100)
     },
     /**
      * 判断内容是否超出容器
      */
     getScrollObjPos () {
+      function getBoundingInfo (ele) {
+        return ele.getBoundingClientRect();
+      };
       let [content, wrap] = ['', ''];
       if (this.scrollInner && this.scrollWrap) {
         content = this.scrollInner;
@@ -68,41 +62,47 @@ export default {
         content = this.$refs['scroll-inner'];
         wrap = this.$refs["scroll-wrapper"];
       }
-      let [{ bottom: btm1 }, { bottom: btm2 }] = [this.getBoundingInfo(content), this.getBoundingInfo(wrap)];
-      if (btm1 <= btm2) {
+      let [{ bottom: contentBtm }, { bottom: wrapBtm }] = [getBoundingInfo(content), getBoundingInfo(wrap)];
+      if (contentBtm <= wrapBtm) {
         return true
       }
       return false;
     }
   },
-  mounted () {
-    setTimeout(() => {
-      let [innerHeight, outHeight] = [this.$refs["scroll-inner"].offsetHeight, this.$refs["scroll-wrapper"].offsetHeight];
-      if (innerHeight - outHeight > 0) { //内容超出容器则滚动
-        this.setScroll();
-      }
-    }, 100)
-  },
   created () {
     this.$http.get("/ajax/home/prizeRank.json").then(res => {
       this.prizeRankList = res.data.prizeRankList;
+      this.$nextTick(() => {
+        if (this.prizeRankList.length > 8) {
+          this.setScroll();
+        }
+      })
     })
   }
 }
 </script>
 
 <style lang="scss" scoped>
+@mixin alignCenter($height, $line-height) {
+  height: #{$height}px;
+  line-height: #{$line-height}px;
+}
 .rq-home-prize-rank {
   header {
-    height: 80px;
     padding-left: 20px;
-    line-height: 80px;
+    @include alignCenter(80, 80);
     border-bottom: 1px solid #eee;
     overflow: hidden;
     span {
       vertical-align: top;
       color: #747474;
       font-size: 30px;
+    }
+    .svg-icon {
+      @extend span;
+      margin-right: 20px;
+      font-size: 48px;
+      vertical-align: 3px;
     }
   }
   .rq-srcoll-wrapper {
@@ -116,8 +116,7 @@ export default {
     top: 0;
     width: 100%;
     li {
-      height: 60px;
-      line-height: 60px;
+      @include alignCenter(60, 60);
       font-size: 26px;
       span {
         display: inline-block;

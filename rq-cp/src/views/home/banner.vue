@@ -33,7 +33,6 @@ export default {
     height: 220px;
     img {
       width: 100%;
-      height: 100%;
     }
     /deep/ .van-swipe__indicator {
       width: 12px;

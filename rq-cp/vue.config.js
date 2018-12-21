@@ -1,10 +1,89 @@
 const path = require('path')
-// const vConsolePlugin = require('vconsole-webpack-plugin') //移动端调试插件
+const vConsolePlugin = require('vconsole-webpack-plugin') //移动端调试插件
 const CompressionPlugin = require('compression-webpack-plugin') //Gzip
+const SkeletonWebpackPlugin = require('vue-skeleton-webpack-plugin') //骨架屏插件
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+    .BundleAnalyzerPlugin //Webpack包文件分析器
+
 function resolve(dir) {
     return path.join(__dirname, dir)
 }
-// const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin; //Webpack包文件分析器
+
+// 2018.12.21 by xiaoren
+//骨架屏路由
+const routes = [
+    {
+        path: '/home',
+        skeletonId: 'skeleton1'
+    },
+    {
+        path: '/login',
+        skeletonId: 'skeleton2'
+    }
+]
+
+/**
+ * 2018.12.21 by xiaoren
+ * @description 配置Svg
+ */
+function addSvgConfig(config) {
+    const svgRule = config.module.rule('svg')
+    svgRule.uses.clear()
+    svgRule
+        .test(/\.svg$/)
+        .include.add(resolve('./src/icon'))
+        .end()
+        .use('svg-sprite-loader')
+        .loader('svg-sprite-loader')
+        .options({
+            // symbolId: 'icon-[name]'
+        })
+}
+
+/**
+ * 2018.12.21 by xiaoren
+ * @description 骨架屏插件
+ */
+function getSketonPlugin() {
+    return new SkeletonWebpackPlugin({
+        webpackConfig: {
+            entry: {
+                app: path.join(__dirname, './src/entry-skeleton.js') //骨架屏入口文件
+            }
+        },
+        minimize: true,
+        quiet: true,
+        router: {
+            mode: 'history',
+            routes: routes
+        }
+    })
+}
+
+/**
+ * 2018.12.21 by xiaoren
+ * @description 开启Gzip压缩
+ */
+function getGzipPluginObj() {
+    return new CompressionPlugin({
+        // filename: "[path].gz[query]",
+        algorithm: 'gzip',
+        test: new RegExp('\\.(' + ['js', 'css'].join('|') + ')$'),
+        threshold: 8192, //对超过8k的数据进行压缩
+        minRatio: 0.8,
+        deleteOriginalAssets: false //是否删除源文件
+    })
+}
+/**
+ * 2018.12.21 by xiaoren
+ * @description 移动端调试工具
+ */
+function getVconsolePluginObj() {
+    return new vConsolePlugin({
+        filter: [],
+        enable: false //发布代码前记得改回false
+    })
+}
 module.exports = {
     lintOnSave: false,
     baseUrl: '/',
@@ -19,39 +98,19 @@ module.exports = {
     crossorigin: undefined, //默认
     integrity: false, //默认
     configureWebpack: config => {
-        //生产和测试
-        let pluginsPro = [
-            new CompressionPlugin({
-                // filename: "[path].gz[query]",
-                algorithm: 'gzip',
-                test: new RegExp('\\.(' + ['js', 'css'].join('|') + ')$'),
-                threshold: 8192, //对超过8k的数据进行压缩
-                minRatio: 0.8,
-                deleteOriginalAssets: false //是否删除源文件
-            })
-            // new BundleAnalyzerPlugin()
-        ]
-
-        //开发环境
-        let pluginsDev = [
-            //移动端模拟开发者工具
-            // new vConsolePlugin({
-            //     filter: [],
-            //     enable: true //发布代码前记得改回false
-            // })
-        ]
+        config.plugins.push(getSketonPlugin())
         if (process.env.NODE_ENV === 'production') {
-            config.plugins = [...config.plugins, ...pluginsPro]
+            config.plugins.push(getGzipPluginObj())
         } else {
-            config.plugins = [...config.plugins, ...pluginsDev]
+            config.plugins.push(
+                getVconsolePluginObj(),
+                new BundleAnalyzerPlugin()
+            )
         }
     },
 
     chainWebpack: config => {
-        /**
-         * 删除懒加载模块的prefetch，降低宽带压力
-         */
-        config.plugins.delete('prefetch')
+        config.plugins.delete('prefetch') //删除懒加载模块的prefetch，降低宽带压力
         config.resolve.symlinks(true) //修复热更新
         config.externals = {
             //防止将某些 import 的包(package)打包到 bundle 中，而是在运行时(runtime)再去从外部获取这些扩展依赖
@@ -62,6 +121,12 @@ module.exports = {
             axios: 'axios'
         }
         config.resolve.alias.set('public', resolve('public'))
+        addSvgConfig(config)
+        // config.module
+        //     .rule('images')
+        //     .test(/\.(png|jpe?g|gif|webp|svg)(\?.*)?$/)
+        //     .exclude.add(resolve('./src/icon'))
+
         if (process.env.NODE_ENV === 'production') {
             //为生产环境修改配置
         } else {
@@ -133,5 +198,8 @@ module.exports = {
     //     ]
     //     //injector:'append'
     //   }
+    // }
+    // pluginOptions:{
+
     // }
 }

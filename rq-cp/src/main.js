@@ -1,10 +1,15 @@
 import Vue from 'vue'
 import App from './App.vue'
-import router from './router'
+import router from './router/router'
 import store from './store'
+
 import './registerServiceWorker'
 import '@/assets/js/axios'
-import './globalComponent/global'
+import '@/plugins/iview'
+import '@/icon/index'
+
+import FastClick from 'fastclick'
+FastClick.attach(document.body)
 
 Vue.config.productionTip = false
 
