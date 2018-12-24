@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <router-view />
+      <router-view />
     <!-- 页脚 -->
     <footer class="rq-footer">
       <ol>
