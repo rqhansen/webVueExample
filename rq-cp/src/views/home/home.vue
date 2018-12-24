@@ -66,7 +66,7 @@ export default {
     z-index: 2;
   }
   hr {
-    width: 750px;
+    width: 100%;
     height: 20px;
     background-color: #f3f3f3;
   }
