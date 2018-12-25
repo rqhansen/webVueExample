@@ -148,7 +148,7 @@ module.exports = {
             },
             sass: {
                 ////设置css中引用文件的路径，引入通用使用的scss文件（如包含的@mixin）
-                data: `@import "@/assets/scss/reset.scss";@import "@/assets/scss/fontSize.scss";`
+                data: `@import "@/assets/scss/index.scss";`
             }
         }
     },
