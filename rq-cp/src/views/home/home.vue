@@ -4,34 +4,30 @@
     <header class="rq-header">
       <top></top>
     </header>
-    <van-pull-refresh v-model="isLoading"
-                      @refresh="onRefresh">
-      <!-- 轮播 -->
-      <section>
-        <banner></banner>
-      </section>
-      <!-- 公告 -->
-      <article>
-        <announce></announce>
-      </article>
-      <!--导航菜单-->
-      <section>
-        <navigation></navigation>
-      </section>
-      <!--分割区 -->
-      <hr />
-      <!-- 热门 -->
-      <section>
-        <hot></hot>
-      </section>
-      <!-- 分割区 -->
-      <hr />
-      <!-- 中奖排行榜 -->
-      <section>
-        <prize-rank></prize-rank>
-      </section>
-    </van-pull-refresh>
-
+    <!-- 轮播 -->
+    <section>
+      <banner></banner>
+    </section>
+    <!-- 公告 -->
+    <article>
+      <announce></announce>
+    </article>
+    <!--导航菜单-->
+    <section>
+      <navigation></navigation>
+    </section>
+    <!--分割区 -->
+    <hr />
+    <!-- 热门 -->
+    <section>
+      <hot></hot>
+    </section>
+    <!-- 分割区 -->
+    <hr />
+    <!-- 中奖排行榜 -->
+    <section>
+      <prize-rank></prize-rank>
+    </section>
   </div>
 </template>
 
@@ -55,14 +51,6 @@ export default {
   data () {
     return {
       isLoading: false
-    }
-  },
-  methods: {
-    onRefresh () {
-      setTimeout(() => {
-        this.$toast("刷新成功");
-        this.isLoading = false;
-      }, 500000)
     }
   }
 };
