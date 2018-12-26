@@ -7,6 +7,7 @@ import './registerServiceWorker'
 import '@/assets/js/axios'
 import '@/plugins/iview'
 import '@/icon/index'
+import '@/directives/index.js'
 
 import FastClick from 'fastclick'
 FastClick.attach(document.body)

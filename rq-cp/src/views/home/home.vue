@@ -5,29 +5,32 @@
       <top></top>
     </header>
     <!-- 轮播 -->
-    <section>
-      <banner></banner>
-    </section>
-    <!-- 公告 -->
-    <article>
-      <announce></announce>
-    </article>
-    <!--导航菜单-->
-    <section>
-      <navigation></navigation>
-    </section>
-    <!--分割区 -->
-    <hr />
-    <!-- 热门 -->
-    <section>
-      <hot></hot>
-    </section>
-    <!-- 分割区 -->
-    <hr />
-    <!-- 中奖排行榜 -->
-    <section>
-      <prize-rank></prize-rank>
-    </section>
+    <div v-refresh>
+      <section>
+        <banner></banner>
+      </section>
+      <!-- 公告 -->
+      <article>
+        <announce></announce>
+      </article>
+      <!--导航菜单-->
+      <section>
+        <navigation></navigation>
+      </section>
+      <!--分割区 -->
+      <hr />
+      <!-- 热门 -->
+      <section>
+        <hot></hot>
+      </section>
+      <!-- 分割区 -->
+      <hr />
+      <!-- 中奖排行榜 -->
+      <section>
+        <prize-rank></prize-rank>
+      </section>
+    </div>
+
   </div>
 </template>
 

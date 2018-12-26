@@ -88,7 +88,7 @@ module.exports = {
     lintOnSave: false,
     baseUrl: '/',
     outputDir: 'dist',
-    assetsDir: 'assert', //静态资源目录的上级目录(js，css，img，fonts)
+    assetsDir: 'static', //静态资源目录的上级目录(js，css，img，fonts)
     indexPath: 'index.html',
     filenameHashing: false, //生成的静态资源在其文件名中是否包含哈希值，false(缓存处理)
     lintOnSave: true, //是否使用eslint-loader在开发期间执行lint-on-save

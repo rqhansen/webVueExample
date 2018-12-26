@@ -12,4 +12,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+//刷新
 </style>
