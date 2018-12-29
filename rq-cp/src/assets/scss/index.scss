@@ -1,20 +1,29 @@
 @import './reset.scss';
 @import './vant.scss';
+@import './animation.scss';
 /deep/ .refresh-wrap {
     //刷新图标
     position: absolute;
-    top: 0;
+    top: -60px;
     left: 50%;
+    width:60px;
+    height:60px;
     margin-left: -15px;
-    transform: translate3d(0, -120px, 0);
-    transition: all 1s linear;
-    z-index: 2000;
+    transition: all .5s linear;
+    z-index: 9;
     .svg-icon {
-        width: 40px;
-        height: 40px;
+        position:absolute;
+        top:0;
+        width:60px;
+        height:60px;
         line-height: 40px;
         border-radius: 50%;
         text-align: center;
         background-color: #fff;
+        font-size:14px;
+        &.active {
+            animation: rotating 1s;
+            transform-origin: center;
+        }
     }
 }

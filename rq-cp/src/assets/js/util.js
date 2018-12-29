@@ -42,23 +42,11 @@ function getUuid(len, radix) {
 /**
  *@description 判断元素是否包含某个类
  */
-function hasClass(ele, cla) {
-    let className = ele.className;
-    if(!className) return false;
-    return className.trim().split(" ").includes(cla);
-}
-/**
- * @description 元素添加类
- */
-function addClass(ele, cla) {
-    if(hasClass(ele,cla)) return
-    let className = ele.className;
-    if(!className) ele.className = cla;
-    else  ele.className = ele.className.trim().split(" ").push(cla).join(" ");
-}
+// function hasClass(ele, className) {
+//     let reg = new RegExp(`(^|\\s)${className}(\\s|$)`)
+//     return reg.test(el.className)
+// }
 export default {
     rndNum,
-    getUuid,
-    hasClass,
-    addClass
+    getUuid
 }
