@@ -68,7 +68,7 @@ import utils from '@/assets/js/util'
         setTransLateY(transLateY)
     }
     function touchEnd(e) {
-        setTransLateY(-MAXMOVE - 80)
+        setTransLateY(-MAXMOVE - 20)
         targetEle.children[0].classList.add('active')
         setTimeout(() => {
             targetEle.children[0].classList.remove('active')
