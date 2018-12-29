@@ -81,7 +81,7 @@ function getGzipPluginObj() {
 function getVconsolePluginObj() {
     return new vConsolePlugin({
         filter: [],
-        enable: false //发布代码前记得改回false
+        enable: true //发布代码前记得改回false
     })
 }
 module.exports = {

@@ -40,38 +40,21 @@ function getUuid(len, radix) {
     return uuid.join('')
 }
 /**
- * 是否有某个类
+ *@description 判断元素是否包含某个类
  */
 function hasClass(ele, cla) {
-    let className = ele.className.trim()
-    if (
-        !className
-            .trim()
-            .split(' ')
-            .includes(cla)
-    )
-        return false
-    return className
-        .trim()
-        .split(' ')
-        .includes(cla)
+    let className = ele.className;
+    if(!className) return false;
+    return className.trim().split(" ").includes(cla);
 }
 /**
- * 添加类
+ * @description 元素添加类
  */
 function addClass(ele, cla) {
-    if (!hasClass(ele, cla)) {
-        //判断添加的类是否已存在
-        if (ele.className) {
-            ele.className
-                .trim()
-                .split(' ')
-                .push(cla)
-                .join(' ')
-        } else {
-            ele.className = cla
-        }
-    }
+    if(hasClass(ele,cla)) return
+    let className = ele.className;
+    if(!className) ele.className = cla;
+    else  ele.className = ele.className.trim().split(" ").push(cla).join(" ");
 }
 export default {
     rndNum,
