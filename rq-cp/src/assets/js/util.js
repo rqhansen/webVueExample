@@ -42,40 +42,11 @@ function getUuid(len, radix) {
 /**
  * 是否有某个类
  */
-function hasClass(ele, cla) {
-    let className = ele.className.trim()
-    if (
-        !className
-            .trim()
-            .split(' ')
-            .includes(cla)
-    )
-        return false
-    return className
-        .trim()
-        .split(' ')
-        .includes(cla)
-}
-/**
- * 添加类
- */
-function addClass(ele, cla) {
-    if (!hasClass(ele, cla)) {
-        //判断添加的类是否已存在
-        if (ele.className) {
-            ele.className
-                .trim()
-                .split(' ')
-                .push(cla)
-                .join(' ')
-        } else {
-            ele.className = cla
-        }
-    }
-}
+// function hasClass(ele, className) {
+//     let reg = new RegExp(`(^|\\s)${className}(\\s|$)`)
+//     return reg.test(el.className)
+// }
 export default {
     rndNum,
-    getUuid,
-    hasClass,
-    addClass
+    getUuid
 }

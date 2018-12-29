@@ -1,106 +1,79 @@
 import Vue from 'vue'
 import utils from '@/assets/js/util'
+;(function() {
+    const MAXMOVE = 100 //最大滑动距离
+    let [startY, targetY, transLateY, targetEle, isTouch] = [0, 0, 0, '', false]
+    Vue.directive('refresh', {
+        inserted: function(el) {
+            let pos = getComputedStyle(el, null).position //外层容器添加类
+            el.style.position = pos !== 'static' ? pos : 'relative'
 
-const MAXHEIGHT = '1'
-const TOP = '-1.5'
-let [startY, targetY, translateY] = [0, 0, 0, 0]
-function setTransition(ele, y) {
-    ele.style.transform = `translate3d(0,${y + 'rem'},0)`
-}
-/**
- *
- *@description 准备滑动
- */
-function touchStart(event) {
-    //准备滑动
-    startY = event.touches[0].clientY
-    this.translateY = 0
-}
-/**
- * @description 滑动
- */
-function touchMove(event) {
-    targetY = event.touches[0].clientY
-    translateY = parseFloat(targetY - startY)
-    if (translateY > 0) {
-        document.body.addEventListener(
-            //阻止默认的滑动事件
-            'touchmove',
-            e => {
-                e.preventDefault()
-            },
-            {
-                passive: false //兼容ios和android
-            }
-        )
-    }
-    /**
-     * 滑动超过最大允许滑动的值
-     */
-    if (translateY > MAXHEIGHT) {
-        translateY = MAXHEIGHT
-    }
-    /**
-     * 向上滑
-     */
-    if (translateY < 0) {
-        translateY = top
-    }
-    setTransition(this.firstChild, translateY)
-    /**
-     * 超出边界执行ontouchend
-     */
-    if (event.targetTouches[0].pageY <= 0) {
-        // this.ontouchend()
-    }
-}
-/**
- * 取消滑动
- */
-function touchEnd(event) {
-    document.body.removeEventListener(
-        'touchmove',
-        e => {
-            e.preventDefault()
-        },
-        { passive: false }
-    )
-    if (translateY >= MAXHEIGHT) {
-        let expression = this.options.expression
-        if (expression) {
-            expression().then(() => {
-                setTransiton(this.firstChild, TOP)
-            })
-        } else {
-            setTransition(this.firstChild, TOP)
-        }
-    }
-}
-Vue.directive('refresh', {
-    inserted(wrap, binding, context) {
-        //当被绑定的元素插入到DOM中时
-        let position = window.getComputedStyle(wrap, null).position
-        let ele = document.createElement('div')
-        ele.innerHTML = `<svg class="svg-icon"
-        aria-hidden="true">
-     <use xlink:href="#refresh"></use>
-   </svg>`
+            let newChild = document.createElement('div') //创建新元素
+            newChild.innerHTML = `<svg class="svg-icon" aria-hidden="true">
+                                <use xlink:href="#refresh"></use>
+                            </svg>`
+            // utils.addClass(newChild, 'refresh-wrap')
+            newChild.classList.add('refresh-wrap')
 
-        utils.addClass(ele, 'refresh-wrap')
-        let val = binding.value
-        wrap.options = {
-            expression: typeof binding.value === 'function' ? binding.value : ''
+            el.insertBefore(newChild, el.firstChild)
+            targetEle = newChild
+            el.addEventListener('touchstart', touchStart, { passive: false })
+            el.addEventListener('touchmove', touchMove, { passive: false })
+            el.addEventListener('touchend', touchEnd, { passive: false })
         }
-        wrap.insertBefore(ele, wrap.firstChild) //将ele插入到wrap元素的头部
-        wrap.style.position = position !== 'static' ? position : 'relative'
-        wrap.style.overflow = 'hidden'
-        wrap.addEventListener('touchstart', touchStart)
-        wrap.addEventListener('touchmove', touchMove)
-        wrap.addEventListener('touchend', touchEnd)
-    },
-    unbind(el) {
-        el.removeEventListener('touchstart', touchStart)
-        el.removeEventListener('touchmove', touchMove)
-        el.removeEventListener('touchend', touchEnd)
+    })
+
+    //阻止和移除默认事件
+    function setPreventDefault(e) {
+        e.preventDefault()
     }
-})
+    function preventDefault() {
+        document.body.addEventListener('touchmove', setPreventDefault, {
+            passive: false
+        })
+    }
+    function removePreventDefault() {
+        document.body.removeEventListener('touchmove', setPreventDefault, {
+            passive: false
+        })
+    }
+
+    //设置偏移
+    function setTransLateY(y) {
+        targetEle.style.transform = `translateY(${y / 75}rem)`
+    }
+
+    function touchStart(e) {
+        startY = e.touches[0].clientY
+    }
+
+    function touchMove(e) {
+        transLateY = parseInt(e.touches[0].clientY - startY)
+        let scrollTop =
+            document.documentElement.scrollTop ||
+            document.body.scrollTop ||
+            window.pageYOffset
+        if (scrollTop > 0) return
+        /**
+         * 阻止默认滑动的条件：
+         * 1.第一次滑动
+         * 2.下滑
+         * 3.scrollTop小于等于0
+         */
+        if (!isTouch && transLateY >= 0) {
+            preventDefault()
+        }
+        isTouch = true
+        if (transLateY > MAXMOVE) transLateY = 100
+        setTransLateY(transLateY)
+    }
+    function touchEnd(e) {
+        setTransLateY(-MAXMOVE - 80)
+        targetEle.children[0].classList.add('active')
+        setTimeout(() => {
+            targetEle.children[0].classList.remove('active')
+        }, 2000)
+        removePreventDefault()
+        isTouch = false
+    }
+})()

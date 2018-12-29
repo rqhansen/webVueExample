@@ -30,7 +30,6 @@
         <prize-rank></prize-rank>
       </section>
     </div>
-
   </div>
 </template>
 
@@ -67,7 +66,7 @@ export default {
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 2;
+    z-index: 10;
   }
   hr {
     width: 100%;
