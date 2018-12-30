@@ -18,7 +18,7 @@
         text-align: center;
         background-color: #fff;
         &.active {
-            animation: rotating 1s;
+            animation: rotating 0.5s;
             transform-origin: center;
         }
     }
