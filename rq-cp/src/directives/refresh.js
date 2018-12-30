@@ -1,18 +1,15 @@
 import Vue from 'vue'
 import utils from '@/assets/js/util'
 ;(function() {
-    const MAXMOVE = 100 //最大滑动距离
-    let [startY, targetY, transLateY, targetEle, isTouch] = [0, 0, 0, '', false]
+    const MAXMOVE = 200 //最大滑动距离
+    let [startY, targetY, transLateY, targetEle, isTouch,timer] = [0, 0, 0, '', false,'']
     Vue.directive('refresh', {
         inserted: function(el) {
             let pos = getComputedStyle(el, null).position //外层容器添加类
             el.style.position = pos !== 'static' ? pos : 'relative'
 
             let newChild = document.createElement('div') //创建新元素
-            newChild.innerHTML = `<svg class="svg-icon" aria-hidden="true">
-                                <use xlink:href="#refresh"></use>
-                            </svg>`
-            // utils.addClass(newChild, 'refresh-wrap')
+            newChild.innerHTML = `<svg class="svg-icon" aria-hidden="true"><use xlink:href="#refresh"></use></svg>`
             newChild.classList.add('refresh-wrap')
 
             el.insertBefore(newChild, el.firstChild)
@@ -20,6 +17,9 @@ import utils from '@/assets/js/util'
             el.addEventListener('touchstart', touchStart, { passive: false })
             el.addEventListener('touchmove', touchMove, { passive: false })
             el.addEventListener('touchend', touchEnd, { passive: false })
+        },
+        unbind:function(el){
+
         }
     })
 
@@ -44,6 +44,7 @@ import utils from '@/assets/js/util'
     }
 
     function touchStart(e) {
+        if(timer) clearTimeout(timer);
         startY = e.touches[0].clientY
     }
 
@@ -64,15 +65,18 @@ import utils from '@/assets/js/util'
             preventDefault()
         }
         isTouch = true
-        if (transLateY > MAXMOVE) transLateY = 100
+        if (transLateY > MAXMOVE) transLateY = MAXMOVE
+
         setTransLateY(transLateY)
     }
     function touchEnd(e) {
-        setTransLateY(-MAXMOVE - 20)
-        targetEle.children[0].classList.add('active')
-        setTimeout(() => {
-            targetEle.children[0].classList.remove('active')
-        }, 2000)
+        setTransLateY(0)
+        if(transLateY>=MAXMOVE){
+            targetEle.children[0].classList.add('active')
+            timer = setTimeout(() => {
+                targetEle.children[0].classList.remove('active')
+            }, 1000)
+        }
         removePreventDefault()
         isTouch = false
     }

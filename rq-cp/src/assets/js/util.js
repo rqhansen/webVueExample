@@ -40,7 +40,7 @@ function getUuid(len, radix) {
     return uuid.join('')
 }
 /**
- * 是否有某个类
+ *@description 判断元素是否包含某个类
  */
 // function hasClass(ele, className) {
 //     let reg = new RegExp(`(^|\\s)${className}(\\s|$)`)
