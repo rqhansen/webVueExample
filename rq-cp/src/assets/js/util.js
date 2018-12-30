@@ -39,13 +39,7 @@ function getUuid(len, radix) {
     }
     return uuid.join('')
 }
-/**
- *@description 判断元素是否包含某个类
- */
-// function hasClass(ele, className) {
-//     let reg = new RegExp(`(^|\\s)${className}(\\s|$)`)
-//     return reg.test(el.className)
-// }
+
 export default {
     rndNum,
     getUuid

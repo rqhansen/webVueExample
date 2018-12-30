@@ -1,0 +1,52 @@
+//刷新图标
+.refresh-wrap {
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    width: 60px;
+    height: 60px;
+    margin-left: -15px;
+    transition: all 0.5s linear;
+    z-index: 9;
+    .svg-icon {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        line-height: 40px;
+        border-radius: 50%;
+        text-align: center;
+        background-color: #fff;
+        font-size: 14px;
+        &.active {
+            $an1: (
+                transform: rotate(360deg)
+            );
+            $an2: (
+                transform: rotate(1080deg)
+            );
+            $rotate: (
+                0%: $an1,
+                100%: $an2
+            );
+            @include keyframes(rotate, $rotate);
+            @include animation(rotate 3s);
+            transform-origin: center;
+        }
+        &.static {
+            $an1: (
+                transform: rotate(0deg)
+            );
+            $an2: (
+                transform: rotate(720deg)
+            );
+            $rotate: (
+                0%: $an1,
+                100%: $an2
+            );
+            @include keyframes(rotate, $rotate);
+            @include animation(rotate 1s);
+            transform-origin: center;
+        }
+    }
+}

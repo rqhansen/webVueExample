@@ -5,7 +5,7 @@
       <top></top>
     </header>
     <!-- 轮播 -->
-    <div v-refresh>
+    <div v-refresh="refresh">
       <section>
         <banner></banner>
       </section>
@@ -53,6 +53,20 @@ export default {
   data () {
     return {
       isLoading: false
+    }
+  },
+  methods: {
+    refresh () {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve();
+        }, 1000)
+        console.log(1);
+
+      })
+    },
+    init () {
+      console.log('刷新了');
     }
   }
 };
