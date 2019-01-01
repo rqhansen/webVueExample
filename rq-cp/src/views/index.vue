@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-      <router-view />
+    <router-view />
     <!-- 页脚 -->
     <footer class="rq-footer">
       <ol>
@@ -66,12 +66,12 @@ export default {
 
 <style lang="scss" scoped>
 .wrapper {
-  padding-bottom: 96px;
   .rq-footer {
     position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
+    z-index: 999; //可防止抖动
     background-color: #eee;
   }
   ol {
@@ -82,7 +82,7 @@ export default {
     height: 96px;
     li {
       flex: 1;
-      font-size: 26px;
+      font-size: 24px;
       color: #757575;
       text-align: center;
       &.active {
@@ -92,7 +92,9 @@ export default {
         }
       }
       .svg-icon {
-        font-size: 46px;
+        position: relative;
+        top: 6px;
+        font-size: 40px;
         margin-bottom: 2px;
       }
     }

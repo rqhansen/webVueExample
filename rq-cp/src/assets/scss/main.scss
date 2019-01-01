@@ -1,4 +1,8 @@
 //刷新图标
+.refresh-animation-wrap {
+    -webkit-overflow-scrolling: touch;
+    overflow-y: hidden;
+}
 .refresh-wrap {
     position: absolute;
     top: -60px;
@@ -46,6 +50,46 @@
             );
             @include keyframes(rotate, $rotate);
             @include animation(rotate 1s);
+            transform-origin: center;
+        }
+    }
+}
+.touch-feedback {
+    position: relative;
+    overflow: hidden;
+    &:before {
+        display: block;
+        content: '';
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%) scale(0.5);
+        z-index: 10;
+    }
+    &:active {
+        &:before {
+            $an1: (
+                background-color: rgba(192, 225, 250, 0)
+            );
+            $an2: (
+                transform: scale(6),
+                background-color: rgba(192, 225, 250, 1)
+            );
+            $an3: (
+                transform: scale(15),
+                background-color: rgba(192, 225, 250, 0)
+            );
+            $feedback: (
+                0%: $an1,
+                50%: $an2,
+                100%: $an3
+            );
+            @include keyframes(feedback, $feedback);
+            @include animation(feedback 0.7s);
+            animation-fill-mode: forwards;
             transform-origin: center;
         }
     }

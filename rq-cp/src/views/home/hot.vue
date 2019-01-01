@@ -50,12 +50,14 @@ $bt: border-bottom;
   }
   ul {
     width: 100%;
+    font-size: 0;
   }
   li {
     width: 50%;
     display: inline-block;
     text-align: center;
     padding: 20px;
+    overflow: hidden;
     &:not(:last-child) {
       #{$bt}: $border-attr;
     }

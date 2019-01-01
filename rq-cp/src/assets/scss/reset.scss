@@ -18,6 +18,7 @@ body {
 }
 html {
     font-family: $mobileFont;
+    overflow: unset; //防止页面抖动
 }
 body {
     line-height: 1.5;

@@ -39,8 +39,29 @@ function getUuid(len, radix) {
     }
     return uuid.join('')
 }
+/**
+ *@description 判断元素是否包含某个类
+ */
+// function hasClass(ele, className) {
+//     let reg = new RegExp(`(^|\\s)${className}(\\s|$)`)
+//     return reg.test(el.className)
+// }
+/**
+ * @description 元素添加类
+ */
+function addClass(ele, className) {
+    ele.classList.add(className)
+}
+/**
+ * 元素移除类
+ */
 
+function removeClass(ele, className) {
+    ele.classList.remove(className)
+}
 export default {
     rndNum,
-    getUuid
+    getUuid,
+    addClass,
+    removeClass
 }

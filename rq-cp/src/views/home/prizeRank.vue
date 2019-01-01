@@ -52,7 +52,7 @@ export default {
      */
     getScrollObjPos () {
       function getBoundingInfo (ele) {
-        return ele.getBoundingClientRect();
+        return ele && ele.getBoundingClientRect();
       };
       let [content, wrap] = ['', ''];
       if (this.scrollInner && this.scrollWrap) {

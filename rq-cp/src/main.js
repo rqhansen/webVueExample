@@ -5,7 +5,7 @@ import store from './store'
 
 import './registerServiceWorker'
 import '@/assets/js/axios'
-import '@/plugins/iview'
+import '@/plugins/index'
 import '@/icon/index'
 import '@/directives/index.js'
 
