@@ -4,7 +4,8 @@
     <div>
       <ul>
         <li v-for="item of hotLotteryList"
-            :key="item.id">
+            :key="item.id"
+            class="touch-feedback">
           <dl>
             <dt><img :src="item.lotteryIcon"
                    alt=""></dt>

@@ -5,39 +5,31 @@
       <top></top>
     </header>
     <!-- 轮播 -->
-    <!-- <div> -->
-    <div>
-      <div class="refresh"
-           :style="`top:${top};height:${top}px;line-height:${top}px`">刷新了</div>
-      <div ref="scroll-wrap"
-           class="scroll-wrap">
-
-        <div class="scroll-content">
-          <section>
-            <banner></banner>
-          </section>
-          <!-- 公告 -->
-          <article>
-            <announce></announce>
-          </article>
-          <!--导航菜单-->
-          <section>
-            <navigation></navigation>
-          </section>
-          <!--分割区 -->
-          <hr />
-          <!-- 热门 -->
-          <section>
-            <hot></hot>
-          </section>
-          <!-- 分割区 -->
-          <hr />
-          <!-- 中奖排行榜 -->
-          <section>
-            <prize-rank></prize-rank>
-          </section>
-        </div>
-      </div>
+    <div class="refresh-animation-wrap"
+         v-refresh="refresh">
+      <section>
+        <banner></banner>
+      </section>
+      <!-- 公告 -->
+      <article>
+        <announce></announce>
+      </article>
+      <!--导航菜单-->
+      <section>
+        <navigation></navigation>
+      </section>
+      <!--分割区 -->
+      <hr />
+      <!-- 热门 -->
+      <section>
+        <hot></hot>
+      </section>
+      <!-- 分割区 -->
+      <hr />
+      <!-- 中奖排行榜 -->
+      <section>
+        <prize-rank></prize-rank>
+      </section>
     </div>
   </div>
 </template>
@@ -49,7 +41,6 @@ import announce from './announce';
 import navigation from './navigation';
 import hot from './hot';
 import prizeRank from './prizeRank';
-import BScroll from 'better-scroll'
 export default {
   name: "home",
   components: {
@@ -67,32 +58,7 @@ export default {
       scroll: ""
     }
   },
-  mounted () {
-    this.$nextTick(() => {
-      this._initScroll();
-    })
-  },
   methods: {
-    _initScroll () {
-      let vm = this;
-      if (!this.scroll) {
-        this.scroll = new BScroll(this.$refs['scroll-wrap'], {
-          probeType: 2
-        });
-        this.scroll.on("scroll", pos => {
-          console.log(pos);
-          vm.top = pos.y;
-        })
-        if (this.scroll) {
-          this.scroll.refresh();
-        } else {
-          this.scroll = new BScroll(this.$refs['scroll-wrap'], {
-            probeType: 3,
-            click: true
-          });
-        }
-      }
-    },
     refresh () {
       return new Promise((resolve, reject) => {
         setTimeout(() => {
@@ -120,16 +86,6 @@ export default {
     width: 100%;
     height: 20px;
     background-color: #f3f3f3;
-  }
-  .scroll-wrap {
-    height: calc(100vh - 184px);
-    overflow: hidden;
-    .refresh {
-      position: absolute;
-      left: 0;
-      width: 100%;
-      text-align: center;
-    }
   }
 }
 </style>

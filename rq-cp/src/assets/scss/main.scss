@@ -1,9 +1,10 @@
-//刷新图标
+//刷新指令所在的类
 .refresh-animation-wrap {
     -webkit-overflow-scrolling: touch;
     overflow-y: hidden;
 }
 .refresh-wrap {
+    //刷新图标
     position: absolute;
     top: -60px;
     left: 50%;
@@ -60,8 +61,8 @@
     &:before {
         display: block;
         content: '';
-        width: 50px;
-        height: 50px;
+        width: 30px;
+        height: 30px;
         border-radius: 50%;
         position: absolute;
         left: 50%;
@@ -72,23 +73,33 @@
     &:active {
         &:before {
             $an1: (
-                background-color: rgba(192, 225, 250, 0)
+                background-color: rgba(151, 151, 151, 0)
             );
             $an2: (
-                transform: scale(6),
-                background-color: rgba(192, 225, 250, 1)
+                transform: scale(3),
+                background-color: rgba(151, 151, 151, 1)
             );
             $an3: (
-                transform: scale(15),
-                background-color: rgba(192, 225, 250, 0)
+                transform: scale(6),
+                background-color: rgba(151, 151, 151, 0.8)
+            );
+            $an4: (
+                transform: scale(9),
+                background-color: rgba(151, 151, 151, 0.4)
+            );
+            $an5: (
+                transform: scale(12),
+                background-color: rgba(151, 151, 151, 0)
             );
             $feedback: (
                 0%: $an1,
-                50%: $an2,
-                100%: $an3
+                25%: $an2,
+                50%: $an3,
+                75%: $an4,
+                100%: $an5
             );
             @include keyframes(feedback, $feedback);
-            @include animation(feedback 0.7s);
+            @include animation(feedback 0.5s);
             animation-fill-mode: forwards;
             transform-origin: center;
         }
