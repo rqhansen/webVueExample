@@ -1,2 +1,2 @@
 import './refresh'
-import './click'
+import './feedBackClick'

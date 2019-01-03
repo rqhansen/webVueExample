@@ -31,7 +31,7 @@ import utils from '@/assets/js/util'
                 () => {
                     removeClass(el)
                 },
-                false
+                { passive: false }
             )
         },
         unbind() {
