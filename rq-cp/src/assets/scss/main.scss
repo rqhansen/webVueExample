@@ -24,6 +24,7 @@
         background-color: #fff;
         font-size: 14px;
         &.active {
+            //刷新动画
             $an1: (
                 transform: rotate(360deg)
             );
@@ -55,6 +56,39 @@
         }
     }
 }
+.style {
+    // 水波纹样式
+    $an1: (
+        background-color: rgba(191, 191, 191, 0)
+    );
+    $an2: (
+        transform: scale(3),
+        background-color: rgba(191, 191, 191, 0.4)
+    );
+    $an3: (
+        transform: scale(6),
+        background-color: rgba(191, 191, 191, 0.8)
+    );
+    $an4: (
+        transform: scale(9),
+        background-color: rgba(191, 191, 191, 0.4)
+    );
+    $an5: (
+        transform: scale(12),
+        background-color: rgba(191, 191, 191, 0)
+    );
+    $feedback: (
+        0%: $an1,
+        25%: $an2,
+        50%: $an3,
+        75%: $an4,
+        100%: $an5
+    );
+    @include keyframes(feedback, $feedback);
+    @include animation(feedback 0.4s);
+    animation-fill-mode: forwards;
+    transform-origin: center;
+}
 .touch-feedback {
     position: relative;
     overflow: hidden;
@@ -72,36 +106,12 @@
     }
     &:active {
         &:before {
-            $an1: (
-                background-color: rgba(151, 151, 151, 0)
-            );
-            $an2: (
-                transform: scale(3),
-                background-color: rgba(151, 151, 151, 1)
-            );
-            $an3: (
-                transform: scale(6),
-                background-color: rgba(151, 151, 151, 0.8)
-            );
-            $an4: (
-                transform: scale(9),
-                background-color: rgba(151, 151, 151, 0.4)
-            );
-            $an5: (
-                transform: scale(12),
-                background-color: rgba(151, 151, 151, 0)
-            );
-            $feedback: (
-                0%: $an1,
-                25%: $an2,
-                50%: $an3,
-                75%: $an4,
-                100%: $an5
-            );
-            @include keyframes(feedback, $feedback);
-            @include animation(feedback 0.5s);
-            animation-fill-mode: forwards;
-            transform-origin: center;
+            @extend .style;
+        }
+    }
+    &.click-active {
+        &:before {
+            @extend .style;
         }
     }
 }

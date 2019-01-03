@@ -59,9 +59,23 @@ function addClass(ele, className) {
 function removeClass(ele, className) {
     ele.classList.remove(className)
 }
+/**
+ * 切换类
+ */
+function toggleClass(ele, className) {
+    ele.classList.toggle(className)
+}
+/**
+ * 判断包含某个类
+ */
+function hasClass(el, className) {
+    el.classList.contains(className)
+}
 export default {
     rndNum,
     getUuid,
     addClass,
-    removeClass
+    removeClass,
+    hasClass,
+    toggleClass
 }

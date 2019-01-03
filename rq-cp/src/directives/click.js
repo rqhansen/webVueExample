@@ -1,26 +1,54 @@
 import Vue from 'vue'
 import utils from '@/assets/js/util'
-utils.addClass(targetEle.children[0], 'active')
-function addClass(el) {
-    utils.addClass(el, 'click-active')
-}
-Vue.directive('feed-back-click', {
-    insert(el, binding, context) {
-        el.addEventListener(
-            'tap',
-            () => {
-                addClass(el)
-            },
-            { passive: false }
-        )
-    },
-    unbind() {
-        el.removeEventListener(
-            'tap',
-            () => {
-                addClass(el)
-            },
-            { passive: false }
-        )
+;(function() {
+    function addClass(el) {
+        utils.addClass(el, 'click-active')
+        let {
+            option: { expression }
+        } = el
+        if (expression && typeof expression === 'function') {
+            expression()
+        }
     }
-})
+    function removeClass(el) {
+        utils.removeClass(el, 'click-active')
+    }
+    Vue.directive('feedBackClick', {
+        bind: function(el, binding) {
+            el.option = {}
+            el.option.expression = binding.value
+        },
+        inserted(el, binding) {
+            el.addEventListener(
+                'click',
+                () => {
+                    addClass(el)
+                },
+                { passiv: false }
+            )
+            el.addEventListener(
+                'touchend',
+                () => {
+                    removeClass(el)
+                },
+                false
+            )
+        },
+        unbind() {
+            el.removeEventListener(
+                'click',
+                () => {
+                    addClass(el)
+                },
+                { passiv: false }
+            )
+            el.removeEventListener(
+                'touchend',
+                () => {
+                    removeClass(el)
+                },
+                { passiv: false }
+            )
+        }
+    })
+})()

@@ -1,1 +1,2 @@
 import './refresh'
+import './click'

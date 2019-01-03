@@ -2,7 +2,9 @@
   <div class="rq-home-navigation">
     <ul>
       <li v-for="item of navList"
-          :key="item.title">
+          :key="item.title"
+          class="touch-feedback"
+          v-feedBackClick="goPath">
         <div><img :src="item.imgUrl"
                alt=""></div>
         <div>
@@ -37,6 +39,11 @@ export default {
           imgUrl: '/img/home/navigate-4.png'
         },
       ]
+    }
+  },
+  methods: {
+    goPath () {
+      console.log(1);
     }
   }
 }

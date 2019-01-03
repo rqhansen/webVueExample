@@ -5,7 +5,8 @@
       <ul>
         <li v-for="item of hotLotteryList"
             :key="item.id"
-            class="touch-feedback">
+            class="touch-feedback"
+            v-feedBackClick>
           <dl>
             <dt><img :src="item.lotteryIcon"
                    alt=""></dt>

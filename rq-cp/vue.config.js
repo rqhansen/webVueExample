@@ -1,26 +1,19 @@
 const path = require('path')
+const merge = require('webpack-merge')
+const nodeExternals = require('webpack-node-externals')
 const vConsolePlugin = require('vconsole-webpack-plugin') //移动端调试插件
 const CompressionPlugin = require('compression-webpack-plugin') //Gzip
 const SkeletonWebpackPlugin = require('vue-skeleton-webpack-plugin') //骨架屏插件
+const isProduction = process.env.NODE_ENV === 'production'
+// const sourceMapEnabled = isProduction
+//     ? config.build.productionSourceMap
+//     : config.dev.cssSourceMap
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
     .BundleAnalyzerPlugin //Webpack包文件分析器
 
 function resolve(dir) {
     return path.join(__dirname, dir)
 }
-
-// 2018.12.21 by xiaoren
-//骨架屏路由
-const routes = [
-    {
-        path: '/home',
-        skeletonId: 'skeleton1'
-    },
-    {
-        path: '/login',
-        skeletonId: 'skeleton2'
-    }
-]
 
 /**
  * 2018.12.21 by xiaoren
@@ -42,26 +35,6 @@ function addSvgConfig(config) {
 
 /**
  * 2018.12.21 by xiaoren
- * @description 骨架屏插件
- */
-function getSketonPlugin() {
-    return new SkeletonWebpackPlugin({
-        webpackConfig: {
-            entry: {
-                app: path.join(__dirname, './src/entry-skeleton.js') //骨架屏入口文件
-            }
-        },
-        minimize: true,
-        quiet: true,
-        router: {
-            mode: 'history',
-            routes: routes
-        }
-    })
-}
-
-/**
- * 2018.12.21 by xiaoren
  * @description 开启Gzip压缩
  */
 function getGzipPluginObj() {
@@ -74,6 +47,49 @@ function getGzipPluginObj() {
         deleteOriginalAssets: false //是否删除源文件
     })
 }
+
+// 2018.12.21 by xiaoren
+//骨架屏路由
+const routes = [
+    {
+        path: '/home',
+        skeletonId: 'skeleton1'
+    },
+    {
+        path: '/login',
+        skeletonId: 'skeleton2'
+    }
+]
+
+/**
+ * 2019 1.3 by xiaoren
+ * @description 骨架屏插件
+ */
+function addSketonPlugin(config) {
+    return new SkeletonWebpackPlugin({
+        webpackConfig: merge(config, {
+            target: 'node',
+            devtool: false,
+            entry: {
+                app: path.join(__dirname, './src/entry-skeleton.js')
+            },
+            output: Object.assign({}, config.output, {
+                libraryTarget: 'commonjs2'
+            }),
+            externals: nodeExternals({
+                whitelist: /\.css$/
+            }),
+            plugins: []
+        }),
+        minimize: true,
+        quiet: true,
+        router: {
+            mode: 'history',
+            routes: routes
+        }
+    })
+}
+
 /**
  * 2018.12.21 by xiaoren
  * @description 移动端调试工具
@@ -81,7 +97,7 @@ function getGzipPluginObj() {
 function getVconsolePluginObj() {
     return new vConsolePlugin({
         filter: [],
-        enable: true //发布代码前记得改回false
+        enable: false //发布代码前记得改回false
     })
 }
 module.exports = {
@@ -98,7 +114,7 @@ module.exports = {
     crossorigin: undefined, //默认
     integrity: false, //默认
     configureWebpack: config => {
-        config.plugins.push(getSketonPlugin())
+        config.plugins.push(addSketonPlugin(config))
         if (process.env.NODE_ENV === 'production') {
             config.plugins.push(getGzipPluginObj())
         } else {
@@ -135,7 +151,8 @@ module.exports = {
     },
     //将接收ChainableConfig由webpack-chain提供支持的实例的函数。允许对内部webpack配置进行更细粒度的修改。
     css: {
-        extract: false, //true在生产中，false在开发中
+        extract: true, //true在生产中，false在开发中(true开启样式分离,false导致骨架屏样式失效)
+        // sourceMap:sourceMapEnabled
         sourceMap: false, //是否为css启用源映射，将此设置为true可能会影响构建性能
         modules: false, //启用css modules
         loaderOptions: {
