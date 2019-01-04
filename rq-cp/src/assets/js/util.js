@@ -57,6 +57,7 @@ function addClass(ele, className) {
  */
 
 function removeClass(ele, className) {
+    console.log(className)
     ele.classList.remove(className)
 }
 /**

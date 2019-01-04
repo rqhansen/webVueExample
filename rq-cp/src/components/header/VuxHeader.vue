@@ -2,7 +2,7 @@
   <div class="rq-header-tool">
     <!-- 左边 -->
     <div class="header-left"
-         @click="leftClick">
+         @click.stop="leftClick">
       <slot name="left"
             v-if="!hasBack"></slot>
       <svg-icon icon-class="back"
@@ -14,7 +14,7 @@
     </div>
     <!-- 右边 -->
     <div class="header-right"
-         @click="rightClick">
+         @click.stop="rightClick">
       <slot name="right"></slot>
     </div>
   </div>
