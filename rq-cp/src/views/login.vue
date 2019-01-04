@@ -1,12 +1,18 @@
 <template>
-  <div>我是登录页</div>
+  <div class="rq-login">
+    <vux-header :hasBack="true">
+      <span slot="center">登录</span>
+    </vux-header>
+  </div>
 </template>
 
 <script>
 export default {
-
+  name: 'login'
 }
 </script>
 
-<style>
+<style  lang="scss" scoped>
+.rq-login {
+}
 </style>

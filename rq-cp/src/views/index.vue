@@ -1,15 +1,18 @@
 <template>
   <div class="wrapper">
-    <router-view />
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
     <!-- 页脚 -->
-    <footer class="rq-footer">
+    <footer class="rq-footer"
+            v-if="hasFooter">
       <ol>
         <li v-for="(item,index) of iconList"
             :key="index"
             :class="{'active':index===idx}"
             @click="goPath(item.url,index)">
           <div>
-            <svg-icon :icon-class="item.name"></svg-icon>
+            <svg-icon :icon-class="index===idx?`${item.name}-active`:item.name"></svg-icon>
           </div>
           <div>
             <span>{{item.title}}</span>
@@ -26,6 +29,7 @@ export default {
   data () {
     return {
       idx: 0,
+      hasFooter: false,
       iconList: [
         {
           name: "home",
@@ -55,11 +59,24 @@ export default {
       ]
     }
   },
+  watch: {
+    $route (n) {
+      this.handlerFooter()
+    }
+  },
   methods: {
+    handlerFooter () {
+      let { meta } = this.$route;
+      if (!meta) return
+      this.hasFooter = meta ? meta.hasFooter : "";
+    },
     goPath (url, index) {
       if (this.idx === index) return;
       this.idx = index;
     }
+  },
+  created () {
+    this.handlerFooter();
   }
 };
 </script>
@@ -73,6 +90,7 @@ export default {
     width: 100%;
     z-index: 999; //可防止抖动
     background-color: #eee;
+    opacity: 0.95;
   }
   ol {
     display: flex;
@@ -87,9 +105,6 @@ export default {
       text-align: center;
       &.active {
         color: #ec0022;
-        .svg-icon {
-          color: #ec0022;
-        }
       }
       .svg-icon {
         position: relative;

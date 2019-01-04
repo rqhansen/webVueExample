@@ -34,7 +34,7 @@ import utils from '@/assets/js/util'
                 { passive: false }
             )
         },
-        unbind() {
+        unbind(el) {
             el.removeEventListener(
                 'click',
                 () => {

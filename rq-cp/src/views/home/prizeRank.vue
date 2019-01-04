@@ -51,9 +51,6 @@ export default {
      * 判断内容是否超出容器
      */
     getScrollObjPos () {
-      function getBoundingInfo (ele) {
-        return ele && ele.getBoundingClientRect();
-      };
       let [content, wrap] = ['', ''];
       if (this.scrollInner && this.scrollWrap) {
         content = this.scrollInner;
@@ -62,6 +59,10 @@ export default {
         content = this.$refs['scroll-inner'];
         wrap = this.$refs["scroll-wrapper"];
       }
+      if (!content || !wrap) return
+      function getBoundingInfo (ele) {
+        return ele.getBoundingClientRect()
+      };
       let [{ bottom: contentBtm }, { bottom: wrapBtm }] = [getBoundingInfo(content), getBoundingInfo(wrap)];
       if (contentBtm <= wrapBtm) {
         return true

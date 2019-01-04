@@ -95,7 +95,7 @@ export default {
     }
   }
   .banner {
-    @include skele-bg(100, 220px, 5000px);
+    @include skele-bg(100%, 220px, 5000px);
   }
   .announce {
     height: 64px;
