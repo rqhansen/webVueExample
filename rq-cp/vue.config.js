@@ -54,11 +54,11 @@ const routes = [
     {
         path: '/home',
         skeletonId: 'skeleton1'
-    },
-    {
-        path: '/login',
-        skeletonId: 'skeleton2'
     }
+    // {
+    //     path: '/login',
+    //     skeletonId: 'skeleton2'
+    // }
 ]
 
 /**

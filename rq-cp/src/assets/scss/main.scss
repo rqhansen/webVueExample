@@ -90,6 +90,7 @@
     transform-origin: center;
 }
 .touch-feedback {
+    // 改类需手动添加到容器上
     // 水波纹的包裹容器
     position: relative;
     overflow: hidden;
@@ -106,13 +107,33 @@
         z-index: 10;
     }
     &:active {
-        // &:before {
-        // @extend .style;
-        // }
+        &:before {
+            @extend .style;
+        }
     }
     &.click-active {
         &:before {
             @extend .style;
         }
     }
+}
+.home-left-swipe-enter {
+    transform: translate(100%);
+}
+.home-left-swipe-enter-active {
+    transition: all 0.2s ease;
+}
+.home-left-swipe-leave-active {
+    transform: translate(-100%);
+    transition: all 0.2s ease;
+}
+.home-right-swipe-enter {
+    transform: translate(-100%);
+}
+.home-right-swipe-active {
+    transition: all 0.2s ease;
+}
+.home-right-swipe-leave-active {
+    transform: translate(100%);
+    transition: all 0.2s ease;
 }

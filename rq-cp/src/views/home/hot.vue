@@ -44,7 +44,7 @@ $bt: border-bottom;
 .rq-home-hot {
   header {
     height: 80px;
-    padding-left: 20px;
+    padding-left: 25px;
     line-height: 80px;
     font-size: 30px;
     color: #747474;

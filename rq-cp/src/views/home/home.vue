@@ -67,10 +67,6 @@ export default {
         }, 1200)
       })
     }
-  },
-  activated () {
-    // console.log(document.getElementsByClassName('refresh-animation-wrap'));
-    // debugger;
   }
 };
 </script>

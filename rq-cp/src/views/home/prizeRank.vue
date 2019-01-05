@@ -90,7 +90,7 @@ export default {
 }
 .rq-home-prize-rank {
   header {
-    padding-left: 20px;
+    padding-left: 25px;
     @include alignCenter(80, 80);
     border-bottom: 1px solid #eee;
     overflow: hidden;

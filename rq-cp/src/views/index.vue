@@ -1,8 +1,11 @@
 <template>
   <div class="wrapper">
-    <keep-alive>
-      <router-view></router-view>
-    </keep-alive>
+    <transition :name="`home-${pagePos}-swipe`"
+                mode="out-in">
+      <keep-alive>
+        <router-view :class="pagePos"></router-view>
+      </keep-alive>
+    </transition>
     <!-- 页脚 -->
     <footer class="rq-footer"
             v-if="hasFooter">
@@ -24,12 +27,13 @@
 </template>
 
 <script>
+import { mapMutations, mapGetters } from 'vuex'
 export default {
   name: "home",
   data () {
     return {
       idx: 0,
-      hasFooter: false,
+      hasFooter: true,
       iconList: [
         {
           name: "home",
@@ -60,15 +64,17 @@ export default {
     }
   },
   watch: {
-    $route (n) {
+    $route (to) {
       this.handlerFooter()
     }
   },
+  computed: {
+    ...mapGetters(['pagePos'])
+  },
   methods: {
     handlerFooter () {
-      let { meta } = this.$route;
-      if (!meta) return
-      this.hasFooter = meta ? meta.hasFooter : "";
+      let { meta: { hasFooter } } = this.$route;
+      this.hasFooter = hasFooter;
     },
     goPath (url, index) {
       if (this.idx === index) return;
@@ -77,6 +83,7 @@ export default {
   },
   created () {
     this.handlerFooter();
+    console.log(this.$route.name);
   }
 };
 </script>

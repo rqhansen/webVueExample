@@ -19,7 +19,7 @@ export default {
 <style lang="scss" scoped>
 .rq-home-announce {
   font-size: 30px;
-  padding: 0 10px;
+  padding: 0 10px 0 25px;
   border-bottom: 1px solid #eee;
   overflow: hidden;
   dl {

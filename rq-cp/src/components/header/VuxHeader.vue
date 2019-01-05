@@ -59,11 +59,11 @@ export default {
   display: flex;
   width: 750px;
   height: 88px;
-  padding: 0 24px;
+  padding: 0 25px;
   background-color: #ec0022;
   color: #fff;
   overflow: hidden;
-  font-size: 42px;
+  font-size: 38px;
   .header-left {
     margin: auto;
   }

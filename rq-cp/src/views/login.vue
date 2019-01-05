@@ -13,4 +13,7 @@ export default {
 </script>
 
 <style  lang="scss" scoped>
+.rq-login {
+  height: 100vh;
+}
 </style>
