@@ -146,3 +146,17 @@ img[src=''] {
 input {
     -webkit-appearance: none;
 }
+::-webkit-input-placeholder {
+    /* Chrome/Safari/Opera */
+    color: #bbb;
+}
+
+::-moz-placeholder {
+    /* Firefox 19+ */
+    color: #bbb;
+}
+
+:-ms-input-placeholder {
+    /* IE 10+ 注意这里只有一个冒号 */
+    color: #bbb;
+}
