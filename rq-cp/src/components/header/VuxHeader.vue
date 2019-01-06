@@ -38,13 +38,13 @@ export default {
   },
   methods: {
     leftClick () { //点击左侧
-      if (!this.hasBack) {
+      if (!this.hasBack) { //跳到其它链接
         if (this.leftUrl) {
           this.$router.push({ name: this.leftUrl });
         }
         return
       }
-      this.$router.go(-1);
+      this.$router.go(-1); //返回上个路由
     },
     rightClick () { //点击右侧
       if (!this.rightUrl) return

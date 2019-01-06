@@ -117,23 +117,3 @@
         }
     }
 }
-.home-left-swipe-enter {
-    transform: translate(100%);
-}
-.home-left-swipe-enter-active {
-    transition: all 0.2s ease;
-}
-.home-left-swipe-leave-active {
-    transform: translate(-100%);
-    transition: all 0.2s ease;
-}
-.home-right-swipe-enter {
-    transform: translate(-100%);
-}
-.home-right-swipe-active {
-    transition: all 0.2s ease;
-}
-.home-right-swipe-leave-active {
-    transform: translate(100%);
-    transition: all 0.2s ease;
-}

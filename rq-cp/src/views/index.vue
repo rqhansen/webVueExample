@@ -1,11 +1,9 @@
 <template>
   <div class="wrapper">
-    <transition :name="`home-${pagePos}-swipe`"
-                mode="out-in">
-      <keep-alive>
-        <router-view :class="pagePos"></router-view>
-      </keep-alive>
-    </transition>
+    <keep-alive>
+      <router-view v-transition
+                   style="min-height:100vh;background-color: #fff;"></router-view>
+    </keep-alive>
     <!-- 页脚 -->
     <footer class="rq-footer"
             v-if="hasFooter">
@@ -27,7 +25,7 @@
 </template>
 
 <script>
-import { mapMutations, mapGetters } from 'vuex'
+// import { mapMutations, mapGetters } from 'vuex'
 export default {
   name: "home",
   data () {
@@ -68,9 +66,9 @@ export default {
       this.handlerFooter()
     }
   },
-  computed: {
-    ...mapGetters(['pagePos'])
-  },
+  // computed: {
+  //   ...mapGetters(['pagePos'])
+  // },
   methods: {
     handlerFooter () {
       let { meta: { hasFooter } } = this.$route;
@@ -83,7 +81,6 @@ export default {
   },
   created () {
     this.handlerFooter();
-    console.log(this.$route.name);
   }
 };
 </script>

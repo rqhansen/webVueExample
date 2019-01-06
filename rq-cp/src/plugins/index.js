@@ -1,1 +1,2 @@
-import './iview'
+import './vant'
+import './vueg'

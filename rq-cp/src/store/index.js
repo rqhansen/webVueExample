@@ -9,12 +9,12 @@ export default new Vuex.Store({
         // vuxHeader
     },
     state: {
-        pagePos: ''
+        // pagePos: ''
     },
-    getters,
-    mutations: {
-        getPagePosition(state, data) {
-            state.pagePos = data
-        }
-    }
+    getters
+    // mutations: {
+    //     getPagePosition(state, data) {
+    //         state.pagePos = data
+    //     }
+    // }
 })

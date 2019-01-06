@@ -77,6 +77,7 @@ export default {
   padding-bottom: 96px;
   .rq-header {
     position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;

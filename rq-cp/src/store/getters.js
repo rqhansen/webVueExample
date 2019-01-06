@@ -1,3 +1,3 @@
 export default {
-    pagePos: state => state.pagePos
+    // pagePos: state => state.pagePos
 }
