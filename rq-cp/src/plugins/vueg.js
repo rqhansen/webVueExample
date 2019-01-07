@@ -6,7 +6,7 @@ import 'vueg/css/transition-min.css'
 const options = {
     duration: '0.3', //转场动画时长，默认为0.3，单位秒
     firstEntryDisable: false, //值为true时禁用首次进入应用时的渐现动画，默认为false
-    firstEntryDuration: '.3', //首次进入应用时的渐现动画时长，默认为.6
+    firstEntryDuration: '.6', //首次进入应用时的渐现动画时长，默认为.6
     forwardAnim: 'fadeInRight', //前进动画，默认为fadeInRight
     backAnim: 'fadeInLeft', //后退动画，默认为fedeInLeft
     sameDepthDisable: true, //url深度相同时禁用动画，默认为false

@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <keep-alive>
+    <keep-alive :include="['home']">
       <router-view v-transition
                    style="min-height:100vh;background-color: #fff;"></router-view>
     </keep-alive>

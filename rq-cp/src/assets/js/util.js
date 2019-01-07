@@ -71,6 +71,7 @@ function toggleClass(ele, className) {
 function hasClass(el, className) {
     el.classList.contains(className)
 }
+
 export default {
     rndNum,
     getUuid,

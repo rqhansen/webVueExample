@@ -16,23 +16,54 @@
         <div class="field-item"
              :class="{'active':itemIndex===0}">
           <input type="text"
+                 ref="user-name"
                  maxlength="12"
                  min="6"
                  checked
+                 v-model="userInfo.userName"
                  @focus="itemIndex=0"
                  @blur="itemIndex=-1"
                  placeholder="请输入用户名">
-          <svg-icon icon-class="close_eyes"></svg-icon>
+          <svg-icon icon-class="close"
+                    v-if="itemIndex===0"
+                    @click.native="$set(userInfo, 'userName', '');$refs['user-name'].focus();"></svg-icon>
         </div>
         <div class="field-item"
              :class="{'active':itemIndex===1}">
-          <input type="password"
+          <input :type="isClose?'password':'text'"
+                 ref="password"
+                 v-model="userInfo.passWord"
                  maxlength="12"
                  min="6"
                  @focus="itemIndex=1"
                  @blur="itemIndex=-1"
                  placeholder="请输入密码">
-          <svg-icon icon-class="open_eyes"></svg-icon>
+          <svg-icon icon-class="close"
+                    className="icon-clear"
+                    v-if="itemIndex===1"
+                    @click.native="$set(userInfo,'passWord','');$refs['password'].focus();"></svg-icon>
+          <svg-icon :icon-class="
+                    isClose?'close_eyes':'open_eyes'"
+                    @click.native="isClose=!isClose;"></svg-icon>
+        </div>
+        <div class="field-item"
+             :class="{'active':itemIndex===2}">
+          <input type="text"
+                 v-model="userInfo.code"
+                 maxlength="4"
+                 min="4"
+                 @focus="itemIndex=2"
+                 @blur="itemIndex=-1"
+                 placeholder="请输入验证码" />
+          <canvas width="100"
+                  height="40"
+                  id="canvas"
+                  @click="changeVeryCode"></canvas>
+        </div>
+        <div class="btn-wrapper">
+          <van-button round
+                      size="large"
+                      type="warning">登陆</van-button>
         </div>
       </div>
     </section>
@@ -40,16 +71,30 @@
 </template>
 
 <script>
+import drawVeryCode from '@/assets/js/drawVeryCode.js'
 export default {
   name: 'login',
   data () {
     return {
       itemIndex: -1,
+      isClose: true,
+      veryCode: '',
       userInfo: {
-        username: '',
-        phone: ''
+        userName: '',
+        passWord: ''
       }
     }
+  },
+  methods: {
+    /**
+     * 模拟后端生成验证码
+     */
+    changeVeryCode () {
+      this.veryCode = drawVeryCode('canvas');
+    }
+  },
+  mounted () {
+    this.changeVeryCode()
   }
 }
 </script>
@@ -77,22 +122,36 @@ export default {
     width: 620px;
     height: 590px;
     padding: 60px 20px;
+    margin: 0 auto;
     box-shadow: 0 0.15rem 0.7rem 0.15rem #dfdfdf;
     border-radius: 20px;
-    margin: 0 auto;
     background-color: #fff;
     font-size: 30px;
   }
   .field-item {
     position: relative;
     height: 76px;
-    padding: 15px 30px 15px 0;
+    padding: 15px 0;
     margin-bottom: 36px;
     input {
-      width: 100%;
       height: 100%;
       color: #222;
       caret-color: #ec0022;
+    }
+    .svg-icon {
+      position: absolute;
+      right: 20px;
+      top: 22px;
+      font-size: 40px;
+    }
+    #canvas {
+      width: 100px;
+      height: 50px;
+      @extend .svg-icon;
+      top: 13px;
+    }
+    .icon-clear {
+      right: 80px;
     }
     &:after {
       position: absolute;
@@ -117,10 +176,15 @@ export default {
           100%: $an2
         );
         @include keyframes(transWidth, $transWidth);
-        @include animation(transWidth 0.2s);
+        @include animation(transWidth 0.3s);
         background-color: #ec0022;
       }
     }
+  }
+  /deep/ .van-button--large {
+    height: 84px;
+    margin-top: 20px;
+    font-size: 36px;
   }
 }
 </style>
