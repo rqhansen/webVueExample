@@ -1,1 +1,33 @@
 @charset "utf-8";
+.van-button--large {
+    font-size: 36px !important;
+}
+.van-dialog {
+    width: 80%;
+}
+.van-dialog__message--has-title {
+    text-align: center;
+}
+.van-button {
+    font-size: 30px !important;
+}
+.van-button--warning {
+    background-color: #ec0022 !important;
+    border-color: #ec0022 !important;
+}
+.van-dialog {
+    font-size: 30px !important;
+}
+.van-dialog__message {
+    font-size: 24px !important;
+}
+.van-loading {
+    position: absolute !important;
+    left: 50%;
+    top: 50%;
+    z-index: 10 !important;
+    transform: translate(-50%, -50%);
+}
+.van-loading--spinner {
+    background-color: rgba(0, 0, 0, 0.6);
+}

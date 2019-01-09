@@ -2,7 +2,8 @@
   <div class="wrapper">
     <keep-alive :include="['home']">
       <router-view v-transition
-                   style="min-height:100vh;background-color: #fff;"></router-view>
+                   mode="out-in"
+                   style="min-height:100vh;height:100vh;background-color: #fff;"></router-view>
     </keep-alive>
     <!-- 页脚 -->
     <footer class="rq-footer"
@@ -94,7 +95,6 @@ export default {
     width: 100%;
     z-index: 999; //可防止抖动
     background-color: #eee;
-    opacity: 0.95;
   }
   ol {
     display: flex;

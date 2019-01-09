@@ -1,7 +1,7 @@
 <template>
   <div class="rq-header-tool">
     <!-- 左边 -->
-    <div class="header-left"
+    <div class="header-left left"
          @click.stop="leftClick">
       <slot name="left"
             v-if="!hasBack"></slot>
@@ -56,24 +56,31 @@ export default {
 
 <style lang="scss" scoped>
 .rq-header-tool {
-  display: flex;
+  position: relative;
   width: 750px;
   height: 88px;
+  line-height: 88px;
   padding: 0 25px;
   background-color: #ec0022;
   color: #fff;
   overflow: hidden;
-  font-size: 38px;
+  font-size: 34px;
   .header-left {
-    margin: auto;
+    position: absolute;
+    top: 0;
+    height: 100%;
+  }
+  .left {
+    left: 25px;
+    @extend .header-left;
   }
   .header-center {
-    @extend .header-left;
-    flex: 1;
+    width: 100%;
     text-align: center;
   }
   .header-right {
     @extend .header-left;
+    right: 25px;
   }
 }
 </style>

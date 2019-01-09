@@ -5,32 +5,35 @@
       <top></top>
     </header>
     <!-- 轮播 -->
-    <div class="refresh-animation-wrap"
-         v-refresh="refresh">
-      <section>
-        <banner></banner>
-      </section>
-      <!-- 公告 -->
-      <article>
-        <announce></announce>
-      </article>
-      <!--导航菜单-->
-      <section>
-        <navigation></navigation>
-      </section>
-      <!--分割区 -->
-      <hr />
-      <!-- 热门 -->
-      <section>
-        <hot></hot>
-      </section>
-      <!-- 分割区 -->
-      <hr />
-      <!-- 中奖排行榜 -->
-      <section>
-        <prize-rank></prize-rank>
-      </section>
+    <div class="rq-home-refresh-wrap">
+      <div class="refresh-animation-wrap"
+           v-refresh="refresh">
+        <section>
+          <banner></banner>
+        </section>
+        <!-- 公告 -->
+        <article>
+          <announce></announce>
+        </article>
+        <!--导航菜单-->
+        <section>
+          <navigation></navigation>
+        </section>
+        <!--分割区 -->
+        <hr />
+        <!-- 热门 -->
+        <section>
+          <hot></hot>
+        </section>
+        <!-- 分割区 -->
+        <hr />
+        <!-- 中奖排行榜 -->
+        <section>
+          <prize-rank></prize-rank>
+        </section>
+      </div>
     </div>
+
   </div>
 </template>
 
@@ -73,15 +76,18 @@ export default {
  
 <style lang="scss" scoped>
 .rq-home {
+  // height: 100vh; //防止转场异常
   padding-top: 88px;
   padding-bottom: 96px;
   .rq-header {
     position: fixed;
-    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 999;
+  }
+  .rq-home-refresh-wrap {
+    height: calc(100vh - 184px);
   }
   hr {
     width: 100%;

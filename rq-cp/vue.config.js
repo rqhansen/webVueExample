@@ -97,7 +97,7 @@ function addSketonPlugin(config) {
 function getVconsolePluginObj() {
     return new vConsolePlugin({
         filter: [],
-        enable: true //发布代码前记得改回false
+        enable: false //发布代码前记得改回false
     })
 }
 module.exports = {

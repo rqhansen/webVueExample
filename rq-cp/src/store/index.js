@@ -1,20 +1,14 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import getters from './getters'
-// import vuxHeader from '@/store/modules/vuxHeader'
+import user from '@/store/modules/user'
 
 Vue.use(Vuex)
 export default new Vuex.Store({
     modules: {
-        // vuxHeader
+        user
     },
-    state: {
-        // pagePos: ''
-    },
-    getters
-    // mutations: {
-    //     getPagePosition(state, data) {
-    //         state.pagePos = data
-    //     }
-    // }
+    state: {},
+    getters,
+    mutations: {}
 })
