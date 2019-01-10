@@ -56,6 +56,7 @@ $bt: border-bottom;
   }
   li {
     width: 50%;
+    height: 136px;
     display: inline-block;
     text-align: center;
     padding: 20px;

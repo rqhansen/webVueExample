@@ -27,24 +27,31 @@ export default {
       type: Boolean,
       default: true
     },
-    leftUrl: {
+    leftUrl: { //左侧链接
       type: String,
       default: ''
     },
-    rightUrl: {
+    rightUrl: { //右侧链接
+      type: String,
+      default: ''
+    },
+    scrollEle: { //需要滚动到顶部的元素
       type: String,
       default: ''
     }
   },
   methods: {
     leftClick () { //点击左侧
-      if (!this.hasBack) { //跳到其它链接
+      if (!this.hasBack) { //非后退，跳转到其它链接
         if (this.leftUrl) {
+          // if (this.scrollEle && this.scrollEle.scrollTop) { //将当前页的滚动元素恢复到初始位置
+          //   this.scrollEle.scrollTop = 0;
+          // }
           this.$router.push({ name: this.leftUrl });
         }
         return
       }
-      this.$router.go(-1); //返回上个路由
+      this.$router.go(-1); //后退
     },
     rightClick () { //点击右侧
       if (!this.rightUrl) return
@@ -64,7 +71,7 @@ export default {
   background-color: #ec0022;
   color: #fff;
   overflow: hidden;
-  font-size: 34px;
+  font-size: 36px;
   .header-left {
     position: absolute;
     top: 0;

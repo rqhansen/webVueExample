@@ -1,10 +1,11 @@
 <template>
   <div class="rq-home-header">
     <vux-header :hasBack="false"
-                :leftUrl="!user.userName?'login':''"
+                :scrollEle="$refs['rq-home-refresh-wrap']"
+                :leftUrl="user&&!user.userName?'login':''"
                 :rightUrl="!user.userName?'register':''">
       <span slot="left"
-            v-if="!user">登录</span>
+            v-if="!user.userName">登录</span>
       <img slot="center"
            src="../../assets/img/logo.png"
            height="72px" />
@@ -15,13 +16,9 @@
 <script>
 import { mapGetters } from 'vuex'
 export default {
+  name: 'homeHeader',
   computed: {
     ...mapGetters(['user'])
-  },
-  methods: {
-    clicak () {
-      console.log(this.user);
-    }
   }
 }
 </script>

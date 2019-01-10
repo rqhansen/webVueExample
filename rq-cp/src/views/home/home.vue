@@ -5,7 +5,8 @@
       <top></top>
     </header>
     <!-- 轮播 -->
-    <div class="rq-home-refresh-wrap">
+    <div class="rq-home-refresh-wrap"
+         ref="rq-home-refresh-wrap">
       <div class="refresh-animation-wrap"
            v-refresh="refresh">
         <section>
@@ -79,6 +80,7 @@ export default {
   // height: 100vh; //防止转场异常
   padding-top: 88px;
   padding-bottom: 96px;
+  overflow: hidden;
   .rq-header {
     position: fixed;
     top: 0;
@@ -88,6 +90,7 @@ export default {
   }
   .rq-home-refresh-wrap {
     height: calc(100vh - 184px);
+    overflow: scroll;
   }
   hr {
     width: 100%;

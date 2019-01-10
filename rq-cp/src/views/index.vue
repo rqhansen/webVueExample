@@ -2,8 +2,7 @@
   <div class="wrapper">
     <keep-alive :include="['home']">
       <router-view v-transition
-                   mode="out-in"
-                   style="min-height:100vh;height:100vh;background-color: #fff;"></router-view>
+                   class="rq-child-view"></router-view>
     </keep-alive>
     <!-- 页脚 -->
     <footer class="rq-footer"
@@ -42,7 +41,7 @@ export default {
         {
           name: "car",
           title: "购彩",
-          url: '/home'
+          url: '/lottery'
         },
         {
           name: "award",
@@ -78,6 +77,7 @@ export default {
     goPath (url, index) {
       if (this.idx === index) return;
       this.idx = index;
+      this.$router.push({ name: 'lottery' });
     }
   },
   created () {
@@ -88,6 +88,11 @@ export default {
 
 <style lang="scss" scoped>
 .wrapper {
+  .rq-child-view {
+    min-height: 100vh;
+    height: 100vh;
+    background-color: #fff;
+  }
   .rq-footer {
     position: fixed;
     left: 0;
