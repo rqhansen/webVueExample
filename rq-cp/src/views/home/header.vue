@@ -1,9 +1,8 @@
 <template>
   <div class="rq-home-header">
     <vux-header :hasBack="false"
-                :scrollEle="$refs['rq-home-refresh-wrap']"
-                :leftUrl="user&&!user.userName?'login':''"
-                :rightUrl="!user.userName?'register':''">
+                @click-left="clickLeft"
+                @click-right="clickRight">
       <span slot="left"
             v-if="!user.userName">登录</span>
       <img slot="center"
@@ -19,6 +18,14 @@ export default {
   name: 'homeHeader',
   computed: {
     ...mapGetters(['user'])
+  },
+  methods: {
+    clickLeft () {
+      this.$router.push({ name: 'login' });
+    },
+    clickRight () {
+      !this.user.userName && this.$router.push({ name: 'register' });
+    }
   }
 }
 </script>

@@ -1,7 +1,8 @@
 <template>
   <div class="rq-login-register">
     <!-- 头部 -->
-    <vux-header :hasBack="true">
+    <vux-header :hasBack="true"
+                @click-left="$router.go(-1)">
       <span slot="center">登录</span>
     </vux-header>
     <section class="login-register-wrapper">

@@ -26,36 +26,14 @@ export default {
     hasBack: { //是否有后退箭头
       type: Boolean,
       default: true
-    },
-    leftUrl: { //左侧链接
-      type: String,
-      default: ''
-    },
-    rightUrl: { //右侧链接
-      type: String,
-      default: ''
-    },
-    scrollEle: { //需要滚动到顶部的元素
-      type: String,
-      default: ''
     }
   },
   methods: {
-    leftClick () { //点击左侧
-      if (!this.hasBack) { //非后退，跳转到其它链接
-        if (this.leftUrl) {
-          // if (this.scrollEle && this.scrollEle.scrollTop) { //将当前页的滚动元素恢复到初始位置
-          //   this.scrollEle.scrollTop = 0;
-          // }
-          this.$router.push({ name: this.leftUrl });
-        }
-        return
-      }
-      this.$router.go(-1); //后退
+    leftClick () {
+      this.$emit("click-left");
     },
     rightClick () { //点击右侧
-      if (!this.rightUrl) return
-      this.$router.push({ name: this.rightUrl })
+      this.$emit("click-right")
     }
   }
 }
