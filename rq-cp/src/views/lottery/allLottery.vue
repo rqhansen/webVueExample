@@ -1,6 +1,7 @@
 <template>
   <div class="all-lottery">
-    <vux-header :hasBack="true">
+    <vux-header :hasBack="true"
+                v-on="$listeners">
       <span slot="center">全部彩种</span>
     </vux-header>
     <!-- 彩种列表 -->
@@ -11,7 +12,9 @@
         <dd>
           <ul>
             <li v-for="(item,index) of list.lotteryList"
-                :key="index">
+                :key="index"
+                class="touch-feedback"
+                v-feedBackClick>
               <div style="margin-bottom:5px;"><img :src="item.lotteryIcon"></div>
               <div><span>{{item.lotteryName}}</span></div>
             </li>
@@ -24,14 +27,17 @@
 
 <script>
 export default {
-  props: ['lotteryTypes']
+  inheritAttrs: false,
+  props: ['lotteryTypes'],
+  methods: {
+  }
 }
 </script>
 
 <style lang="scss" scoped>
 .all-lottery {
   .lottery-list {
-    height: calc(100vh - 184px);
+    height: calc(100vh - 88px);
     overflow: scroll;
     dt {
       width: 100%;

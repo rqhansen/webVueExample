@@ -1,7 +1,8 @@
 <template>
   <div class="rq-lottery-header">
     <!-- 头部 -->
-    <vux-header :hasBack="false">
+    <vux-header :hasBack="false"
+                v-on="$listeners">
       <span slot="center">彩票</span>
       <span slot="right">所有彩票</span>
     </vux-header>
@@ -10,7 +11,7 @@
 
 <script>
 export default {
-
+  inheritAttrs: false
 }
 </script>
 

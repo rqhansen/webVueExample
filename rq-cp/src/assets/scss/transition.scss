@@ -1,0 +1,15 @@
+/*
+*左滑右滑过渡
+*/
+.fade-in-right-enter {
+    transform: translate3d(100%, 0, 0);
+}
+.fade-in-right-enter-active {
+    transition: all 0.3s linear;
+}
+.fade-in-right-leave-to {
+    @extend .fade-in-right-enter;
+}
+.fade-in-right-leave-active {
+    @extend .fade-in-right-enter-active;
+}

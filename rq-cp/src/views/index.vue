@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <keep-alive :include="['home']">
+    <keep-alive>
       <router-view v-transition
                    class="rq-child-view"></router-view>
     </keep-alive>
@@ -25,7 +25,6 @@
 </template>
 
 <script>
-// import { mapMutations, mapGetters } from 'vuex'
 export default {
   name: "home",
   data () {
@@ -66,9 +65,6 @@ export default {
       this.handlerFooter()
     }
   },
-  // computed: {
-  //   ...mapGetters(['pagePos'])
-  // },
   methods: {
     handlerFooter () {
       let { meta: { hasFooter } } = this.$route;
@@ -77,7 +73,7 @@ export default {
     goPath (url, index) {
       if (this.idx === index) return;
       this.idx = index;
-      this.$router.push({ name: 'lottery' });
+      this.$router.push({ path: url });
     }
   },
   created () {

@@ -77,7 +77,6 @@ export default {
  
 <style lang="scss" scoped>
 .rq-home {
-  // height: 100vh; //防止转场异常
   padding-top: 88px;
   padding-bottom: 96px;
   overflow: hidden;

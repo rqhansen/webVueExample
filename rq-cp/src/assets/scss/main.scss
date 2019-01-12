@@ -1,7 +1,6 @@
 //刷新指令所在的类
 .refresh-animation-wrap {
     -webkit-overflow-scrolling: touch;
-    // overflow-y: hidden;
 }
 .refresh-wrap {
     //刷新图标
@@ -116,4 +115,10 @@
             @extend .style;
         }
     }
+}
+.ellipsis {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
