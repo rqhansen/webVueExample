@@ -13,16 +13,7 @@
 <script>
 export default {
   name: "banner",
-  data () {
-    return {
-      imgList: []
-    }
-  },
-  created () {
-    this.$http.get("ajax/home/banner.json", { noEncrypt: false }).then(res => {
-      this.imgList = res.data.bannerList;
-    });
-  }
+  props: ["imgList"]
 }
 </script>
 

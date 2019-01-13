@@ -45,31 +45,28 @@ export default {
         {
           name: "award",
           title: "开奖",
-          url: '/home'
+          url: '/prize'
         },
         {
           name: "lottery",
           title: "走势",
-          url: '/home'
+          url: '/ddd'
         },
         {
           name: "my",
           title: "我的",
-          url: '/home'
+          url: '/my'
         }
       ]
     }
   },
   watch: {
     $route (to) {
-      this.handlerFooter()
+      this.hasFooter = this.$route.meta.hasFooter;
+      this.idx = this.iconList.findIndex(item => item.url.includes(to.name))
     }
   },
   methods: {
-    handlerFooter () {
-      let { meta: { hasFooter } } = this.$route;
-      this.hasFooter = hasFooter;
-    },
     goPath (url, index) {
       if (this.idx === index) return;
       this.idx = index;
@@ -77,7 +74,7 @@ export default {
     }
   },
   created () {
-    this.handlerFooter();
+    this.hasFooter = this.$route.meta.hasFooter;
   }
 };
 </script>

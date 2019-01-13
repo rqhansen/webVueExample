@@ -2,7 +2,7 @@ import Vue from 'vue'
 import utils from '@/assets/js/util'
 ;(function() {
     const MAXOFFSETY = 180 //最大滑动距离
-    let [startY, transLateY, isTouch, top] = [0, 0, false, '']
+    let [startY, transLateY, isTouch] = [0, 0, false]
     Vue.directive('refresh', {
         bind: function(el, binding) {
             el.options = {}
@@ -21,7 +21,7 @@ import utils from '@/assets/js/util'
 
             el.insertBefore(newChild, el.firstChild)
             el.options.targetEle = newChild
-            top = el.getBoundingClientRect().top
+            el.options.top = el.getBoundingClientRect().top
             el.addEventListener('touchstart', touchStart, { passive: false })
             el.addEventListener('touchmove', touchMove, { passive: false })
             el.addEventListener('touchend', touchEnd, { passive: false })
@@ -42,7 +42,7 @@ import utils from '@/assets/js/util'
     //判断滚动元素所在的位置
     function getElePosition() {
         return (
-            top -
+            this.options.top -
                 getTargetEle.call(this).parentNode.getBoundingClientRect()
                     .top ||
             document.documentElement.scrollTop ||

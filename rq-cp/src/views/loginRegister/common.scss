@@ -8,6 +8,11 @@
         background-color: #ec0022;
         text-align: center;
     }
+    .login-register-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
     .login-register-triangle {
         width: 0;
         height: 0;
@@ -53,7 +58,7 @@
         .icon-clear {
             right: 80px;
         }
-        &:after {
+        &:not(.register-agree):after {
             position: absolute;
             display: block;
             content: '';

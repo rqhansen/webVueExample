@@ -5,6 +5,7 @@
                 @click-left="$router.go(-1)">
       <span slot="center">登录</span>
     </vux-header>
+
     <section class="login-register-wrapper">
       <!-- logo -->
       <div class="login-register-logo">

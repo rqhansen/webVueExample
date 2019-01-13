@@ -3,7 +3,7 @@
     <header>热门彩票</header>
     <div>
       <ul>
-        <li v-for="item of hotLotteryList"
+        <li v-for="item of lotteryList"
             :key="item.id"
             class="touch-feedback"
             v-feedBackClick>
@@ -24,16 +24,7 @@
 <script>
 export default {
   name: "hot",
-  data () {
-    return {
-      hotLotteryList: []
-    }
-  },
-  created () {
-    this.$http.get("/ajax/home/hot.json", { noEncrypt: true }).then(res => {
-      this.hotLotteryList = res.data.hotLotteryList;
-    })
-  }
+  props: ["lotteryList"]
 }
 </script>
 

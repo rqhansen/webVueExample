@@ -90,6 +90,14 @@
           <div class="error-tip"
                v-if="validate.valiVeryCode"><span>请输入验证码</span></div>
         </div>
+        <div class="field-item register-agree">
+          <van-checkbox v-model="checked"
+                        checked-color="#ec0022"></van-checkbox>
+          <div class="tip"> 我已经满合法博彩年龄，且同意开户各<span @click="$router.push({name:'agreement'})">"开户协议"</span>项条框
+          </div>
+          <div class="error-tip"
+               v-if="!checked">请勾选我同意</div>
+        </div>
         <div class="login-register-btn">
           <van-button round
                       size="large"
@@ -115,6 +123,7 @@ export default {
   data () {
     return {
       isCheckClose: true,
+      checked: true,
       userInfo: {
         checkPassWord: ''
       },
@@ -167,7 +176,7 @@ export default {
       if (
         !this.validateUserName() &&
         !this.validatePassWord() &&
-        !this.validateCode() && !this.validateCheckPassWord()
+        !this.validateCode() && !this.validateCheckPassWord() && this.checked
       ) {
         return true
       }
@@ -197,7 +206,31 @@ export default {
 @import "./common.scss";
 .rq-login-register {
   .login-register-field {
-    height: 666px;
+    height: 742px;
+  }
+  .register-agree {
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+    color: #666;
+    /deep/ .van-checkbox {
+      overflow: visible;
+    }
+    /deep/ .van-checkbox__icon {
+      width: 30px;
+      height: 30px;
+    }
+    /deep/ .van-icon {
+      @extend .van-checkbox__icon;
+      line-height: 30px;
+      font-size: 20px;
+    }
+    .tip {
+      margin-left: 10px;
+      span {
+        color: #ec0022;
+      }
+    }
   }
 }
 </style>

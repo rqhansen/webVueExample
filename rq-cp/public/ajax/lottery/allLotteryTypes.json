@@ -1,6 +1,6 @@
 {
     "msg": "获取彩票列表成功",
-    "code": 0,
+    "code": 1,
     "lotteryTypeList": [
         {
             "code": "all",

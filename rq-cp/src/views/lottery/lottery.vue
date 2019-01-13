@@ -1,6 +1,5 @@
 <template>
-  <div class="lottery-list-scroll refresh-animation-wrap"
-       v-refresh="refresh">
+  <div class="lottery-list-scroll">
     <ul>
       <li v-for="(lottery,idx) of lotteryList"
           :key="idx"
@@ -30,17 +29,7 @@ export default {
   components: {
     countDown
   },
-  props: ["lotteryList"],
-  methods: {
-    refresh () {
-      return new Promise((resolve, reject) => {
-        setTimeout(() => {
-          alert("刷新成功");
-          resolve();
-        }, 1500)
-      })
-    }
-  }
+  props: ["lotteryList"]
 }
 </script>
 
@@ -55,16 +44,8 @@ export default {
       height: 196px;
       padding: 30px 40px;
       font-size: 28px;
-      &:not(:nth-child(2n)) {
-        border-right: 1px solid #eee;
-      }
+      border-right: 1px solid #eee;
       border-bottom: 1px solid #eee;
-      &:last-child {
-        border-bottom: none;
-      }
-      &:nth-last-child(2) {
-        border-bottom: none;
-      }
     }
     dl {
       display: flex;

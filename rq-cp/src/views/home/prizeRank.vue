@@ -10,8 +10,9 @@
         <ul class="scroll-content"
             :style="'transform:translateY('+scrollTop+'px)'"
             ref="scroll-inner">
-          <li v-for="item of prizeRankList"
-              :key="item.rankingNo">
+          <li v-for="item of rankList"
+              :key="
+              item.rankingNo">
             <span>{{item.userCode}}</span>
             <span>喜中{{item.prizeTotal}}元</span>
             <span>{{item.lotteryName}}</span>
@@ -26,9 +27,9 @@
 <script>
 export default {
   name: "prizeRank",
+  props: ["rankList"],
   data () {
     return {
-      prizeRankList: [],
       scrollTop: 0,
       scrollInner: '',
       scrollWrap: ''
@@ -71,13 +72,8 @@ export default {
     }
   },
   created () {
-    this.$http.get("/ajax/home/prizeRank.json").then(res => {
-      this.prizeRankList = res.data.prizeRankList;
-      this.$nextTick(() => {
-        if (this.prizeRankList.length > 8) {
-          this.setScroll();
-        }
-      })
+    this.$nextTick(() => {
+      this.setScroll();
     })
   }
 }

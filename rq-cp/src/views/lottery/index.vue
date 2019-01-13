@@ -12,7 +12,11 @@
       </header>
       <!-- 全部彩种列表 -->
       <div class="lottery-list">
-        <lottery :lotteryList="choiceLotteryList"></lottery>
+        <div v-refresh="refresh">
+          <lottery :lotteryList="choiceLotteryList"
+                   @refresh="refresh"></lottery>
+        </div>
+
       </div>
     </section>
     <!-- 侧边栏全部彩种 -->
@@ -64,12 +68,29 @@ export default {
     choiceType (code) {
       this.code = code;
       //切换tab时需要重新请求接口
+    },
+    refresh () {
+      return new Promise((resolve, reject) => {
+        this.init().then(() => {
+          resolve();
+          alert("购彩大厅刷新成功");
+        })
+      })
+    },
+    init () {
+      function getAllLotteryTypes () {
+        return this.$http.get("ajax/lottery/allLotteryTypes.json", { noEncrypt: true })
+      };
+      return new Promise((resolve, reject) => {
+        this.$http.all([getAllLotteryTypes.call(this)]).then(this.$http.spread((types) => {
+          types.data.code !== 0 && (this.allLotteryTypes = types.data.lotteryTypeList);
+          resolve();
+        }))
+      })
     }
   },
   created () {
-    this.$http.get("ajax/lottery/allLotteryTypes.json", { noEncrypt: true }).then(res => {
-      this.allLotteryTypes = res.data.lotteryTypeList;
-    })
+    this.init();
   }
 }
 </script>

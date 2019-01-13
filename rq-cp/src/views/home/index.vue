@@ -7,10 +7,9 @@
     <!-- 轮播 -->
     <div class="rq-home-refresh-wrap"
          ref="rq-home-refresh-wrap">
-      <div class="refresh-animation-wrap"
-           v-refresh="refresh">
+      <div v-refresh="refresh">
         <section>
-          <banner></banner>
+          <banner :imgList="imgList"></banner>
         </section>
         <!-- 公告 -->
         <article>
@@ -24,13 +23,13 @@
         <hr />
         <!-- 热门 -->
         <section>
-          <hot></hot>
+          <hot :lotteryList="hotList"></hot>
         </section>
         <!-- 分割区 -->
         <hr />
         <!-- 中奖排行榜 -->
         <section>
-          <prize-rank></prize-rank>
+          <prize-rank :rankList="rankList"></prize-rank>
         </section>
       </div>
     </div>
@@ -59,18 +58,43 @@ export default {
     return {
       isLoading: false,
       top: 0,
-      scroll: ""
+      scroll: "",
+      imgList: [],
+      hotList: [],
+      rankList: []
     }
   },
   methods: {
     refresh () {
       return new Promise((resolve, reject) => {
-        setTimeout(() => {
-          console.log('刷新了');
+        this.init().then(() => {
           resolve();
-        }, 1200)
+          alert("主页刷新成功");
+        })
+      })
+    },
+    getBanners () { //获取轮播数据
+      return this.$http.get("ajax/home/banner.json", { noEncrypt: false });
+    },
+    getHotList () { //获取热门排行
+      return this.$http.get("/ajax/home/hot.json", { noEncrypt: true });
+    },
+    getRankList () { //获取中奖排行榜
+      return this.$http.get("/ajax/home/prizeRank.json", { noEncrypt: false })
+    },
+    init () {
+      return new Promise((resolve, reject) => {
+        this.$http.all([this.getBanners(), this.getHotList(), this.getRankList()]).then(this.$http.spread((bannerList, hotList, rankList) => {
+          bannerList.data.code !== 0 && (this.imgList = bannerList.data.bannerList);
+          hotList.data.code !== 0 && (this.hotList = hotList.data.hotLotteryList);
+          rankList.data.code !== 0 && (this.rankList = rankList.data.prizeRankList);
+          resolve();
+        }));
       })
     }
+  },
+  created () {
+    this.init();
   }
 };
 </script>
