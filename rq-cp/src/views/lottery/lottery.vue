@@ -1,5 +1,5 @@
 <template>
-  <div class="lottery-list-scroll">
+  <div class="lottery-list-content">
     <ul>
       <li v-for="(lottery,idx) of lotteryList"
           :key="idx"
@@ -34,7 +34,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.lottery-list-scroll {
+.lottery-list-content {
   ul {
     display: flex;
     flex-wrap: wrap;

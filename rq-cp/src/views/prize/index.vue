@@ -5,7 +5,7 @@
     </header>
     <section class="prize-wrapper">
       <div v-refresh="refresh">
-        <prizeList></prizeList>
+        <prizeList :prizeList="prizeList"></prizeList>
       </div>
     </section>
   </div>
@@ -19,10 +19,34 @@ export default {
     top,
     prizeList
   },
+  data () {
+    return {
+      prizeList: []
+    }
+  },
   methods: {
     refresh () {
-      console.log(1);
+      return new Promise((resolve, reject) => {
+        this.init().then(() => {
+          alert("开奖数据刷新了");
+          resolve();
+        })
+      })
+    },
+    init () {
+      function getPrizeList () {
+        return this.$http.get("ajax/prize/prize.json", { noEncrypt: true })
+      };
+      return new Promise((resolve, reject) => {
+        this.$http.all([getPrizeList.call(this)]).then(this.$http.spread((res) => {
+          res.data.code !== 0 && (this.prizeList = prizeList.data.lotteryTypeList);
+          resolve();
+        }))
+      })
     }
+  },
+  created () {
+    this.init();
   }
 }
 </script>
