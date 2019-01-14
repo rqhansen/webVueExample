@@ -1,0 +1,118 @@
+{
+    "msg": "获取彩票历史开奖记录成功",
+    "code": 0,
+    "data": {
+        "lottery": {
+            "lotteryId": "12",
+            "lotteryName": "三分PK拾",
+            "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/bbb62a43-a7eb-46c6-a1f6-22a41e429516.png",
+            "periodNo": "20190114316",
+            "code": "pk10",
+            "selfFlag": "1",
+            "officialUrl": null,
+            "status": "1"
+        },
+        "prizeHistoryList": [
+            {
+                "prizeTime": "1547453710000",
+                "periodNo": "20190114315",
+                "lotteryNumber": "08,09,02,01,04,07,03,05,10,06"
+            },
+            {
+                "prizeTime": "1547453530000",
+                "periodNo": "20190114314",
+                "lotteryNumber": "06,10,02,08,09,07,04,03,01,05"
+            },
+            {
+                "prizeTime": "1547453350000",
+                "periodNo": "20190114313",
+                "lotteryNumber": "08,04,09,03,05,07,10,06,02,01"
+            },
+            {
+                "prizeTime": "1547453170000",
+                "periodNo": "20190114312",
+                "lotteryNumber": "04,03,08,10,07,09,01,05,06,02"
+            },
+            {
+                "prizeTime": "1547452990000",
+                "periodNo": "20190114311",
+                "lotteryNumber": "06,01,10,09,04,03,02,07,05,08"
+            },
+            {
+                "prizeTime": "1547452810000",
+                "periodNo": "20190114310",
+                "lotteryNumber": "05,03,06,01,04,07,08,10,02,09"
+            },
+            {
+                "prizeTime": "1547452630000",
+                "periodNo": "20190114309",
+                "lotteryNumber": "06,10,08,03,09,07,05,02,04,01"
+            },
+            {
+                "prizeTime": "1547452450000",
+                "periodNo": "20190114308",
+                "lotteryNumber": "08,06,07,09,10,04,05,03,02,01"
+            },
+            {
+                "prizeTime": "1547452270000",
+                "periodNo": "20190114307",
+                "lotteryNumber": "02,05,07,10,08,03,06,04,09,01"
+            },
+            {
+                "prizeTime": "1547452090000",
+                "periodNo": "20190114306",
+                "lotteryNumber": "05,01,06,09,02,10,07,03,04,08"
+            },
+            {
+                "prizeTime": "1547451910000",
+                "periodNo": "20190114305",
+                "lotteryNumber": "01,09,07,03,06,08,04,10,05,02"
+            },
+            {
+                "prizeTime": "1547451730000",
+                "periodNo": "20190114304",
+                "lotteryNumber": "01,06,05,04,02,09,03,07,08,10"
+            },
+            {
+                "prizeTime": "1547451550000",
+                "periodNo": "20190114303",
+                "lotteryNumber": "06,02,10,07,08,09,04,03,05,01"
+            },
+            {
+                "prizeTime": "1547451370000",
+                "periodNo": "20190114302",
+                "lotteryNumber": "02,08,05,06,09,10,03,07,01,04"
+            },
+            {
+                "prizeTime": "1547451190000",
+                "periodNo": "20190114301",
+                "lotteryNumber": "04,06,03,02,10,08,07,05,01,09"
+            },
+            {
+                "prizeTime": "1547451010000",
+                "periodNo": "20190114300",
+                "lotteryNumber": "03,08,06,04,02,05,09,10,07,01"
+            },
+            {
+                "prizeTime": "1547450830000",
+                "periodNo": "20190114299",
+                "lotteryNumber": "07,05,10,08,01,03,09,04,06,02"
+            },
+            {
+                "prizeTime": "1547450650000",
+                "periodNo": "20190114298",
+                "lotteryNumber": "08,06,03,04,01,09,07,05,02,10"
+            },
+            {
+                "prizeTime": "1547450470000",
+                "periodNo": "20190114297",
+                "lotteryNumber": "03,10,07,09,01,06,04,02,08,05"
+            },
+            {
+                "prizeTime": "1547450290000",
+                "periodNo": "20190114296",
+                "lotteryNumber": "04,05,08,06,07,01,10,02,09,03"
+            }
+        ]
+    }
+}

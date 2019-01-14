@@ -39,7 +39,7 @@ export default {
       };
       return new Promise((resolve, reject) => {
         this.$http.all([getPrizeList.call(this)]).then(this.$http.spread((res) => {
-          res.data.code !== 0 && (this.prizeList = prizeList.data.lotteryTypeList);
+          res.data.code === 0 && (this.prizeList = res.data.lotteryList);
           resolve();
         }))
       })

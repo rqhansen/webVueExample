@@ -1,298 +1,296 @@
 {
     "msg": "获取开奖列表成功",
     "code": 0,
-    "data": {
-        "lotteryList": [
-            {
-                "lotteryId": "8",
-                "lotteryName": "江苏快三",
-                "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/e15c1b2e-5baf-4f76-aa1c-e8df2e4a26b8.png",
-                "lastPrizeTime": 1547374320000,
-                "periodNo": "20190113058",
-                "lotteryNumber": "5,5,5",
-                "code": "ksan",
-                "selfFlag": 0
-            },
-            {
-                "lotteryId": "3",
-                "lotteryName": "北京PK拾",
-                "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/200bbc20-fb0e-4c28-abfd-523345c61d8e.png",
-                "lastPrizeTime": 1547374100000,
-                "periodNo": "725562",
-                "lotteryNumber": "02,09,07,05,10,08,04,01,03,06",
-                "code": "pk10",
-                "selfFlag": 0
-            },
-            {
-                "lotteryId": "4",
-                "lotteryName": "重庆时时彩",
-                "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/f31ab219-21c4-4f79-9ddd-a241fa394013.png",
-                "lastPrizeTime": 1547374281000,
-                "periodNo": "20190113073",
-                "lotteryNumber": "7,3,0,6,0",
-                "code": "ssc",
-                "selfFlag": 0
-            },
-            {
-                "lotteryId": "17",
-                "lotteryName": "香港六合彩",
-                "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/f4f8f6f7-b256-4c8c-8c21-478b65be9c1e.png",
-                "lastPrizeTime": 1547127621000,
-                "periodNo": "2019004",
-                "lotteryNumber": "07,31,28,06,36,43+23",
-                "code": "6hc",
-                "selfFlag": 0
-            },
-            {
-                "lotteryId": "21",
-                "lotteryName": "分分快三",
-                "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/f71ce936-1bd7-4aef-9aa9-36f4504b343d.png",
-                "lastPrizeTime": 1547374380000,
-                "periodNo": "201901131063",
-                "lotteryNumber": "1,4,6",
-                "code": "ksan",
-                "selfFlag": 1
-            },
-            {
-                "lotteryId": "22",
-                "lotteryName": "三分快三",
-                "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/b288d960-2169-4977-953b-f8b0de53bbe8.png",
-                "lastPrizeTime": 1547374330000,
-                "periodNo": "20190113354",
-                "lotteryNumber": "6,2,4",
-                "code": "ksan",
-                "selfFlag": 1
-            },
-            {
-                "lotteryId": "24",
-                "lotteryName": "分分PK拾",
-                "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/4efae891-c937-46e8-83a1-c8cde4006cb3.png",
-                "lastPrizeTime": 1547374330000,
-                "periodNo": "201901131062",
-                "lotteryNumber": "05,09,07,06,08,01,03,02,10,04",
-                "code": "pk10",
-                "selfFlag": 1
-            },
-            {
-                "lotteryId": "12",
-                "lotteryName": "三分PK拾",
-                "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/bbb62a43-a7eb-46c6-a1f6-22a41e429516.png",
-                "lastPrizeTime": 1547374330000,
-                "periodNo": "20190113354",
-                "lotteryNumber": "10,09,01,05,08,07,04,06,02,03",
-                "code": "pk10",
-                "selfFlag": 1
-            },
-            {
-                "lotteryId": "23",
-                "lotteryName": "分分时时彩",
-                "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/ced24720-6202-479d-b106-20c9543d8eb5.png",
-                "lastPrizeTime": 1547374330000,
-                "periodNo": "201901131062",
-                "lotteryNumber": "8,0,6,7,8",
-                "code": "ssc",
-                "selfFlag": 1
-            },
-            {
-                "lotteryId": "11",
-                "lotteryName": "三分时时彩",
-                "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/515438e7-b697-496f-b116-4469dca2830e.png",
-                "lastPrizeTime": 1547374320000,
-                "periodNo": "20190113354",
-                "lotteryNumber": "9,2,0,1,3",
-                "code": "ssc",
-                "selfFlag": 1
-            },
-            {
-                "lotteryId": "19",
-                "lotteryName": "幸运28",
-                "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/3ff34d3e-1ec8-4fca-a207-a6fc042eceb0.png",
-                "lastPrizeTime": 1547374330000,
-                "periodNo": "3123366",
-                "lotteryNumber": "7,5,6",
-                "code": "pcdd",
-                "selfFlag": 1
-            },
-            {
-                "lotteryId": "20",
-                "lotteryName": "极速六合彩",
-                "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/7de3ef8b-5aa4-4bf2-9913-e99f6cb78c2b.png",
-                "lastPrizeTime": 1547374210000,
-                "periodNo": "20190113212",
-                "lotteryNumber": "29,19,48,43,12,09+14",
-                "code": "6hc",
-                "selfFlag": 1
-            },
-            {
-                "lotteryId": "25",
-                "lotteryName": "幸运飞艇",
-                "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/a13abff4-89a6-445c-a7a5-9aff2f0be4fc.png",
-                "lastPrizeTime": 1547374180000,
-                "periodNo": "20190113061",
-                "lotteryNumber": "05,04,09,07,08,02,06,10,03,01",
-                "code": "pk10",
-                "selfFlag": 0
-            },
-            {
-                "lotteryId": "2",
-                "lotteryName": "北京28",
-                "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/57f04143-15f7-4d3c-bd01-d4a46ae92de1.png",
-                "lastPrizeTime": 1547374283000,
-                "periodNo": "931540",
-                "lotteryNumber": "1,1,4",
-                "code": "pcdd",
-                "selfFlag": 0
-            },
-            {
-                "lotteryId": "5",
-                "lotteryName": "福彩3D",
-                "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/27b105fa-598a-4209-9b26-ec3f0ca47663.png",
-                "lastPrizeTime": 1547299660000,
-                "periodNo": "2019012",
-                "lotteryNumber": "1,3,1",
-                "code": "fc3d",
-                "selfFlag": 0
-            },
-            {
-                "lotteryId": "28",
-                "lotteryName": "河北快三",
-                "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/cda300e6-288f-4075-b0c8-422bda9e59b8.png",
-                "lastPrizeTime": 1547374243000,
-                "periodNo": "20190113058",
-                "lotteryNumber": "1,4,6",
-                "code": "ksan",
-                "selfFlag": 0
-            },
-            {
-                "lotteryId": "30",
-                "lotteryName": "上海快三",
-                "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/5c88a0a9-a901-459c-96f4-f69c393d17d8.png",
-                "lastPrizeTime": 1547374242000,
-                "periodNo": "20190113056",
-                "lotteryNumber": "3,5,5",
-                "code": "ksan",
-                "selfFlag": 0
-            },
-            {
-                "lotteryId": "13",
-                "lotteryName": "山东11选5",
-                "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/312d6816-40de-479d-8c56-cb20427a718f.png",
-                "lastPrizeTime": 1547374020000,
-                "periodNo": "2019011358",
-                "lotteryNumber": "01,06,03,02,11",
-                "code": "11x5",
-                "selfFlag": 0
-            },
-            {
-                "lotteryId": "14",
-                "lotteryName": "上海11选5",
-                "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/53cc7215-aed4-4ffe-a2e9-6cc379c2f6d1.png",
-                "lastPrizeTime": 1547374262000,
-                "periodNo": "2019011356",
-                "lotteryNumber": "10,05,02,08,06",
-                "code": "11x5",
-                "selfFlag": 0
-            },
-            {
-                "lotteryId": "15",
-                "lotteryName": "上海时时乐",
-                "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/be390016-eaa4-4c54-a688-ee62ba3971d8.png",
-                "lastPrizeTime": 1547373740000,
-                "periodNo": "2019011316",
-                "lotteryNumber": "9,7,1",
-                "code": "qtcp",
-                "selfFlag": 0
-            },
-            {
-                "lotteryId": "7",
-                "lotteryName": "广西快三",
-                "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/f89c2ca4-0f67-4cf9-a00c-47cb077da937.png",
-                "lastPrizeTime": 1547374160000,
-                "periodNo": "20190113052",
-                "lotteryNumber": "1,3,5",
-                "code": "ksan",
-                "selfFlag": 0
-            },
-            {
-                "lotteryId": "18",
-                "lotteryName": "新疆时时彩",
-                "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/b9ad1aea-3be9-4b37-9d7c-af774ad4acce.png",
-                "lastPrizeTime": 1547374244000,
-                "periodNo": "20190113049",
-                "lotteryNumber": "3,5,2,9,3",
-                "code": "ssc",
-                "selfFlag": 0
-            },
-            {
-                "lotteryId": "9",
-                "lotteryName": "江西11选5",
-                "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/d89f3ad6-d42b-4eac-ba82-8f12c28a77f6.png",
-                "lastPrizeTime": 1547374300000,
-                "periodNo": "2019011355",
-                "lotteryNumber": "01,05,09,02,11",
-                "code": "11x5",
-                "selfFlag": 0
-            },
-            {
-                "lotteryId": "10",
-                "lotteryName": "排列三",
-                "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/68b39073-e543-4d10-b223-86c894d8b958.png",
-                "lastPrizeTime": 1547297160000,
-                "periodNo": "2019012",
-                "lotteryNumber": "5,4,1",
-                "code": "fc3d",
-                "selfFlag": 0
-            },
-            {
-                "lotteryId": "26",
-                "lotteryName": "湖北快三",
-                "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/816eaa3d-2f4f-414d-9d66-ed5b99b9eca0.png",
-                "lastPrizeTime": 1547374243000,
-                "periodNo": "20190113055",
-                "lotteryNumber": "4,5,5",
-                "code": "ksan",
-                "selfFlag": 0
-            },
-            {
-                "lotteryId": "29",
-                "lotteryName": "甘肃快三",
-                "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/a093e5ea-5fb4-496f-813e-6075d9a32272.png",
-                "lastPrizeTime": 1547374243000,
-                "periodNo": "20190113049",
-                "lotteryNumber": "2,5,6",
-                "code": "ksan",
-                "selfFlag": 0
-            },
-            {
-                "lotteryId": "31",
-                "lotteryName": "贵州快三",
-                "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/eb78ff89-2c14-4083-9f00-b963eba91b26.png",
-                "lastPrizeTime": 1547374140000,
-                "periodNo": "20190113054",
-                "lotteryNumber": "2,2,6",
-                "code": "ksan",
-                "selfFlag": 0
-            },
-            {
-                "lotteryId": "33",
-                "lotteryName": "广东快乐十分",
-                "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/e34903d5-8475-4c73-854d-4560d019cb84.png",
-                "lastPrizeTime": 1547374360000,
-                "periodNo": "20190113055",
-                "lotteryNumber": "04,12,07,17,06,05,13,14",
-                "code": "klsf",
-                "selfFlag": 0
-            },
-            {
-                "lotteryId": "34",
-                "lotteryName": "重庆快乐十分",
-                "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/8c7d7fe0-f55d-4d60-bbbe-93ee687d102e.png",
-                "lastPrizeTime": 1547373880000,
-                "periodNo": "20190113062",
-                "lotteryNumber": "20,07,01,19,11,10,13,08",
-                "code": "klsf",
-                "selfFlag": 0
-            }
-        ]
-    }
+    "lotteryList": [
+        {
+            "lotteryId": "8",
+            "lotteryName": "江苏快三",
+            "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/e15c1b2e-5baf-4f76-aa1c-e8df2e4a26b8.png",
+            "lastPrizeTime": 1547374320000,
+            "periodNo": "20190113058",
+            "lotteryNumber": "5,5,5",
+            "code": "ksan",
+            "selfFlag": 0
+        },
+        {
+            "lotteryId": "3",
+            "lotteryName": "北京PK拾",
+            "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/200bbc20-fb0e-4c28-abfd-523345c61d8e.png",
+            "lastPrizeTime": 1547374100000,
+            "periodNo": "725562",
+            "lotteryNumber": "02,09,07,05,10,08,04,01,03,06",
+            "code": "pk10",
+            "selfFlag": 0
+        },
+        {
+            "lotteryId": "4",
+            "lotteryName": "重庆时时彩",
+            "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/f31ab219-21c4-4f79-9ddd-a241fa394013.png",
+            "lastPrizeTime": 1547374281000,
+            "periodNo": "20190113073",
+            "lotteryNumber": "7,3,0,6,0",
+            "code": "ssc",
+            "selfFlag": 0
+        },
+        {
+            "lotteryId": "17",
+            "lotteryName": "香港六合彩",
+            "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/f4f8f6f7-b256-4c8c-8c21-478b65be9c1e.png",
+            "lastPrizeTime": 1547127621000,
+            "periodNo": "2019004",
+            "lotteryNumber": "07,31,28,06,36,43+23",
+            "code": "6hc",
+            "selfFlag": 0
+        },
+        {
+            "lotteryId": "21",
+            "lotteryName": "分分快三",
+            "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/f71ce936-1bd7-4aef-9aa9-36f4504b343d.png",
+            "lastPrizeTime": 1547374380000,
+            "periodNo": "201901131063",
+            "lotteryNumber": "1,4,6",
+            "code": "ksan",
+            "selfFlag": 1
+        },
+        {
+            "lotteryId": "22",
+            "lotteryName": "三分快三",
+            "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/b288d960-2169-4977-953b-f8b0de53bbe8.png",
+            "lastPrizeTime": 1547374330000,
+            "periodNo": "20190113354",
+            "lotteryNumber": "6,2,4",
+            "code": "ksan",
+            "selfFlag": 1
+        },
+        {
+            "lotteryId": "24",
+            "lotteryName": "分分PK拾",
+            "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/4efae891-c937-46e8-83a1-c8cde4006cb3.png",
+            "lastPrizeTime": 1547374330000,
+            "periodNo": "201901131062",
+            "lotteryNumber": "05,09,07,06,08,01,03,02,10,04",
+            "code": "pk10",
+            "selfFlag": 1
+        },
+        {
+            "lotteryId": "12",
+            "lotteryName": "三分PK拾",
+            "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/bbb62a43-a7eb-46c6-a1f6-22a41e429516.png",
+            "lastPrizeTime": 1547374330000,
+            "periodNo": "20190113354",
+            "lotteryNumber": "10,09,01,05,08,07,04,06,02,03",
+            "code": "pk10",
+            "selfFlag": 1
+        },
+        {
+            "lotteryId": "23",
+            "lotteryName": "分分时时彩",
+            "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/ced24720-6202-479d-b106-20c9543d8eb5.png",
+            "lastPrizeTime": 1547374330000,
+            "periodNo": "201901131062",
+            "lotteryNumber": "8,0,6,7,8",
+            "code": "ssc",
+            "selfFlag": 1
+        },
+        {
+            "lotteryId": "11",
+            "lotteryName": "三分时时彩",
+            "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/515438e7-b697-496f-b116-4469dca2830e.png",
+            "lastPrizeTime": 1547374320000,
+            "periodNo": "20190113354",
+            "lotteryNumber": "9,2,0,1,3",
+            "code": "ssc",
+            "selfFlag": 1
+        },
+        {
+            "lotteryId": "19",
+            "lotteryName": "幸运28",
+            "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/3ff34d3e-1ec8-4fca-a207-a6fc042eceb0.png",
+            "lastPrizeTime": 1547374330000,
+            "periodNo": "3123366",
+            "lotteryNumber": "7,5,6",
+            "code": "pcdd",
+            "selfFlag": 1
+        },
+        {
+            "lotteryId": "20",
+            "lotteryName": "极速六合彩",
+            "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/7de3ef8b-5aa4-4bf2-9913-e99f6cb78c2b.png",
+            "lastPrizeTime": 1547374210000,
+            "periodNo": "20190113212",
+            "lotteryNumber": "29,19,48,43,12,09+14",
+            "code": "6hc",
+            "selfFlag": 1
+        },
+        {
+            "lotteryId": "25",
+            "lotteryName": "幸运飞艇",
+            "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/a13abff4-89a6-445c-a7a5-9aff2f0be4fc.png",
+            "lastPrizeTime": 1547374180000,
+            "periodNo": "20190113061",
+            "lotteryNumber": "05,04,09,07,08,02,06,10,03,01",
+            "code": "pk10",
+            "selfFlag": 0
+        },
+        {
+            "lotteryId": "2",
+            "lotteryName": "北京28",
+            "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/57f04143-15f7-4d3c-bd01-d4a46ae92de1.png",
+            "lastPrizeTime": 1547374283000,
+            "periodNo": "931540",
+            "lotteryNumber": "1,1,4",
+            "code": "pcdd",
+            "selfFlag": 0
+        },
+        {
+            "lotteryId": "5",
+            "lotteryName": "福彩3D",
+            "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/27b105fa-598a-4209-9b26-ec3f0ca47663.png",
+            "lastPrizeTime": 1547299660000,
+            "periodNo": "2019012",
+            "lotteryNumber": "1,3,1",
+            "code": "fc3d",
+            "selfFlag": 0
+        },
+        {
+            "lotteryId": "28",
+            "lotteryName": "河北快三",
+            "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/cda300e6-288f-4075-b0c8-422bda9e59b8.png",
+            "lastPrizeTime": 1547374243000,
+            "periodNo": "20190113058",
+            "lotteryNumber": "1,4,6",
+            "code": "ksan",
+            "selfFlag": 0
+        },
+        {
+            "lotteryId": "30",
+            "lotteryName": "上海快三",
+            "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/5c88a0a9-a901-459c-96f4-f69c393d17d8.png",
+            "lastPrizeTime": 1547374242000,
+            "periodNo": "20190113056",
+            "lotteryNumber": "3,5,5",
+            "code": "ksan",
+            "selfFlag": 0
+        },
+        {
+            "lotteryId": "13",
+            "lotteryName": "山东11选5",
+            "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/312d6816-40de-479d-8c56-cb20427a718f.png",
+            "lastPrizeTime": 1547374020000,
+            "periodNo": "2019011358",
+            "lotteryNumber": "01,06,03,02,11",
+            "code": "11x5",
+            "selfFlag": 0
+        },
+        {
+            "lotteryId": "14",
+            "lotteryName": "上海11选5",
+            "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/53cc7215-aed4-4ffe-a2e9-6cc379c2f6d1.png",
+            "lastPrizeTime": 1547374262000,
+            "periodNo": "2019011356",
+            "lotteryNumber": "10,05,02,08,06",
+            "code": "11x5",
+            "selfFlag": 0
+        },
+        {
+            "lotteryId": "15",
+            "lotteryName": "上海时时乐",
+            "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/be390016-eaa4-4c54-a688-ee62ba3971d8.png",
+            "lastPrizeTime": 1547373740000,
+            "periodNo": "2019011316",
+            "lotteryNumber": "9,7,1",
+            "code": "qtcp",
+            "selfFlag": 0
+        },
+        {
+            "lotteryId": "7",
+            "lotteryName": "广西快三",
+            "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/f89c2ca4-0f67-4cf9-a00c-47cb077da937.png",
+            "lastPrizeTime": 1547374160000,
+            "periodNo": "20190113052",
+            "lotteryNumber": "1,3,5",
+            "code": "ksan",
+            "selfFlag": 0
+        },
+        {
+            "lotteryId": "18",
+            "lotteryName": "新疆时时彩",
+            "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/b9ad1aea-3be9-4b37-9d7c-af774ad4acce.png",
+            "lastPrizeTime": 1547374244000,
+            "periodNo": "20190113049",
+            "lotteryNumber": "3,5,2,9,3",
+            "code": "ssc",
+            "selfFlag": 0
+        },
+        {
+            "lotteryId": "9",
+            "lotteryName": "江西11选5",
+            "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/d89f3ad6-d42b-4eac-ba82-8f12c28a77f6.png",
+            "lastPrizeTime": 1547374300000,
+            "periodNo": "2019011355",
+            "lotteryNumber": "01,05,09,02,11",
+            "code": "11x5",
+            "selfFlag": 0
+        },
+        {
+            "lotteryId": "10",
+            "lotteryName": "排列三",
+            "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/68b39073-e543-4d10-b223-86c894d8b958.png",
+            "lastPrizeTime": 1547297160000,
+            "periodNo": "2019012",
+            "lotteryNumber": "5,4,1",
+            "code": "fc3d",
+            "selfFlag": 0
+        },
+        {
+            "lotteryId": "26",
+            "lotteryName": "湖北快三",
+            "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/816eaa3d-2f4f-414d-9d66-ed5b99b9eca0.png",
+            "lastPrizeTime": 1547374243000,
+            "periodNo": "20190113055",
+            "lotteryNumber": "4,5,5",
+            "code": "ksan",
+            "selfFlag": 0
+        },
+        {
+            "lotteryId": "29",
+            "lotteryName": "甘肃快三",
+            "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/a093e5ea-5fb4-496f-813e-6075d9a32272.png",
+            "lastPrizeTime": 1547374243000,
+            "periodNo": "20190113049",
+            "lotteryNumber": "2,5,6",
+            "code": "ksan",
+            "selfFlag": 0
+        },
+        {
+            "lotteryId": "31",
+            "lotteryName": "贵州快三",
+            "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/eb78ff89-2c14-4083-9f00-b963eba91b26.png",
+            "lastPrizeTime": 1547374140000,
+            "periodNo": "20190113054",
+            "lotteryNumber": "2,2,6",
+            "code": "ksan",
+            "selfFlag": 0
+        },
+        {
+            "lotteryId": "33",
+            "lotteryName": "广东快乐十分",
+            "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/e34903d5-8475-4c73-854d-4560d019cb84.png",
+            "lastPrizeTime": 1547374360000,
+            "periodNo": "20190113055",
+            "lotteryNumber": "04,12,07,17,06,05,13,14",
+            "code": "klsf",
+            "selfFlag": 0
+        },
+        {
+            "lotteryId": "34",
+            "lotteryName": "重庆快乐十分",
+            "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/8c7d7fe0-f55d-4d60-bbbe-93ee687d102e.png",
+            "lastPrizeTime": 1547373880000,
+            "periodNo": "20190113062",
+            "lotteryNumber": "20,07,01,19,11,10,13,08",
+            "code": "klsf",
+            "selfFlag": 0
+        }
+    ]
 }

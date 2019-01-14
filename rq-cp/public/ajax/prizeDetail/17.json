@@ -1,0 +1,118 @@
+{
+    "msg": "获取彩票历史开奖记录成功",
+    "code": 0,
+    "data": {
+        "lottery": {
+            "lotteryId": "17",
+            "lotteryName": "香港六合彩",
+            "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/f4f8f6f7-b256-4c8c-8c21-478b65be9c1e.png",
+            "periodNo": "2019006",
+            "code": "6hc",
+            "selfFlag": "0",
+            "officialUrl": "http://bet.hkjc.com/marksix/index.aspx?lang=CH",
+            "status": "1"
+        },
+        "prizeHistoryList": [
+            {
+                "prizeTime": "1547386500000",
+                "periodNo": "2019005",
+                "lotteryNumber": "35,48,18,37,49,10+27"
+            },
+            {
+                "prizeTime": "1547127621000",
+                "periodNo": "2019004",
+                "lotteryNumber": "07,31,28,06,36,43+23"
+            },
+            {
+                "prizeTime": "1546955264000",
+                "periodNo": "2019003",
+                "lotteryNumber": "40,04,23,05,12,30+10"
+            },
+            {
+                "prizeTime": "1546695380000",
+                "periodNo": "2019002",
+                "lotteryNumber": "23,13,19,45,16,12+02"
+            },
+            {
+                "prizeTime": "1546522522000",
+                "periodNo": "2019001",
+                "lotteryNumber": "25,23,45,30,08,32+24"
+            },
+            {
+                "prizeTime": "1546176885000",
+                "periodNo": "2018149",
+                "lotteryNumber": "33,06,46,13,07,35+43"
+            },
+            {
+                "prizeTime": "1545919170000",
+                "periodNo": "2018148",
+                "lotteryNumber": "04,35,17,01,22,23+37"
+            },
+            {
+                "prizeTime": "1545745200000",
+                "periodNo": "2018147",
+                "lotteryNumber": "32,16,47,02,14,41+23"
+            },
+            {
+                "prizeTime": "1545558464000",
+                "periodNo": "2018146",
+                "lotteryNumber": "20,49,48,46,33,07+04"
+            },
+            {
+                "prizeTime": "1545391087000",
+                "periodNo": "2018145",
+                "lotteryNumber": "12,13,07,08,04,26+42"
+            },
+            {
+                "prizeTime": "1544880941000",
+                "periodNo": "2018143",
+                "lotteryNumber": "05,37,33,36,30,10+22"
+            },
+            {
+                "prizeTime": "1544708122000",
+                "periodNo": "2018142",
+                "lotteryNumber": "21,15,01,23,33,24+39"
+            },
+            {
+                "prizeTime": "1544535283000",
+                "periodNo": "2018141",
+                "lotteryNumber": "33,08,42,07,10,20+22"
+            },
+            {
+                "prizeTime": "1544276101000",
+                "periodNo": "2018140",
+                "lotteryNumber": "40,27,45,48,29,20+43"
+            },
+            {
+                "prizeTime": "1544103301000",
+                "periodNo": "2018139",
+                "lotteryNumber": "20,32,40,46,08,44+34"
+            },
+            {
+                "prizeTime": "1543930541000",
+                "periodNo": "2018138",
+                "lotteryNumber": "08,31,11,14,20,22+19"
+            },
+            {
+                "prizeTime": "1543671341000",
+                "periodNo": "2018137",
+                "lotteryNumber": "02,39,29,38,20,32+47"
+            },
+            {
+                "prizeTime": "1543498521000",
+                "periodNo": "2018136",
+                "lotteryNumber": "14,43,34,31,36,25+35"
+            },
+            {
+                "prizeTime": "1543325701000",
+                "periodNo": "2018135",
+                "lotteryNumber": "15,29,27,38,08,07+39"
+            },
+            {
+                "prizeTime": "1543066501000",
+                "periodNo": "2018134",
+                "lotteryNumber": "25,34,03,30,13,08+32"
+            }
+        ]
+    }
+}

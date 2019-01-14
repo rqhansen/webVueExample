@@ -1,0 +1,118 @@
+{
+    "msg": "获取彩票历史开奖记录成功",
+    "code": 0,
+    "data": {
+        "lottery": {
+            "lotteryId": "14",
+            "lotteryName": "上海11选5",
+            "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/53cc7215-aed4-4ffe-a2e9-6cc379c2f6d1.png",
+            "periodNo": "2019011447",
+            "code": "11x5",
+            "selfFlag": "0",
+            "officialUrl": "http://www.shlottery.gov.cn/shsportsweb/html/tycp/tcw_11x5/List/index.htm",
+            "status": "1"
+        },
+        "prizeHistoryList": [
+            {
+                "prizeTime": null,
+                "periodNo": "2019011446",
+                "lotteryNumber": null
+            },
+            {
+                "prizeTime": "1547454083000",
+                "periodNo": "2019011445",
+                "lotteryNumber": "01,06,10,09,07"
+            },
+            {
+                "prizeTime": "1547453464000",
+                "periodNo": "2019011444",
+                "lotteryNumber": "08,07,05,04,09"
+            },
+            {
+                "prizeTime": "1547452880000",
+                "periodNo": "2019011443",
+                "lotteryNumber": "02,10,01,06,09"
+            },
+            {
+                "prizeTime": "1547452284000",
+                "periodNo": "2019011442",
+                "lotteryNumber": "05,03,01,07,09"
+            },
+            {
+                "prizeTime": "1547451702000",
+                "periodNo": "2019011441",
+                "lotteryNumber": "02,06,11,05,07"
+            },
+            {
+                "prizeTime": "1547451082000",
+                "periodNo": "2019011440",
+                "lotteryNumber": "09,05,08,07,02"
+            },
+            {
+                "prizeTime": "1547450483000",
+                "periodNo": "2019011439",
+                "lotteryNumber": "07,09,10,01,08"
+            },
+            {
+                "prizeTime": "1547449862000",
+                "periodNo": "2019011438",
+                "lotteryNumber": "09,11,03,08,04"
+            },
+            {
+                "prizeTime": "1547449300000",
+                "periodNo": "2019011437",
+                "lotteryNumber": "09,02,06,03,10"
+            },
+            {
+                "prizeTime": "1547448682000",
+                "periodNo": "2019011436",
+                "lotteryNumber": "09,03,07,01,11"
+            },
+            {
+                "prizeTime": "1547448085000",
+                "periodNo": "2019011435",
+                "lotteryNumber": "10,11,08,04,06"
+            },
+            {
+                "prizeTime": "1547447480000",
+                "periodNo": "2019011434",
+                "lotteryNumber": "10,05,09,06,07"
+            },
+            {
+                "prizeTime": "1547446900000",
+                "periodNo": "2019011433",
+                "lotteryNumber": "01,07,03,02,10"
+            },
+            {
+                "prizeTime": "1547446300000",
+                "periodNo": "2019011432",
+                "lotteryNumber": "10,05,03,02,08"
+            },
+            {
+                "prizeTime": "1547445700000",
+                "periodNo": "2019011431",
+                "lotteryNumber": "03,04,02,06,11"
+            },
+            {
+                "prizeTime": "1547445100000",
+                "periodNo": "2019011430",
+                "lotteryNumber": "08,07,11,02,06"
+            },
+            {
+                "prizeTime": "1547444465000",
+                "periodNo": "2019011429",
+                "lotteryNumber": "06,03,01,09,02"
+            },
+            {
+                "prizeTime": "1547443920000",
+                "periodNo": "2019011428",
+                "lotteryNumber": "01,03,11,08,10"
+            },
+            {
+                "prizeTime": "1547443280000",
+                "periodNo": "2019011427",
+                "lotteryNumber": "03,10,08,04,01"
+            }
+        ]
+    }
+}

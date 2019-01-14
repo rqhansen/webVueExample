@@ -1,0 +1,118 @@
+{
+    "msg": "获取彩票历史开奖记录成功",
+    "code": 0,
+    "data": {
+        "lottery": {
+            "lotteryId": "33",
+            "lotteryName": "广东快乐十分",
+            "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/e34903d5-8475-4c73-854d-4560d019cb84.png",
+            "periodNo": "20190114047",
+            "code": "klsf",
+            "selfFlag": "0",
+            "officialUrl": "http://www.gdfc.org.cn/index.html",
+            "status": "1"
+        },
+        "prizeHistoryList": [
+            {
+                "prizeTime": null,
+                "periodNo": "20190114046",
+                "lotteryNumber": null
+            },
+            {
+                "prizeTime": "1547454760000",
+                "periodNo": "20190114045",
+                "lotteryNumber": "19,06,17,11,03,13,10,16"
+            },
+            {
+                "prizeTime": "1547454165000",
+                "periodNo": "20190114044",
+                "lotteryNumber": "07,16,15,05,12,17,11,20"
+            },
+            {
+                "prizeTime": "1547453562000",
+                "periodNo": "20190114043",
+                "lotteryNumber": "12,10,01,20,16,03,08,14"
+            },
+            {
+                "prizeTime": "1547452960000",
+                "periodNo": "20190114042",
+                "lotteryNumber": "06,20,09,05,17,01,04,15"
+            },
+            {
+                "prizeTime": "1547452361000",
+                "periodNo": "20190114041",
+                "lotteryNumber": "18,14,12,08,11,16,17,01"
+            },
+            {
+                "prizeTime": "1547451740000",
+                "periodNo": "20190114040",
+                "lotteryNumber": "18,20,17,02,04,03,10,12"
+            },
+            {
+                "prizeTime": "1547451160000",
+                "periodNo": "20190114039",
+                "lotteryNumber": "13,03,15,01,17,18,02,19"
+            },
+            {
+                "prizeTime": "1547450560000",
+                "periodNo": "20190114038",
+                "lotteryNumber": "10,07,06,15,04,19,01,12"
+            },
+            {
+                "prizeTime": "1547449960000",
+                "periodNo": "20190114037",
+                "lotteryNumber": "04,08,16,03,20,09,02,12"
+            },
+            {
+                "prizeTime": "1547449340000",
+                "periodNo": "20190114036",
+                "lotteryNumber": "01,16,07,14,06,13,09,10"
+            },
+            {
+                "prizeTime": "1547448760000",
+                "periodNo": "20190114035",
+                "lotteryNumber": "18,13,12,09,17,08,14,07"
+            },
+            {
+                "prizeTime": "1547448282000",
+                "periodNo": "20190114034",
+                "lotteryNumber": "20,01,04,16,02,14,10,17"
+            },
+            {
+                "prizeTime": "1547447560000",
+                "periodNo": "20190114033",
+                "lotteryNumber": "12,19,18,20,06,14,15,09"
+            },
+            {
+                "prizeTime": "1547446961000",
+                "periodNo": "20190114032",
+                "lotteryNumber": "04,08,07,12,18,09,13,02"
+            },
+            {
+                "prizeTime": "1547446360000",
+                "periodNo": "20190114031",
+                "lotteryNumber": "05,19,17,07,08,12,14,09"
+            },
+            {
+                "prizeTime": "1547445820000",
+                "periodNo": "20190114030",
+                "lotteryNumber": "19,06,02,20,09,12,08,17"
+            },
+            {
+                "prizeTime": "1547445162000",
+                "periodNo": "20190114029",
+                "lotteryNumber": "17,15,12,19,16,06,09,03"
+            },
+            {
+                "prizeTime": "1547444540000",
+                "periodNo": "20190114028",
+                "lotteryNumber": "05,18,08,09,15,20,11,01"
+            },
+            {
+                "prizeTime": "1547443960000",
+                "periodNo": "20190114027",
+                "lotteryNumber": "16,17,19,01,07,20,06,09"
+            }
+        ]
+    }
+}

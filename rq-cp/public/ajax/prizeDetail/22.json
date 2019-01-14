@@ -1,0 +1,118 @@
+{
+    "msg": "获取彩票历史开奖记录成功",
+    "code": 0,
+    "data": {
+        "lottery": {
+            "lotteryId": "22",
+            "lotteryName": "三分快三",
+            "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/b288d960-2169-4977-953b-f8b0de53bbe8.png",
+            "periodNo": "20190114314",
+            "code": "ksan",
+            "selfFlag": "1",
+            "officialUrl": null,
+            "status": "1"
+        },
+        "prizeHistoryList": [
+            {
+                "prizeTime": "1547453350000",
+                "periodNo": "20190114313",
+                "lotteryNumber": "2,3,3"
+            },
+            {
+                "prizeTime": "1547453170000",
+                "periodNo": "20190114312",
+                "lotteryNumber": "6,1,1"
+            },
+            {
+                "prizeTime": "1547452990000",
+                "periodNo": "20190114311",
+                "lotteryNumber": "1,1,2"
+            },
+            {
+                "prizeTime": "1547452810000",
+                "periodNo": "20190114310",
+                "lotteryNumber": "1,2,1"
+            },
+            {
+                "prizeTime": "1547452630000",
+                "periodNo": "20190114309",
+                "lotteryNumber": "1,5,3"
+            },
+            {
+                "prizeTime": "1547452450000",
+                "periodNo": "20190114308",
+                "lotteryNumber": "3,2,3"
+            },
+            {
+                "prizeTime": "1547452270000",
+                "periodNo": "20190114307",
+                "lotteryNumber": "1,2,4"
+            },
+            {
+                "prizeTime": "1547452090000",
+                "periodNo": "20190114306",
+                "lotteryNumber": "6,3,5"
+            },
+            {
+                "prizeTime": "1547451910000",
+                "periodNo": "20190114305",
+                "lotteryNumber": "3,3,2"
+            },
+            {
+                "prizeTime": "1547451730000",
+                "periodNo": "20190114304",
+                "lotteryNumber": "2,2,6"
+            },
+            {
+                "prizeTime": "1547451550000",
+                "periodNo": "20190114303",
+                "lotteryNumber": "2,4,1"
+            },
+            {
+                "prizeTime": "1547451370000",
+                "periodNo": "20190114302",
+                "lotteryNumber": "4,1,1"
+            },
+            {
+                "prizeTime": "1547451190000",
+                "periodNo": "20190114301",
+                "lotteryNumber": "6,1,2"
+            },
+            {
+                "prizeTime": "1547451010000",
+                "periodNo": "20190114300",
+                "lotteryNumber": "3,1,1"
+            },
+            {
+                "prizeTime": "1547450830000",
+                "periodNo": "20190114299",
+                "lotteryNumber": "4,3,2"
+            },
+            {
+                "prizeTime": "1547450650000",
+                "periodNo": "20190114298",
+                "lotteryNumber": "3,4,1"
+            },
+            {
+                "prizeTime": "1547450470000",
+                "periodNo": "20190114297",
+                "lotteryNumber": "2,4,2"
+            },
+            {
+                "prizeTime": "1547450290000",
+                "periodNo": "20190114296",
+                "lotteryNumber": "5,1,1"
+            },
+            {
+                "prizeTime": "1547450110000",
+                "periodNo": "20190114295",
+                "lotteryNumber": "5,2,5"
+            },
+            {
+                "prizeTime": "1547449930000",
+                "periodNo": "20190114294",
+                "lotteryNumber": "1,5,1"
+            }
+        ]
+    }
+}

@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <keep-alive>
+    <keep-alive exclude="login,register">
       <router-view v-transition
                    class="rq-child-view"></router-view>
     </keep-alive>
@@ -38,19 +38,19 @@ export default {
           url: '/home'
         },
         {
-          name: "car",
+          name: "lottery",
           title: "购彩",
           url: '/lottery'
         },
         {
-          name: "award",
+          name: "prize",
           title: "开奖",
           url: '/prize'
         },
         {
-          name: "lottery",
+          name: "trend",
           title: "走势",
-          url: '/ddd'
+          url: '/trend'
         },
         {
           name: "my",
@@ -62,8 +62,7 @@ export default {
   },
   watch: {
     $route (to) {
-      this.hasFooter = this.$route.meta.hasFooter;
-      this.idx = this.iconList.findIndex(item => item.url.includes(to.name))
+      this.init();
     }
   },
   methods: {
@@ -71,10 +70,15 @@ export default {
       if (this.idx === index) return;
       this.idx = index;
       this.$router.push({ path: url });
+    },
+    init () {
+      let route = this.$route;
+      this.hasFooter = route.meta.hasFooter;
+      this.idx = this.iconList.findIndex(item => item.name === route.name)
     }
   },
   created () {
-    this.hasFooter = this.$route.meta.hasFooter;
+    this.init()
   }
 };
 </script>

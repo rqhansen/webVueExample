@@ -1,0 +1,118 @@
+{
+    "msg": "获取彩票历史开奖记录成功",
+    "code": 0,
+    "data": {
+        "lottery": {
+            "lotteryId": "19",
+            "lotteryName": "幸运28",
+            "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/3ff34d3e-1ec8-4fca-a207-a6fc042eceb0.png",
+            "periodNo": "3124030",
+            "code": "pcdd",
+            "selfFlag": "1",
+            "officialUrl": null,
+            "status": "1"
+        },
+        "prizeHistoryList": [
+            {
+                "prizeTime": "1547453880000",
+                "periodNo": "3124029",
+                "lotteryNumber": "0,9,7"
+            },
+            {
+                "prizeTime": "1547453760000",
+                "periodNo": "3124028",
+                "lotteryNumber": "5,5,8"
+            },
+            {
+                "prizeTime": "1547453640000",
+                "periodNo": "3124027",
+                "lotteryNumber": "9,9,8"
+            },
+            {
+                "prizeTime": "1547453520000",
+                "periodNo": "3124026",
+                "lotteryNumber": "8,5,5"
+            },
+            {
+                "prizeTime": "1547453400000",
+                "periodNo": "3124025",
+                "lotteryNumber": "9,1,8"
+            },
+            {
+                "prizeTime": "1547453280000",
+                "periodNo": "3124024",
+                "lotteryNumber": "3,1,4"
+            },
+            {
+                "prizeTime": "1547453160000",
+                "periodNo": "3124023",
+                "lotteryNumber": "8,0,3"
+            },
+            {
+                "prizeTime": "1547453040000",
+                "periodNo": "3124022",
+                "lotteryNumber": "0,8,6"
+            },
+            {
+                "prizeTime": "1547452920000",
+                "periodNo": "3124021",
+                "lotteryNumber": "7,3,6"
+            },
+            {
+                "prizeTime": "1547452800000",
+                "periodNo": "3124020",
+                "lotteryNumber": "2,2,3"
+            },
+            {
+                "prizeTime": "1547452680000",
+                "periodNo": "3124019",
+                "lotteryNumber": "3,1,8"
+            },
+            {
+                "prizeTime": "1547452560000",
+                "periodNo": "3124018",
+                "lotteryNumber": "2,9,0"
+            },
+            {
+                "prizeTime": "1547452440000",
+                "periodNo": "3124017",
+                "lotteryNumber": "5,4,2"
+            },
+            {
+                "prizeTime": "1547452320000",
+                "periodNo": "3124016",
+                "lotteryNumber": "9,2,1"
+            },
+            {
+                "prizeTime": "1547452200000",
+                "periodNo": "3124015",
+                "lotteryNumber": "3,5,1"
+            },
+            {
+                "prizeTime": "1547452080000",
+                "periodNo": "3124014",
+                "lotteryNumber": "6,6,7"
+            },
+            {
+                "prizeTime": "1547451960000",
+                "periodNo": "3124013",
+                "lotteryNumber": "2,8,8"
+            },
+            {
+                "prizeTime": "1547451840000",
+                "periodNo": "3124012",
+                "lotteryNumber": "8,7,2"
+            },
+            {
+                "prizeTime": "1547451720000",
+                "periodNo": "3124011",
+                "lotteryNumber": "0,4,9"
+            },
+            {
+                "prizeTime": "1547451600000",
+                "periodNo": "3124010",
+                "lotteryNumber": "3,7,5"
+            }
+        ]
+    }
+}

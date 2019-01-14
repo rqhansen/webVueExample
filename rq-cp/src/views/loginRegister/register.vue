@@ -54,7 +54,7 @@
         </div>
         <div class="field-item"
              :class="{'active':itemIndex===2}">
-          <input :type="isClose?'password':'text'"
+          <input :type="isCheckClose?'password':'text'"
                  ref="checkPassword"
                  v-model.trim="userInfo.checkPassWord"
                  maxlength="12"

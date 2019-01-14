@@ -19,7 +19,7 @@ const router = new Router({
                 {
                     name: 'home',
                     path: '/home',
-                    component: () => import('@/views/home/index'),
+                    component: () => import('@/views/home'),
                     meta: {
                         title: 'rq手游',
                         hasFooter: true
@@ -55,7 +55,7 @@ const router = new Router({
                 {
                     name: 'lottery',
                     path: '/lottery',
-                    component: () => import('@/views/lottery/index'),
+                    component: () => import('@/views/lottery'),
                     meta: {
                         title: '购彩',
                         hasFooter: true
@@ -64,10 +64,19 @@ const router = new Router({
                 {
                     name: 'prize',
                     path: '/prize',
-                    component: () => import('@/views/prize/index'),
+                    component: () => import('@/views/prize'),
                     meta: {
                         title: '开奖',
                         hasFooter: true
+                    }
+                },
+                {
+                    name: 'prizeDetail',
+                    path: '/prizeDetail',
+                    component: () => import('@/views/prizeDetail/index'),
+                    meta: {
+                        title: '开奖详情',
+                        hasFooter: false
                     }
                 }
             ]
