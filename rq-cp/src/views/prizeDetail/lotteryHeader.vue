@@ -60,6 +60,7 @@ export default {
         & + p {
           color: #868484;
           font-size: 26px;
+          margin-top: 6px;
         }
       }
     }
