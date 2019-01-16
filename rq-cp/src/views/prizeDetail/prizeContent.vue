@@ -3,7 +3,7 @@
     <ul>
       <li v-for="(item,idx) of prizeHistoryList"
           :key="idx">
-        <dl>
+        <!-- <dl>
           <dt>
             <div class="lottery-no">{{item.periodNo}}</div>
             <div v-if="item.prizeTime">
@@ -18,8 +18,28 @@
                             :code="code"
                             :lastPrizeTime="item.prizeTime"></lottery-number>
           </dd>
-        </dl>
-
+        </dl> -->
+        <flex-layout class="detail-content"
+                     :class="[code==='6hc'?'sixhc':'']">
+          <div slot="title">
+            {{item.periodNo}}
+          </div>
+          <div v-if="item.prizeTime"
+               slot="content"
+               class="time">
+            {{item.prizeTime|formatDate}}
+          </div>
+          <div v-else
+               slot="content"
+               class="time">
+            即将开奖
+          </div>
+          <div slot="top">
+            <lottery-number :lotteryNumber="item.lotteryNumber"
+                            :code="code"
+                            :lastPrizeTime="item.prizeTime"></lottery-number>
+          </div>
+        </flex-layout>
       </li>
     </ul>
   </div>
@@ -38,25 +58,39 @@ export default {
 <style lang="scss" scoped>
 .prize-detail-list {
   li {
+    height: 174px;
     padding: 10px 25px;
     border-top: 1px solid #f3f3f3;
-  }
-  dl {
-    display: flex;
-    justify-content: space-around;
-    flex-direction: column;
-    height: 154px;
-    font-size: 30px;
-  }
-  dt {
-    @extend dl;
-    height: inherit;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-  /deep/ .lottery-number-wrappper {
-    position: relative;
-    top: -6px;
+    .detail-content {
+      /deep/ .time {
+        color: #868484;
+        font-size: 24px;
+      }
+      &.sixhc {
+        /deep/ dt {
+          align-items: flex-start;
+        }
+        /deep/ dd {
+          .lottery-number-wrappper {
+            position: relative;
+            top: -10px;
+          }
+        }
+      }
+      /deep/ dl {
+        flex-direction: column;
+      }
+      font-size: 30px;
+      /deep/ dt {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      /deep/ dd {
+        // flex-direction: row;
+        // justify-content: space-between;
+        @extend dt;
+      }
+    }
   }
 }
 </style>

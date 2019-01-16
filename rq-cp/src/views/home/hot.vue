@@ -7,14 +7,12 @@
             :key="item.id"
             class="touch-feedback"
             v-feedBackClick>
-          <dl>
-            <dt><img :src="item.lotteryIcon"
-                   alt=""></dt>
-            <dd>
-              <p>{{item.lotteryName}}</p>
-              <p>{{item.prizeInterval}}</p>
-            </dd>
-          </dl>
+          <flex-layout class="hot-lottery">
+            <img :src="item.lotteryIcon"
+                 slot="title">
+            <p slot="top">{{item.lotteryName}}</p>
+            <p slot="center">{{item.prizeInterval}}</p>
+          </flex-layout>
         </li>
       </ul>
     </div>
@@ -62,28 +60,25 @@ $bt: border-bottom;
       #{$bt}: none;
     }
   }
-  dl {
-    display: flex;
-    height: 96px;
-    dd {
-      @extend dl;
-      flex-direction: column;
-      justify-content: space-around;
+  .hot-lottery {
+    /deep/ dd {
       margin-left: 20px;
-      font-size: 22px;
-      p {
-        &:first-child {
-          font-size: 32px;
-        }
-        &:last-child {
-          color: #999;
-        }
-      }
     }
     img {
       width: 96px;
       height: 96px;
-      vertical-align: top;
+    }
+    p {
+      font-size: 32px;
+      width: 100%;
+      text-align: left;
+      font-size: 22px;
+      &:first-child {
+        font-size: 32px;
+      }
+      &:last-child {
+        color: #999;
+      }
     }
   }
 }

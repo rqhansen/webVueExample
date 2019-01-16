@@ -74,7 +74,7 @@
                       size="large"
                       type="warning"
                       :disabled="allowClick"
-                      @click="login">登陆</van-button>
+                      @click="login">登录</van-button>
         </div>
         <div class="login-register-tip">
           <span @click="register">快速注册</span>

@@ -5,7 +5,7 @@
           :key="idx"
           class="touch-feedback"
           v-feedBackClick>
-        <dl>
+        <!-- <dl>
           <dt>
             <img :src="lottery.lotteryIcon">
           </dt>
@@ -17,7 +17,20 @@
                           :currTime="lottery.sysDate"></count-down>
             </div>
           </dd>
-        </dl>
+        </dl> -->
+        <flex-layout class="lottery-item">
+          <img :src="lottery.lotteryIcon"
+               slot="title">
+          <div class="ellipsis"
+               slot="top">{{lottery.lotteryName}}</div>
+          <div class="ellipsis"
+               slot="center">{{lottery.prizeIntervalDesc}}</div>
+          <div class="ellipsis"
+               slot="bottom">
+            <count-down :nextPrizeTime="lottery.nextPrizeTime"
+                        :currTime="lottery.sysDate"></count-down>
+          </div>
+        </flex-layout>
       </li>
     </ul>
   </div>
@@ -47,26 +60,19 @@ export default {
       border-right: 1px solid #eee;
       border-bottom: 1px solid #eee;
     }
-    dl {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      height: 100%;
-    }
-    dt {
-      margin-right: 20px;
-    }
-    dd {
-      width: 200px;
+    .lottery-item {
+      /deep/ dd {
+        margin-left: 20px;
+      }
+      img {
+        width: 104px;
+        height: 104px;
+      }
       .ellipsis {
         &:nth-child(2) {
           color: #999;
         }
       }
-    }
-    img {
-      width: 104px;
-      height: 104px;
     }
   }
 }

@@ -5,20 +5,22 @@
           :key="idx"
           class="prize-item"
           @click="goPrizeDetail(item.lotteryId)">
-        <dl>
-          <dt><img :src="item.lotteryIcon"></dt>
-          <dd>
-            <div class="common"><span>{{item.lotteryName}}</span><span class="time">{{item.lastPrizeTime|formatDate}}</span></div>
-            <div class="common"><span>{{item.periodNo}}</span>
-              <svg-icon icon-class="right-arrow"></svg-icon>
-            </div>
-            <div class="balls-items">
-              <lottery-number :lotteryNumber="item.lotteryNumber"
-                              :code="item.code"
-                              :lastPrizeTime="item.lastPrizeTime"></lottery-number>
-            </div>
-          </dd>
-        </dl>
+        <flex-layout class="prize">
+          <img :src="item.lotteryIcon"
+               slot="title">
+          <div slot="top"
+               class="common"><span>{{item.lotteryName}}</span><span class="time">{{item.lastPrizeTime|formatDate}}</span></div>
+          <div slot="center"
+               class="common"><span>{{item.periodNo}}</span>
+            <svg-icon icon-class="right-arrow"></svg-icon>
+          </div>
+          <div slot="bottom"
+               class="common">
+            <lottery-number :lotteryNumber="item.lotteryNumber"
+                            :code="item.code"
+                            :lastPrizeTime="item.lastPrizeTime"></lottery-number>
+          </div>
+        </flex-layout>
       </li>
     </ul>
   </div>
@@ -26,18 +28,11 @@
 
 <script>
 import lotteryNumber from '@/components/lotteryNumber'
-// import util from '@/assets/js/util'
 export default {
   props: ["prizeList"],
   components: {
     lotteryNumber
   },
-  // filters: {
-  //   formatDate (val) {
-  //     if (!val) return
-  //     return util.formatDate(`${val}`, 'yymmddhhmmss');
-  //   }
-  // },
   methods: {
     goPrizeDetail (lotteryId) {
       this.$router.push({ name: 'prizeDetail', query: { id: lotteryId } })
@@ -50,45 +45,37 @@ export default {
 .prize-content {
   background-color: #eee;
   .prize-item {
+    height: 196px;
     padding: 0 20px;
     margin-bottom: 20px;
     background-color: #fff;
     &:active {
       background-color: #f3f3f3;
     }
-    dl {
-      display: flex;
-      dt {
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        align-items: flex-start;
-        height: 196px;
+    .prize {
+      /deep/ dd {
+        flex: 1;
+        padding-left: 25px;
       }
-      img {
+      /deep/ img {
         width: 80px;
         height: 80px;
       }
-      dd {
-        @extend dt;
-        flex: 1;
-        padding-left: 25px;
-        font-size: 30px;
+      /deep/ .time {
+        color: #868484;
       }
-      .common {
+      /deep/ .common {
         width: 100%;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        .time {
+        font-size: 30px;
+        &:nth-child(2) > span {
           color: #868484;
         }
-        &:nth-child(2) {
-          color: #868484;
+        &:last-child {
+          margin-top: 1px;
         }
-      }
-      .balls-items {
-        padding: 4px 0;
       }
     }
   }
