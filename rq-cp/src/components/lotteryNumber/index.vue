@@ -1,18 +1,24 @@
 <template>
   <div class="lottery-number-wrappper">
-    <span v-for="(ball,idx) of balls"
-          :key="idx"
-          :class="[className,code==='pk10'?`pk10-${ball}`:code==='pcdd'?'pcdd':'',(!ball.num&&code==='6hc' ||code==='pcdd'&&idx%2!==0)?'split':'',code==='pcdd'&&idx===balls.length-1? `${ball.clr}`:'']">
-      <template v-if="code==='6hc'">
-        <i class="ball"
-           :class="[ball.color]">{{ball.num?ball.num:ball}}</i>
-        <i class="txt"
-           v-if="ball.num">{{ball.zTxt}}</i>
-      </template>
-      <template v-else>
-        {{code==='pcdd'?ball.content:ball}}
-      </template>
-    </span>
+    <template v-if="balls">
+      <span v-for="(ball,idx) of balls"
+            :key="idx"
+            :class="[className,code==='pk10'?`pk10-${ball}`:code==='pcdd'?'pcdd':'',(!ball.num&&code==='6hc' ||code==='pcdd'&&idx%2!==0)?'split':'',code==='pcdd'&&idx===balls.length-1? `${ball.clr}`:'']">
+        <template v-if="code==='6hc'">
+          <i class="ball"
+             :class="[ball.color]">{{ball.num?ball.num:ball}}</i>
+          <i class="txt"
+             v-if="ball.num">{{ball.zTxt}}</i>
+        </template>
+        <template v-else>
+          {{code==='pcdd'?ball.content:ball}}
+        </template>
+      </span>
+    </template>
+    <template v-else>
+      <p class="lottery-tip">正在开奖...</p>
+    </template>
+
   </div>
 </template>
 
@@ -26,6 +32,9 @@ export default {
       return this.code === '11x5' ? 'eleven-five' : this.code === '6hc' ? 'sixhc' : this.code !== 'pcdd' && this.code
     },
     balls () {
+      if (!this.lotteryNumber) {
+        return
+      }
       let balls = this.lotteryNumber.replace('+', ',').split(',');
       switch (this.code) {
         case '6hc':
@@ -58,6 +67,10 @@ export default {
 <style lang="scss" scoped>
 .lottery-number-wrappper {
   font-size: 0;
+  .lottery-tip {
+    font-size: 30px;
+    color: #ec0022;
+  }
   span {
     display: inline-block;
     width: 48px;

@@ -26,18 +26,18 @@
 
 <script>
 import lotteryNumber from '@/components/lotteryNumber'
-import util from '@/assets/js/util'
+// import util from '@/assets/js/util'
 export default {
   props: ["prizeList"],
   components: {
     lotteryNumber
   },
-  filters: {
-    formatDate (val) {
-      if (!val) return
-      return util.formatDate(`${val}`, 'yymmddhhmmss');
-    }
-  },
+  // filters: {
+  //   formatDate (val) {
+  //     if (!val) return
+  //     return util.formatDate(`${val}`, 'yymmddhhmmss');
+  //   }
+  // },
   methods: {
     goPrizeDetail (lotteryId) {
       this.$router.push({ name: 'prizeDetail', query: { id: lotteryId } })

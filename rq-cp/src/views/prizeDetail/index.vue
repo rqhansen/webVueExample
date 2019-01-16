@@ -3,17 +3,29 @@
     <header class="header">
       <top></top>
     </header>
-    <section class="">
-
+    <section class="prize-detail-wrapper">
+      <div v-refresh="refresh">
+        <header>
+          <lottery-header :lottery="lottery"></lottery-header>
+        </header>
+        <div class="prize-detail-content">
+          <prize-content :prizeHistoryList="prizeHistoryList"
+                         :code="lottery.code"></prize-content>
+        </div>
+      </div>
     </section>
   </div>
 </template>
 
 <script>
 import top from './header'
+import lotteryHeader from './lotteryHeader'
+import prizeContent from './prizeContent'
 export default {
   components: {
-    top
+    top,
+    lotteryHeader,
+    prizeContent
   },
   data () {
     return {
@@ -32,6 +44,14 @@ export default {
     }
   },
   methods: {
+    refresh () {
+      return new Promise((resolve, reject) => {
+        this.init().then(() => {
+          alert('开奖详情页面刷新成功');
+          resolve();
+        })
+      })
+    },
     init () {
       let id = this.$route.query.id;
       return new Promise((resolve, reject) => {
@@ -56,6 +76,10 @@ export default {
     position: fixed;
     left: 0;
     top: 0;
+  }
+  .prize-detail-wrapper {
+    height: calc(100vh - 184px);
+    overflow: scroll;
   }
 }
 </style>

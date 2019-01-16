@@ -10,6 +10,7 @@
                         @click.native="clickItem(item,idx)"
                         :class="{'active':currIndex===idx}"
                         :key="idx">{{item.lotteryTypeName}}</swiper-slide>
+
         </swiper>
       </dd>
     </dl>
@@ -30,7 +31,11 @@ export default {
       currIndex: -1,
       swiperOption: {
         slidesPerView: '3',
-        notNextTick: true
+        notNextTick: true,
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true
+        }
       }
     }
   },
