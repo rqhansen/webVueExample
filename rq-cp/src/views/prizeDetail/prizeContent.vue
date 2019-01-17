@@ -3,22 +3,6 @@
     <ul>
       <li v-for="(item,idx) of prizeHistoryList"
           :key="idx">
-        <!-- <dl>
-          <dt>
-            <div class="lottery-no">{{item.periodNo}}</div>
-            <div v-if="item.prizeTime">
-              {{item.prizeTime|formatDate}}
-            </div>
-            <div v-else>
-              即将开奖
-            </div>
-          </dt>
-          <dd :class="[code==='6hc'? 'sixhc':'']">
-            <lottery-number :lotteryNumber="item.lotteryNumber"
-                            :code="code"
-                            :lastPrizeTime="item.prizeTime"></lottery-number>
-          </dd>
-        </dl> -->
         <flex-layout class="detail-content"
                      :class="[code==='6hc'?'sixhc':'']">
           <div slot="title">
