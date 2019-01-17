@@ -38,7 +38,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## 项目涉及技术点
 
-###脚手架
+### 脚手架
 
 ```
 使用 Vue-Cli3.0 搭建项目
@@ -47,7 +47,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ### Vuex 作为数据共享的中介
 
 ```
-
+Vuex2.0,分模块
 ```
 
 ### 路由跳转采用 vue-Router
