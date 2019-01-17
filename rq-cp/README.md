@@ -41,10 +41,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ###脚手架
 
 ```
-
 使用 Vue-Cli3.0 搭建项目
-
-
 ```
 
 ### Vuex 作为数据共享的中介
@@ -62,11 +59,8 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 plugins: [
 [
-
 'import',
-
 {
-
 libraryName: 'vant',
 
 libraryDirectory: 'es',
@@ -76,15 +70,16 @@ style: true
 // style: name => `${name}/style/less`
 
 },
-
 'vant'
-
 ]
 ]
 ```
 
 ###css 预编译器采用 sass
+
+```
 可以在初始化项目时即安装 sass，省去之后的手动配置
+```
 
 ###骨架屏
 
@@ -180,10 +175,19 @@ svgRule
 ##其它原创技术：
 
 ###自定义 vue 下拉刷新指令 v-refresh
+
+```
 使用原生 Js 和 Css3
+```
 
 ###点击某个元素产生水波纹动画效果指令
+
+```
 使用 CSS3 动画实现
+```
 
 ###非完整项目
+
+```
 其它待完成部分，可在有充足时间情况下，逐步推进，渐进实现。本项目目的是熟悉使用 vue-cli3 从零搭建开发环境和开发框架。
+```
