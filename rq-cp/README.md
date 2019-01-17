@@ -46,17 +46,20 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### Vuex 作为数据共享的中介
 
+```
+
+```
+
 ### 路由跳转采用 vue-Router
 
 ```
 使用vueg插件实现路由转场的动画，提升用户体验
 ```
 
-###UI 库
+### UI 库
 
 ```
 采用 Vant,结合官网配置 babel.config.js 如下：
-
 plugins: [
 [
 'import',
@@ -75,13 +78,13 @@ style: true
 ]
 ```
 
-###css 预编译器采用 sass
+### css 预编译器采用 sass
 
 ```
 可以在初始化项目时即安装 sass，省去之后的手动配置
 ```
 
-###骨架屏
+### 骨架屏
 
 ```
 采用 vue-skeleton-webpack-plugin 骨架屏插件，呈现页面前的骨架。需要配置骨架屏插件的入口的文件，
@@ -151,7 +154,7 @@ propList: ['*']
 }
 ```
 
-###svg
+### svg
 
 ```
 采用 SVG 在此基础上封装为 SVG 组件，只需要传入 svg 图标的名称，即可生成 SVG 文件。详情见 components/svg/SvgIcon.vue 组件。
@@ -169,24 +172,23 @@ svgRule
 // symbolId: 'icon-[name]'
 })
 }
-
 ```
 
-##其它原创技术：
+## 其它原创技术：
 
-###自定义 vue 下拉刷新指令 v-refresh
+### 自定义 vue 下拉刷新指令 v-refresh
 
 ```
 使用原生 Js 和 Css3
 ```
 
-###点击某个元素产生水波纹动画效果指令
+### 点击某个元素产生水波纹动画效果指令
 
 ```
 使用 CSS3 动画实现
 ```
 
-###非完整项目
+### 非完整项目
 
 ```
 其它待完成部分，可在有充足时间情况下，逐步推进，渐进实现。本项目目的是熟悉使用 vue-cli3 从零搭建开发环境和开发框架。
