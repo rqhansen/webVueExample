@@ -2,7 +2,6 @@ import Vue from 'vue'
 import axios from 'axios'
 import encryption from 'public/js/md5.js'
 import util from './util.js'
-Vue.prototype.$http = axios
 
 //请求拦截器
 axios.interceptors.request.use(
@@ -123,3 +122,6 @@ axios.interceptors.response.use(
         return Promise.reject(error)
     }
 )
+
+Vue.prototype.$http = axios
+export default axios

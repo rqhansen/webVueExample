@@ -88,6 +88,11 @@ function countDown(diffTime) {
     }
     return obj
 }
+
+/**
+ *
+ * @description 格式化日期
+ */
 function formatDate(time, type) {
     if (typeof time === 'string') {
         time = time.replace(/-/g, '/')

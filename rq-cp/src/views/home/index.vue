@@ -44,6 +44,7 @@ import announce from './announce';
 import navigation from './navigation';
 import hot from './hot';
 import prizeRank from './prizeRank';
+import { getBanners, getHotList, getPrizeList } from '@/api/home'
 export default {
   name: "home",
   components: {
@@ -66,25 +67,11 @@ export default {
   },
   methods: {
     refresh () {
-      return new Promise((resolve, reject) => {
-        this.init().then(() => {
-          alert("主页刷新成功");
-          resolve();
-        })
-      })
-    },
-    getBanners () { //获取轮播数据
-      return this.$http.get("ajax/home/banner.json", { noEncrypt: false });
-    },
-    getHotList () { //获取热门排行
-      return this.$http.get("/ajax/home/hot.json", { noEncrypt: true });
-    },
-    getRankList () { //获取中奖排行榜
-      return this.$http.get("/ajax/home/prizeRank.json", { noEncrypt: false })
+      return this.$refresh(this.init, '主页刷新成功');
     },
     init () {
       return new Promise((resolve, reject) => {
-        this.$http.all([this.getBanners(), this.getHotList(), this.getRankList()]).then(this.$http.spread((bannerList, hotList, rankList) => {
+        this.$http.all([getBanners(), getHotList(), getPrizeList()]).then(this.$http.spread((bannerList, hotList, rankList) => {
           bannerList.data.code !== 0 && (this.imgList = bannerList.data.bannerList);
           hotList.data.code !== 0 && (this.hotList = hotList.data.hotLotteryList);
           rankList.data.code !== 0 && (this.rankList = rankList.data.prizeRankList);
