@@ -1,7 +1,7 @@
 import Vue from 'vue'
-import util from '@/assets/js/util'
+import utils from '@/assets/js/utils/index'
 
 Vue.filter('formatDate', function(val) {
     if (!val) return
-    return util.formatDate(`${val}`, 'yymmddhhmmss')
+    return utils.formatDate(`${val}`, 'yymmddhhmmss')
 })

@@ -1,4 +1,4 @@
-import drawVeryCode from '@/assets/js/drawVeryCode.js'
+import utils from '@/assets/js/utils/index'
 import { mapMutations } from 'vuex'
 export default {
     data() {
@@ -50,10 +50,11 @@ export default {
          * 模拟后端生成验证码
          */
         changeVeryCode() {
-            this.veryCode = drawVeryCode('canvas')
+            this.veryCode = utils.drawVeryCode('canvas')
         }
     },
     mounted() {
         this.changeVeryCode()
+       
     }
 }

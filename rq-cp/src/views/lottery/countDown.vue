@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import util from '@/assets/js/util'
+import utils from '@/assets/js/utils/index'
 export default {
   props: ['nextPrizeTime', 'currTime'],
   data () {
@@ -21,7 +21,7 @@ export default {
   },
   created () {
     let diffTime = this.nextPrizeTime - this.currTime
-    this.timerInfo = util.countDown(diffTime);
+    this.timerInfo = utils.countDown(diffTime);
     this.timer = setInterval(() => {
       diffTime -= 1000;
       if (diffTime < 0) {
@@ -29,7 +29,7 @@ export default {
         this.timerInfo = {};
         return
       }
-      this.timerInfo = util.countDown(diffTime);
+      this.timerInfo = utils.countDown(diffTime);
     }, 1000)
   },
   beforeDestroy () {

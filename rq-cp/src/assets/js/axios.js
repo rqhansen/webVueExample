@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import axios from 'axios'
-import encryption from 'public/js/md5.js'
-import util from './util.js'
+import encryption from 'public/js/md5'
+import utils from './utils/index'
 
 //请求拦截器
 axios.interceptors.request.use(
@@ -40,7 +40,7 @@ axios.interceptors.request.use(
         }
         //参数加密
         if (!config.noEncrypt) {
-            let key = util.rndNum(16)
+            let key = utils.rndNum(16)
             config.key = key
             config.headers.key = RSA(key)
             config.data = {
@@ -50,7 +50,7 @@ axios.interceptors.request.use(
         config.headers.sign = sign
         config.headers.timestamp = time + ''
         config.headers.userId = userId || ''
-        config.headers.deviceId = util.getUuid(32, 32)
+        config.headers.deviceId = utils.getUuid(32, 32)
         if (config.tx) {
             config.headers.tx = true
         }

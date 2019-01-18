@@ -1,14 +1,15 @@
 import Vue from 'vue'
 /**
  * @param {Function} asyncFun 异步函数
- * @param {String} tip 异步函数执行完后的提示语
+ * @param {String} tip 配置数据
  */
-function pageFresh(asyncFun, tip) {
+
+Vue.prototype.$refresh = function (asyncFun, config) {
     return new Promise((resolve, reject) => {
         asyncFun().then(() => {
-            alert(tip)
+            let {tip} = config;
+            alert(tip?tip:'刷新数据成功')
             resolve()
         })
     })
 }
-Vue.prototype.$refresh = pageFresh

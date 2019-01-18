@@ -1,5 +1,5 @@
 //绘制验证码
-function drawVeryCode(canvasId) {
+export function drawVeryCode(canvasId) {
     let canvas = document.getElementById(canvasId)
     let ctx = canvas.getContext('2d')
     //指定范围的随机数
@@ -61,4 +61,3 @@ function drawVeryCode(canvasId) {
     }
     return drawString(randomString())
 }
-export default drawVeryCode

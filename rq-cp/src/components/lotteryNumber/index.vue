@@ -23,8 +23,8 @@
 </template>
 
 <script>
-import getZodiac from '@/assets/js/zodica'
-import formatPcdd from '@/assets/js/formatPcdd'
+import getZodiac from '@/assets/js/formateBalls/zodica'
+import formatPcdd from '@/assets/js/formateBalls/formatPcdd'
 export default {
   props: ['code', 'lastPrizeTime', 'lotteryNumber'],
   computed: {

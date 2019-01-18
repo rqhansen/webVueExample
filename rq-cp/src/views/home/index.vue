@@ -67,7 +67,7 @@ export default {
   },
   methods: {
     refresh () {
-      return this.$refresh(this.init, '主页刷新成功');
+      return this.$refresh(this.init, {tip:'主页刷新成功'});
     },
     init () {
       return new Promise((resolve, reject) => {

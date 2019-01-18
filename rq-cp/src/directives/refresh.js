@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import utils from '@/assets/js/util'
+import utils from '@/assets/js/utils/index'
 ;(function() {
     const MAXOFFSETY = 180 //最大滑动距离
     let [startY, transLateY, isTouch] = [0, 0, false]

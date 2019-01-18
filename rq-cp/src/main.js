@@ -9,7 +9,6 @@ import '@/icon/index'
 import '@/directives/index'
 import '@/components/index' //全局组件
 import '@/filters/index'
-import '@/api/refresh'
 
 import FastClick from 'fastclick'
 FastClick.attach(document.body)

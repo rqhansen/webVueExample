@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import utils from '@/assets/js/util'
+import utils from '@/assets/js/utils/index'
 ;(function() {
     function addClass() {
         utils.addClass(this, 'click-active')
