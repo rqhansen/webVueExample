@@ -5,11 +5,10 @@
       <top></top>
     </header>
     <!-- 轮播 -->
-    <div class="rq-home-refresh-wrap"
-         ref="rq-home-refresh-wrap">
+    <div class="rq-home-refresh-wrap">
       <div v-refresh="refresh">
         <section>
-          <banner :imgList="imgList"></banner>
+          <banner :imgList="bannerList"></banner>
         </section>
         <!-- 公告 -->
         <article>
@@ -17,7 +16,7 @@
         </article>
         <!--导航菜单-->
         <section>
-          <navigation></navigation>
+          <navigation :fastMenus="fastMenus"></navigation>
         </section>
         <!--分割区 -->
         <hr />
@@ -33,7 +32,6 @@
         </section>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -44,7 +42,7 @@ import announce from './announce';
 import navigation from './navigation';
 import hot from './hot';
 import prizeRank from './prizeRank';
-import { getBanners, getHotList, getPrizeList } from '@/api/home'
+import { getBanners, getNavsMenu, getHotList, getPrizeList } from '@/api/home'
 export default {
   name: "home",
   components: {
@@ -57,22 +55,21 @@ export default {
   },
   data () {
     return {
-      isLoading: false,
-      top: 0,
-      scroll: "",
-      imgList: [],
+      bannerList: [],
       hotList: [],
-      rankList: []
+      rankList: [],
+      fastMenus: []
     }
   },
   methods: {
     refresh () {
-      return this.$refresh(this.init, {tip:'主页刷新成功'});
+      return this.$refresh(this.init, { tip: '主页刷新成功' });
     },
     init () {
       return new Promise((resolve, reject) => {
-        this.$http.all([getBanners(), getHotList(), getPrizeList()]).then(this.$http.spread((bannerList, hotList, rankList) => {
-          bannerList.data.code !== 0 && (this.imgList = bannerList.data.bannerList);
+        this.$http.all([getBanners(), getNavsMenu(), getHotList(), getPrizeList()]).then(this.$http.spread((bannerList, fastMenus, hotList, rankList) => {
+          bannerList.data.code !== 0 && (this.bannerList = bannerList.data.bannerList);
+          fastMenus.data.code !== 0 && (this.fastMenus = fastMenus.data.navigateList);
           hotList.data.code !== 0 && (this.hotList = hotList.data.hotLotteryList);
           rankList.data.code !== 0 && (this.rankList = rankList.data.prizeRankList);
           resolve();

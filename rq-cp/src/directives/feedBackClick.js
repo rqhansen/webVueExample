@@ -4,13 +4,13 @@ import utils from '@/assets/js/utils/index'
     function addClass() {
         utils.addClass(this, 'click-active')
         let {
-            option: { expression }
+            options: { feedBack, lotteryId }
         } = this
-        if (expression && typeof expression === 'function') {
-            expression()
+        if (feedBack && typeof feedBack === 'function') {
+            feedBack(lotteryId)
         }
-        this.option.timer && clearTimeout(this.option.timer)
-        this.option.timer = setTimeout(() => {
+        this.options.timer && clearTimeout(this.options.timer)
+        this.options.timer = setTimeout(() => {
             utils.removeClass(this, 'click-active')
         }, 300)
     }
@@ -19,9 +19,16 @@ import utils from '@/assets/js/utils/index'
     }
     Vue.directive('feedBackClick', {
         bind: function(el, binding) {
-            el.option = {}
-            el.option.expression = binding.value
-            el.option.timer = null
+            el.options = {}
+            if (typeof binding.value === 'function') {
+                //expression为函数
+                el.options.feedBack = binding.value
+            } else {
+                let { funs, lotteryId } = binding.value //expression为对象
+                el.options.feedBack = funs
+                el.options.lotteryId = lotteryId
+            }
+            el.options.timer = null
         },
         inserted(el) {
             el.addEventListener('click', addClass, {

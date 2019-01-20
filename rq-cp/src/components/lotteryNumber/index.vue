@@ -162,6 +162,9 @@ export default {
     &.green {
       background-color: green;
     }
+    &.other {
+      background-color: gray;
+    }
   }
   .sixhc {
     &.split {

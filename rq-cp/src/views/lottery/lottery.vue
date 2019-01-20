@@ -4,20 +4,7 @@
       <li v-for="(lottery,idx) of lotteryList"
           :key="idx"
           class="touch-feedback"
-          v-feedBackClick>
-        <!-- <dl>
-          <dt>
-            <img :src="lottery.lotteryIcon">
-          </dt>
-          <dd>
-            <div class="ellipsis">{{lottery.lotteryName}}</div>
-            <div class="ellipsis">{{lottery.prizeIntervalDesc}}</div>
-            <div class="ellipsis">
-              <count-down :nextPrizeTime="lottery.nextPrizeTime"
-                          :currTime="lottery.sysDate"></count-down>
-            </div>
-          </dd>
-        </dl> -->
+          v-feedBackClick="{funs:goPath,lotteryId:lottery.lotteryId}">
         <flex-layout class="lottery-item">
           <img :src="lottery.lotteryIcon"
                slot="title">
@@ -39,10 +26,17 @@
 <script>
 import countDown from './countDown'
 export default {
+  props: ["lotteryList"],
   components: {
     countDown
   },
-  props: ["lotteryList"]
+  methods: {
+    goPath (lotteryId) {
+      if (lotteryId) {
+        this.$router.push({ name: 'lotteryDetail', query: { id: lotteryId } });
+      }
+    }
+  }
 }
 </script>
 

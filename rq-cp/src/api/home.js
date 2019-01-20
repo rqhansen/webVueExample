@@ -13,6 +13,17 @@ export function getBanners(data) {
 }
 
 /**
+ *
+ * @description 获取快捷导航菜单
+ */
+export function getNavsMenu(data) {
+    return axios('ajax/home/navigation.json', {
+        methods: 'get',
+        noEncrypt: false,
+        data: data
+    })
+}
+/**
  * 获取热门排行
  */
 export function getHotList(data) {

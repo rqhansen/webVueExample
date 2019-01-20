@@ -62,6 +62,15 @@ const router = new Router({
                     }
                 },
                 {
+                    name: 'lotteryDetail',
+                    path: '/lotteryDetail',
+                    component: () => import('@/views/lotteryDetail'),
+                    meta: {
+                        title: '投注',
+                        hasFooter: false
+                    }
+                },
+                {
                     name: 'prize',
                     path: '/prize',
                     component: () => import('@/views/prize'),

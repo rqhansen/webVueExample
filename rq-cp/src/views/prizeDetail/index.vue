@@ -21,6 +21,7 @@
 import top from './header'
 import lotteryHeader from './lotteryHeader'
 import prizeContent from './prizeContent'
+import { getPrizeDetail } from '@/api/prizeDetail'
 export default {
   components: {
     top,
@@ -45,19 +46,14 @@ export default {
   },
   methods: {
     refresh () {
-      return new Promise((resolve, reject) => {
-        this.init().then(() => {
-          alert('开奖详情页面刷新成功');
-          resolve();
-        })
-      })
+      return this.$refresh(this.init, { tip: '开奖详情页面刷新成功' })
     },
     init () {
       let id = this.$route.query.id;
       return new Promise((resolve, reject) => {
-        this.$http.get(`/ajax/prizeDetail/${id}.json`, { noEncrypt: true }).then(res => {
+        getPrizeDetail(id).then(res => {
           let data = res.data;
-          if (data.code === 0) {
+          if (res.data.code === 0) {
             this.lottery = data.data.lottery;
             this.prizeHistoryList = data.data.prizeHistoryList;
           }

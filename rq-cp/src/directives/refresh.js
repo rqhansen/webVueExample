@@ -6,7 +6,7 @@ import utils from '@/assets/js/utils/index'
     Vue.directive('refresh', {
         bind: function(el, binding) {
             el.options = {}
-            el.options.expression = binding.value
+            el.options.refresh = binding.value
         },
         inserted: function(el, binding) {
             if (!binding.value || typeof binding.value !== 'function') return
@@ -100,7 +100,7 @@ import utils from '@/assets/js/utils/index'
         if (getElePosition.call(this) > 0) return
         if (transLateY >= MAXOFFSETY) {
             utils.addClass(getTargetEle.call(this).children[0], 'static')
-            this.options.expression().then(() => {
+            this.options.refresh().then(() => {
                 utils.removeClass(getTargetEle.call(this).children[0], 'static')
                 utils.addClass(getTargetEle.call(this).children[0], 'active')
                 setTransLateY.call(this, 0)

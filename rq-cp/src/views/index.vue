@@ -61,8 +61,9 @@ export default {
     }
   },
   watch: {
-    $route (to) {
-      this.init();
+    $route: {
+      handler: 'init',
+      immediate: true
     }
   },
   methods: {
@@ -76,9 +77,6 @@ export default {
       this.hasFooter = route.meta.hasFooter;
       this.idx = this.iconList.findIndex(item => item.name === route.name)
     }
-  },
-  created () {
-    this.init()
   }
 };
 </script>

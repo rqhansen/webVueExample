@@ -14,6 +14,7 @@
 <script>
 import top from './header'
 import prizeList from './prizeList'
+import { getPrizeList } from '@/api/prize'
 export default {
   components: {
     top,
@@ -26,19 +27,11 @@ export default {
   },
   methods: {
     refresh () {
-      return new Promise((resolve, reject) => {
-        this.init().then(() => {
-          alert("开奖数据刷新了");
-          resolve();
-        })
-      })
+      return this.$refresh(this.init, { tip: '开奖数据刷新了' })
     },
     init () {
-      function getPrizeList () {
-        return this.$http.get("ajax/prize/prize.json", { noEncrypt: true })
-      };
       return new Promise((resolve, reject) => {
-        this.$http.all([getPrizeList.call(this)]).then(this.$http.spread((res) => {
+        this.$http.all([getPrizeList()]).then(this.$http.spread(res => {
           res.data.code === 0 && (this.prizeList = res.data.lotteryList);
           resolve();
         }))

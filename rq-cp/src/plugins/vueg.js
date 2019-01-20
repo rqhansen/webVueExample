@@ -27,6 +27,9 @@ const options = {
             name: 'lottery'
         },
         {
+            name: 'lotteryDetail'
+        },
+        {
             name: 'prize'
         },
         {

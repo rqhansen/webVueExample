@@ -1,0 +1,22 @@
+{
+    "code": 1,
+    "msg": "获取数据成功",
+    "navigateList": [
+        {
+            "title": "充值存款",
+            "imgUrl": "/img/home/navigate-1.png"
+        },
+        {
+            "title": "聊天室",
+            "imgUrl": "/img/home/navigate-2.png"
+        },
+        {
+            "title": "优惠活动",
+            "imgUrl": "/img/home/navigate-3.png"
+        },
+        {
+            "title": "在线客服",
+            "imgUrl": "/img/home/navigate-4.png"
+        }
+    ]
+}

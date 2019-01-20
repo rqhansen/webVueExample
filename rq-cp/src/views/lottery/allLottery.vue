@@ -14,7 +14,7 @@
             <li v-for="(item,index) of list.lotteryList"
                 :key="index"
                 class="touch-feedback"
-                v-feedBackClick>
+                v-feedBackClick="{funs:goPath,lotteryId:item.lotteryId}">
               <div style="margin-bottom:5px;"><img :src="item.lotteryIcon"></div>
               <div><span>{{item.lotteryName}}</span></div>
             </li>
@@ -30,6 +30,11 @@ export default {
   inheritAttrs: false,
   props: ['lotteryTypes'],
   methods: {
+    goPath (lotteryId) {
+      if (lotteryId) {
+        this.$router.push({ name: 'lotteryDetail', query: { id: lotteryId } });
+      }
+    }
   }
 }
 </script>
@@ -58,7 +63,7 @@ export default {
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        width: calc(750px / 3);
+        width: 250px;
         height: 194px;
         font-size: 24px;
         color: #757575;

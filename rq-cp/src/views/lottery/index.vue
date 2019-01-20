@@ -35,6 +35,7 @@ import top from './header'
 import headerSwipe from './headerSwipe'
 import allLottery from './allLottery'
 import lottery from './lottery'
+import { getAllLotteryTypes } from '@/api/lottery'
 export default {
   components: {
     top,
@@ -70,19 +71,11 @@ export default {
       //切换tab时需要重新请求接口
     },
     refresh () {
-      return new Promise((resolve, reject) => {
-        this.init().then(() => {
-          alert("购彩大厅刷新成功");
-          resolve();
-        })
-      })
+      return this.$refresh(this.init, { tip: '购彩大厅刷新成功' });
     },
     init () {
-      function getAllLotteryTypes () {
-        return this.$http.get("ajax/lottery/allLotteryTypes.json", { noEncrypt: true })
-      };
       return new Promise((resolve, reject) => {
-        this.$http.all([getAllLotteryTypes.call(this)]).then(this.$http.spread((types) => {
+        this.$http.all([getAllLotteryTypes()]).then(this.$http.spread((types) => {
           types.data.code !== 0 && (this.allLotteryTypes = types.data.lotteryTypeList);
           resolve();
         }))

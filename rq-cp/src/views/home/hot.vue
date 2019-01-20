@@ -4,9 +4,9 @@
     <div>
       <ul>
         <li v-for="item of lotteryList"
-            :key="item.id"
+            :key="item.lotteryId"
             class="touch-feedback"
-            v-feedBackClick>
+            v-feedBackClick="{funs:goPath,lotteryId:item.lotteryId}">
           <flex-layout class="hot-lottery">
             <img :src="item.lotteryIcon"
                  slot="title">
@@ -22,7 +22,14 @@
 <script>
 export default {
   name: "hot",
-  props: ["lotteryList"]
+  props: ["lotteryList"],
+  methods: {
+    goPath (lotteryId) {
+      if (lotteryId) {
+        this.$router.push({ name: 'lotteryDetail', query: { id: lotteryId } });
+      }
+    }
+  }
 }
 </script>
 

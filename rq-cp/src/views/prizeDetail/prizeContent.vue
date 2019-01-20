@@ -70,8 +70,6 @@ export default {
         justify-content: space-between;
       }
       /deep/ dd {
-        // flex-direction: row;
-        // justify-content: space-between;
         @extend dt;
       }
     }
