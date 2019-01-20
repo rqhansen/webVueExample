@@ -25,9 +25,7 @@ export default {
   props: ["lotteryList"],
   methods: {
     goPath (lotteryId) {
-      if (lotteryId) {
-        this.$router.push({ name: 'lotteryDetail', query: { id: lotteryId } });
-      }
+      this.$router.push({ name: 'lotteryDetail', query: { id: lotteryId } });
     }
   }
 }
