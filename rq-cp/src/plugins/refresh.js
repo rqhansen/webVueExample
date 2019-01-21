@@ -1,7 +1,7 @@
 import Vue from 'vue'
 /**
- * @param {Function} asyncFun 异步函数
- * @param {String} tip 配置数据
+ * @param {Function} asyncFun 返回Promise的函数
+ * @param {String} tip 配置提示语
  */
 
 Vue.prototype.$refresh = function(asyncFun, config) {
