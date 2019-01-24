@@ -1,7 +1,7 @@
 <template>
   <div class="all-lotterys-wrapper">
     <div class="all-lotterys">
-      <ul>
+      <ul class="a-menu">
         <li v-for="(item,idx) of allLotterys"
             :key="item.lotteryId"
             :class="{'active':lotteryIndex===idx}"
@@ -13,20 +13,33 @@
 
 <script>
 export default {
-  props: ['allLotterys'],
   data () {
     return {
       lotteryIndex: -1
     }
   },
+  computed: {
+    allLotterys () {
+      return this.$attrs.allLotterys;
+    },
+    lotteryId () {
+      return this.$attrs.lotteryId;
+    }
+  },
+  watch: {
+    lotteryId (newVal) {
+      this.lotteryIndex = this.allLotterys.findIndex(item => item.lotteryId === newVal);
+    }
+  },
   methods: {
+    /**
+     * 切换彩种
+     */
     changeLottery (item, idx) {
       if (this.lotteryIndex === idx) return
       this.lotteryIndex = idx;
+      this.$emit('swith-lottery', item.lotteryId);
     }
-  },
-  created () {
-    console.log(this.allLotterys);
   }
 }
 </script>
@@ -39,27 +52,10 @@ export default {
     height: 441px;
     background-color: #fff;
     overflow: scroll;
-  }
-  ul {
-    padding-bottom: 15px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-
-    li {
-      display: inline-block;
-      width: 230px;
-      height: 56px;
-      line-height: 56px;
-      margin-top: 15px;
-      color: #999;
-      text-align: center;
-      border: 1px solid #eee;
-      border-radius: 6px;
-      font-size: 30px;
-      &.active {
-        color: #ec0022;
-        border-color: #ec0022;
+    @import "./common.scss";
+    .a-menu {
+      li {
+        width: 230px;
       }
     }
   }

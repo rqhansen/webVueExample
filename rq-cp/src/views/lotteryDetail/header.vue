@@ -5,7 +5,7 @@
            class="lottery-name-wrapper">
         <div class="lottery-name"
              @click="changePlay">
-          <span>总和</span>
+          <span>{{defaultPlayName}}</span>
           <span class="tri"
                 :class="{'round':isSwitchPlay}">
             <svg-icon icon-class="up-triangle"></svg-icon>
@@ -23,16 +23,39 @@
         </div>
       </div>
     </vux-header>
+    <!-- 蒙层 -->
+    <!-- 所有玩法 -->
+    <transition name="drop-down">
+      <div class="lottery-detail-layer"
+           v-show="isSwitchPlay">
+        <lottery-play v-bind="$attrs"></lottery-play>
+      </div>
+    </transition>
+    <!-- 所有彩种 -->
+    <transition name="drop-down">
+      <div class="lottery-detail-layer"
+           v-show="isSwitchLottery">
+        <lottery-types v-bind="$attrs"
+                       v-on="$listeners"></lottery-types>
+      </div>
+    </transition>
   </div>
 </template>
 
 <script>
+import lotteryTypes from './lotteryTypes'
+import lotteryPlay from './lotteryPlay'
 export default {
-  props: ['allLotteryTypes'],
+  inheritAttrs: false,
+  props: ['defaultPlayName'],
+  components: {
+    lotteryTypes,
+    lotteryPlay
+  },
   data () {
     return {
       isSwitchPlay: false, //切换玩法
-      isSwitchLottery: false
+      isSwitchLottery: false,
     }
   },
   methods: {
@@ -40,25 +63,27 @@ export default {
      * 切换玩法
      */
     changePlay () {
+      this.isSwitchLottery && (this.isSwitchLottery = false);
       this.isSwitchPlay = !this.isSwitchPlay
     },
     /**
      * 切换彩种
      */
     changeLottery () {
+      this.isSwitchPlay && (this.isSwitchPlay = false);
       this.isSwitchLottery = !this.isSwitchLottery;
-      this.$emit('show-lottery-types', this.isSwitchLottery);
     }
-
   },
-  created () {
-    // console.log(this.allLotteryTypes);
+  deactivated () {
+    this.isSwitchLottery && (this.isSwitchLottery = false);
+    this.isSwitchPlay && (this.isSwitchPlay = false);
   }
 }
 </script>
 
 <style lang="scss" scoped>
 .lottery-detail-header {
+  position: relative;
   .rq-header-tool {
     font-size: 30px;
   }
@@ -69,7 +94,7 @@ export default {
       padding: 0 2px 0 10px;
       height: 50px;
       line-height: 50px;
-      border: 2px solid #fff;
+      border: 1px solid #fff;
       text-align: center;
       border-radius: 6px;
     }
@@ -90,6 +115,14 @@ export default {
     .svg-icon {
       transform: rotate(180deg);
     }
+  }
+  .lottery-detail-layer {
+    position: absolute;
+    top: 88px;
+    left: 0;
+    height: calc(100vh - 184px);
+    background-color: #eee;
+    z-index: 2;
   }
 }
 </style>
