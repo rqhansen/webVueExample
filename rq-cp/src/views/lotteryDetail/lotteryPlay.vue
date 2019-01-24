@@ -31,22 +31,12 @@
 
 <script>
 export default {
+  props: ['lotteryPlayList', 'defaultPlayId', 'subMenu'],
   data () {
     return {
       menuPlayId: '',//一级玩法Id
       lotteryPlayId: '', //玩法Id
       playMenu: [] //二三级玩法列表
-    }
-  },
-  computed: {
-    lotteryPlayList () { //所有玩法
-      return this.$attrs.lotteryPlayList;
-    },
-    defaultPlayId () { //默认玩法id
-      return this.$attrs.defaultPlayId;
-    },
-    subMenu () {
-      return this.$attrs.subMenu;
     }
   },
   watch: {
@@ -73,6 +63,7 @@ export default {
     changePlay (play, idx) {
       if (this.lotteryPlayId === play.lotteryPlayId) return
       this.lotteryPlayId = play.lotteryPlayId;
+      this.$emit('change-play', play);
     }
   },
 }

@@ -4,7 +4,7 @@
       <ul class="a-menu">
         <li v-for="(item,idx) of allLotterys"
             :key="item.lotteryId"
-            :class="{'active':lotteryIndex===idx}"
+            :class="{'active':lotId===item.lotteryId}"
             @click="changeLottery(item,idx)">{{item.lotteryName}}</li>
       </ul>
     </div>
@@ -13,22 +13,15 @@
 
 <script>
 export default {
+  props: ['allLotterys', 'lotteryId'],
   data () {
     return {
-      lotteryIndex: -1
-    }
-  },
-  computed: {
-    allLotterys () {
-      return this.$attrs.allLotterys;
-    },
-    lotteryId () {
-      return this.$attrs.lotteryId;
+      lotId: ''
     }
   },
   watch: {
     lotteryId (newVal) {
-      this.lotteryIndex = this.allLotterys.findIndex(item => item.lotteryId === newVal);
+      this.lotId = newVal;
     }
   },
   methods: {
@@ -36,9 +29,9 @@ export default {
      * 切换彩种
      */
     changeLottery (item, idx) {
-      if (this.lotteryIndex === idx) return
-      this.lotteryIndex = idx;
-      this.$emit('swith-lottery', item.lotteryId);
+      if (this.lotId === item.lotteryId) return
+      this.lotId === item.lotteryId;
+      this.$emit('change-lottery', item.lotteryId);
     }
   }
 }

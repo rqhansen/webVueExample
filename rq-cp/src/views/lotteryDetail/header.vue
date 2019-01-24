@@ -23,35 +23,14 @@
         </div>
       </div>
     </vux-header>
-    <!-- 蒙层 -->
-    <!-- 所有玩法 -->
-    <transition name="drop-down">
-      <div class="lottery-detail-layer"
-           v-show="isSwitchPlay">
-        <lottery-play v-bind="$attrs"></lottery-play>
-      </div>
-    </transition>
-    <!-- 所有彩种 -->
-    <transition name="drop-down">
-      <div class="lottery-detail-layer"
-           v-show="isSwitchLottery">
-        <lottery-types v-bind="$attrs"
-                       v-on="$listeners"></lottery-types>
-      </div>
-    </transition>
+
   </div>
 </template>
 
 <script>
-import lotteryTypes from './lotteryTypes'
-import lotteryPlay from './lotteryPlay'
+
 export default {
-  inheritAttrs: false,
   props: ['defaultPlayName'],
-  components: {
-    lotteryTypes,
-    lotteryPlay
-  },
   data () {
     return {
       isSwitchPlay: false, //切换玩法
@@ -65,6 +44,8 @@ export default {
     changePlay () {
       this.isSwitchLottery && (this.isSwitchLottery = false);
       this.isSwitchPlay = !this.isSwitchPlay
+      this.$emit('switch-play', this.isSwitchPlay);
+      this.$emit('switch-lottery', this.isSwitchLottery);
     },
     /**
      * 切换彩种
@@ -72,6 +53,9 @@ export default {
     changeLottery () {
       this.isSwitchPlay && (this.isSwitchPlay = false);
       this.isSwitchLottery = !this.isSwitchLottery;
+      this.$emit('switch-lottery', this.isSwitchLottery);
+      this.$emit('switch-play', this.isSwitchPlay);
+
     }
   },
   deactivated () {
@@ -83,7 +67,6 @@ export default {
 
 <style lang="scss" scoped>
 .lottery-detail-header {
-  position: relative;
   .rq-header-tool {
     font-size: 30px;
   }
@@ -115,14 +98,6 @@ export default {
     .svg-icon {
       transform: rotate(180deg);
     }
-  }
-  .lottery-detail-layer {
-    position: absolute;
-    top: 88px;
-    left: 0;
-    height: calc(100vh - 184px);
-    background-color: #eee;
-    z-index: 2;
   }
 }
 </style>

@@ -1,17 +1,35 @@
 <template>
   <section class="rq-lottery-detail">
     <header>
-      <top :allLotterys="lotteryTypes"
-           :defaultPlayId="defaultPlay.lotteryPlayId"
-           :defaultPlayName="defaultPlay.playName"
-           :lotteryId="lotteryId"
-           :lotteryPlayList="lotteryPlayList"
-           :subMenu="subMenu"
-           @swith-lottery="switchLottery"></top>
+      <top :defaultPlayName="defaultPlay.playName"
+           @switch-lottery="switchLotteryTypes"
+           @switch-play="switchPlay"></top>
     </header>
     <!-- 投注区域 -->
     <div class="lottery-detail-wrapper">
-      <!-- <lottery-detail></lottery-detail> -->
+      <!-- 投注 -->
+      <lottery-betting :lotteryPlay="defaultPlay"></lottery-betting>
+
+      <!-- 蒙层 -->
+      <!-- 玩法 -->
+      <transition name="drop-down">
+        <div class="lottery-detail-layer"
+             v-show="isShowPlay">
+          <lottery-play :lotteryPlayList="lotteryPlayList"
+                        :defaultPlayId="defaultPlay.lotteryPlayId"
+                        :subMenu="subMenu"
+                        @change-play="changePlay"></lottery-play>
+        </div>
+      </transition>
+      <!-- 彩种 -->
+      <transition name="drop-down">
+        <div class="lottery-detail-layer"
+             v-show="isShowLottery">
+          <lottery-types :allLotterys="lotteryTypes"
+                         :lotteryId="lotteryId"
+                         @change-lottery="switchLottery"></lottery-types>
+        </div>
+      </transition>
     </div>
     <footer class="lottery-detail-footer"></footer>
   </section>
@@ -19,32 +37,28 @@
 
 <script>
 import top from './header'
-import lotteryDetail from './lotteryDetail'
-
+import lotteryTypes from './lotteryTypes'
+import lotteryPlay from './lotteryPlay'
+import lotteryBetting from './lotteryBetting'
 import { getAllLotteryTypes } from '@/api/lottery'
 import { getDefaultPlay } from '@/api/lotteryDetail'
 export default {
   name: 'lotteryDetail',
   components: {
     top,
-    lotteryDetail
+    lotteryBetting,
+    lotteryTypes,
+    lotteryPlay
   },
   data () {
     return {
-      allLotteryTypes: [],
-      defaultPlay: [],
+      lotteryTypes: [],//所有彩票类型
+      subMenu: [],//二三级菜单
+      defaultPlay: {},
       lotteryPlayList: [],//玩法列表
-      lotteryId: ''
-    }
-  },
-  computed: {
-    lotteryTypes () { //切换彩种---所有彩种
-      if (!this.allLotteryTypes.length) return
-      return this.allLotteryTypes.filter(item => item.code === 'all')[0].lotteryList;
-    },
-    subMenu () { //二级菜单
-      if (!this.lotteryPlayList.length) return
-      return this.lotteryPlayList.filter(item => item.lotteryPlayId === this.defaultPlay.lotteryPlayId.slice(0, 3))[0].lotteryPlayList;
+      lotteryId: '',
+      isShowPlay: false, //切换玩法
+      isShowLottery: false, //切换彩种
     }
   },
   watch: {
@@ -56,46 +70,87 @@ export default {
   },
   methods: {
     /**
+     * 切换玩法
+     */
+    changePlay (play) {
+      this.defaultPlay = play;
+    },
+    /**
+     * 显示玩法蒙层
+     */
+    switchPlay (flag) {
+      this.isShowPlay = flag;
+    },
+    /**
+     * 显示彩种蒙层
+     */
+    switchLotteryTypes (flag) {
+      this.isShowLottery = flag;
+    },
+    /**
      * 切换彩种
      */
     switchLottery (lotteryId) {
       this.$router.replace({ name: 'lotteryDetail', query: { id: lotteryId, excluMenu: true } });
-      getDefaultPlay(lotteryId).then(res => {
-        if (res.data.code === 0) {
-          let { data: { data: { defaulPlay, lotteryPlayList, lottery: { lotteryId } } } } = res;
-          this.defaultPlay = defaulPlay;
-          this.lotteryPlayList = lotteryPlayList;
-          this.lotteryId = lotteryId;
-        }
-      })
+      this.getDefaultPlay(lotteryId);
     },
-    init (lotteryId) {
+    getDefaultPlay (lotteryId) { //获取玩法id
       return new Promise((resolve, reject) => {
-        this.$http.all([getAllLotteryTypes(), getDefaultPlay(lotteryId)]).then(this.$http.spread((types, res) => {
-          types.data.code !== 0 && (this.allLotteryTypes = types.data.lotteryTypeList);
-          if (res.data.code === 0) {
+        getDefaultPlay(lotteryId).then(res => {
+          if (res.data.code === 0) { //每个彩种玩法
             let { data: { data: { defaulPlay, lotteryPlayList, lottery: { lotteryId } } } } = res;
             this.defaultPlay = defaulPlay;
             this.lotteryPlayList = lotteryPlayList;
+            this.subMenu = this.lotteryPlayList.filter(item => item.lotteryPlayId === this.defaultPlay.lotteryPlayId.slice(0, 3))[0].lotteryPlayList;
             this.lotteryId = lotteryId;
+            resolve();
           }
-          resolve();
-        }))
+        })
       })
+    },
+    init (lotteryId) { //获取玩法和所有彩种
+      return new Promise((resolve, reject) => {
+        Promise.all([this.getDefaultPlay(lotteryId), getAllLotteryType.call(this)]).then(() => {
+          resolve();
+        });
+      })
+      function getAllLotteryType () { //获取所有彩种类型
+        return new Promise((resolve, reject) => {
+          getAllLotteryTypes().then(res => {
+            if (res.data.code !== 0) {
+              this.lotteryTypes = res.data.lotteryTypeList.filter(item => item.code === 'all')[0].lotteryList;
+              resolve();
+            }
+          })
+        })
+      }
     }
   },
   created () {
     this.init(this.$route.query.id);
+  },
+  deactivated () {
+    this.isShowPlay && (this.isShowPlay = false);
+    this.isShowLottery && (this.isShowLottery = false);
   }
 }
 </script>
 
 <style lang="scss" scoped>
+@import "@/assets/scss/transition.scss";
 .rq-lottery-detail {
   .lottery-detail-wrapper {
     position: relative;
     height: calc(100vh - 184px);
     overflow: hidden;
+    .lottery-detail-layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      background-color: #eee;
+      z-index: 2;
+    }
   }
   .lottery-detail-footer {
     height: 96px;
