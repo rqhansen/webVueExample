@@ -8,7 +8,8 @@
     <!-- 投注区域 -->
     <div class="lottery-detail-wrapper">
       <!-- 投注 -->
-      <lottery-betting :lotteryPlay="defaultPlay"></lottery-betting>
+      <lottery-betting :code="code"
+                       :lotteryPlay="defaultPlay"></lottery-betting>
 
       <!-- 蒙层 -->
       <!-- 玩法 -->
@@ -59,6 +60,7 @@ export default {
       lotteryId: '',
       isShowPlay: false, //切换玩法
       isShowLottery: false, //切换彩种
+      code: ''
     }
   },
   watch: {
@@ -98,7 +100,8 @@ export default {
       return new Promise((resolve, reject) => {
         getDefaultPlay(lotteryId).then(res => {
           if (res.data.code === 0) { //每个彩种玩法
-            let { data: { data: { defaulPlay, lotteryPlayList, lottery: { lotteryId } } } } = res;
+            let { data: { data: { defaulPlay, lotteryPlayList, lottery: { code, lotteryId } } } } = res;
+            this.code = code;
             this.defaultPlay = defaulPlay;
             this.lotteryPlayList = lotteryPlayList;
             this.subMenu = this.lotteryPlayList.filter(item => item.lotteryPlayId === this.defaultPlay.lotteryPlayId.slice(0, 3))[0].lotteryPlayList;

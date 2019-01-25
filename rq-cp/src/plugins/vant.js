@@ -6,7 +6,8 @@ import {
     Dialog,
     Button,
     Loading,
-    Checkbox
+    Checkbox,
+    CheckboxGroup
 } from 'vant'
 Vue.component(Swipe.name, Swipe)
 Vue.component(SwipeItem.name, SwipeItem)
@@ -14,4 +15,4 @@ Vue.use(Lazyload)
 Vue.use(Dialog)
 Vue.use(Button)
 Vue.use(Loading)
-Vue.use(Checkbox)
+Vue.use(Checkbox).use(CheckboxGroup)
