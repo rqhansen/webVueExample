@@ -42,7 +42,6 @@
         </li>
       </ul>
       <!-- 手动选号 -->
-
   </div>
 </template>
 
@@ -64,18 +63,11 @@ export default {
     }
   },
   watch:{
-    bettingPlay(newVal){
-      this.selectedBalls = [];
-      this.computeNote = require(`./common_modal/${this.code}.js`).default;
-      this.layout = newVal.layout;
-      this.lotteryPlayId = newVal.lotteryPlayId;
-      this.ballsList = this.layout.layout;
-      let bar = this.layout.positionbar;
-      let toolbar = this.layout.toolbar;
-      bar?this.barBtns = bar.btns:this.barBtns = [];
-      toolbar?this.toolBtns = toolbar.btns:this.toolBtns = [];
-      //处理赔率
-      this.hanlderOdds();
+    bettingPlay:{
+      handler(newVal){
+        this.init(newVal);
+      },
+      deep:true
     }
   },
   methods:{
@@ -197,7 +189,22 @@ export default {
         } else {
           this.inputSelect()
         }
+      },
+      init(newVal){
+        this.computeNote = require(`./common_modal/${this.code}.js`).default;
+        this.selectedBalls = [];
+        this.layout = newVal.layout;
+        this.lotteryPlayId = newVal.lotteryPlayId;
+        this.ballsList = newVal.layout.layout;
+        let bar = this.layout.positionbar;
+        let toolbar = this.layout.toolbar;
+        bar?this.barBtns = bar.btns:this.barBtns = [];
+        toolbar?this.toolBtns = toolbar.btns:this.toolBtns = [];
+        this.hanlderOdds();
       }
+  },
+  created(){
+    this.init(this.bettingPlay);   
   }
 }
 </script>

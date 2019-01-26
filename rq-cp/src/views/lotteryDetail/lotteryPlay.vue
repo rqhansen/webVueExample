@@ -65,7 +65,7 @@ export default {
       this.lotteryPlayId = play.lotteryPlayId;
       this.$emit('change-play', play);
     }
-  },
+  }
 }
 </script>
 

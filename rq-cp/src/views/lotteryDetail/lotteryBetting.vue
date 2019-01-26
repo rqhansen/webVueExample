@@ -13,33 +13,27 @@ export default {
   components:{...component},
   data () {
     return {
-      bettingPlay: {}, //玩法
-      layout: ''
+      layout: '',
+      lotteryCode:''
     }
   },
   computed:{
-    lotteryCode(){
-      return this.code==='6hc'?'sixhc':this.code==='pcdd'?'pcdd':'other'
-    }
-  },
-  watch: {
-    lotteryPlay: {
-      handler (newVal) {
-        this.handlerData(newVal);
-      },
-      deep: true
-    }
-  },
-  methods: {
-    handlerData (data) {
-      let layout = JSON.parse(data.layout);
+    bettingPlay(){
+      if(!this.lotteryPlay.layout) return {} //排除空值
+      let layout = JSON.parse(this.lotteryPlay.layout);
       layout.layout.forEach(item => {
         item.balls = item.balls.split('|');
       })
-      this.bettingPlay = JSON.parse(JSON.stringify(data));
-      this.bettingPlay.layout = layout;
+      let bettingPlay = JSON.parse(JSON.stringify(this.lotteryPlay));
+      bettingPlay.layout = layout;
+      return bettingPlay;
     }
   },
+  watch: {
+    code(newVal){
+      this.lotteryCode =newVal==='6hc'?'sixhc':newVal==='pcdd'?'pcdd':'other'
+    }
+  }
 }
 </script>
 

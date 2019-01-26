@@ -9,6 +9,26 @@
             "icon": "https://tg-cdn2.gdbzh.com.cn/34913a62-339f-4727-be7d-bd136c40bbb5.png",
             "lotteryList": [
                 {
+                    "lotteryId": "1",
+                    "lotteryName": "安徽快三",
+                    "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/e1cedd3e-5348-41de-be94-1b8c5e03d136.png",
+                    "lotteryType": "897846539316211714",
+                    "prizeInterval": "10",
+                    "prizeIntervalDesc": "每10分钟开奖",
+                    "prizeEnd": "21:59",
+                    "hotFlag": "1",
+                    "nextPrizeTime": 1548488820000,
+                    "sysDate": 1548488724000,
+                    "code": "ksan",
+                    "sort": 16,
+                    "prePeriodNo": "20190126042",
+                    "nextPeriodNo": "20190126043",
+                    "preLotteryNumber": "3,5,5",
+                    "selfFlag": null,
+                    "lastLeaf": "1",
+                    "status": "1"
+                },
+                {
                     "lotteryId": "8",
                     "lotteryName": "江苏快三",
                     "lotteryIcon": "https://tg-cdn2.gdbzh.com.cn/e15c1b2e-5baf-4f76-aa1c-e8df2e4a26b8.png",
