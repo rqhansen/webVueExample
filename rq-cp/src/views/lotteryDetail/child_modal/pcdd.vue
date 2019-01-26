@@ -2,10 +2,10 @@
   <div class="pcdd-betting balls">
     <div class="balls-wapper">
       <div class="all-balls">
-          <span v-for="(ball,ballIndex) of ballsList"
+          <span v-for="(ball,ballIndex) of ballsList[0].balls"
                   :key="ballIndex"
                   :class="{'selected':ball.selected}"
-                  @click="chooseBall(ball,ballIndex)">{{ball}}</span>
+                  @click="chooseBall(ball,ballIndex)">{{ball.ball}}</span>
       </div>
     </div>
   </div>
@@ -29,6 +29,7 @@ export default {
     bettingPlay:{
       handler(newVal){
         this.init(newVal);
+        debugger;
       },
       deep:true
     }
@@ -58,8 +59,8 @@ export default {
       })
     },
     init(newVal){
-        this.computeNote = require(`./common_modal/${this.code}.js`).default;
         this.selectedBalls = [];
+        this.computeNote = require(`./common_modal/${this.code}.js`).default;
         this.layout = newVal.layout;
         this.lotteryPlayId = newVal.lotteryPlayId;
         this.ballsList = newVal.layout.layout;

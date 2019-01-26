@@ -56,6 +56,10 @@ export default {
       if (this.menuPlayId === item.lotteryPlayId) return
       this.menuPlayId = item.lotteryPlayId
       this.playMenu = item.lotteryPlayList;
+      //pcdd没有lotteryPlayList
+      if(!this.playMenu){
+        this.$emit('change-play', item);
+      }
     },
     /**
      * 切换玩法,改变玩法的id
