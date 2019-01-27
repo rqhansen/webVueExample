@@ -9,7 +9,8 @@
     <div class="lottery-detail-wrapper">
       <!-- 投注 -->
       <lottery-betting :code="code"
-                       :lotteryPlay="defaultPlay"></lottery-betting>
+                       :lotteryPlay="defaultPlay"
+                       :parentPlayId="parentPlayId"></lottery-betting>
 
       <!-- 蒙层 -->
       <!-- 玩法 -->
@@ -19,7 +20,9 @@
           <lottery-play :lotteryPlayList="lotteryPlayList"
                         :defaultPlayId="defaultPlay.lotteryPlayId"
                         :subMenu="subMenu"
-                        @change-play="changePlay"></lottery-play>
+                        :parentPlayId="parentPlayId"
+                        @change-play="changePlay"
+                        @set-parent-play-id="setParentPlayId"></lottery-play>
         </div>
       </transition>
       <!-- 彩种 -->
@@ -60,7 +63,9 @@ export default {
       lotteryId: '',
       isShowPlay: false, //切换玩法
       isShowLottery: false, //切换彩种
-      code: ''
+      code: '',
+      parentPlayId: '', //父级Id
+      bettingPlayId: '' //去betting的父级Id
     }
   },
   watch: {
@@ -72,7 +77,13 @@ export default {
   },
   methods: {
     /**
-     * 切换玩法
+     * 设置父级Id
+     */
+    setParentPlayId (parentPlayId) {
+      this.parentPlayId = parentPlayId;
+    },
+    /**
+     * 切换同一彩种的玩法
      */
     changePlay (play) {
       this.defaultPlay = play;
@@ -91,6 +102,7 @@ export default {
     },
     /**
      * 切换彩种
+     * excluMenu:true表示只请求玩法
      */
     switchLottery (lotteryId) {
       this.$router.replace({ name: 'lotteryDetail', query: { id: lotteryId, excluMenu: true } });
@@ -100,12 +112,16 @@ export default {
       return new Promise((resolve, reject) => {
         getDefaultPlay(lotteryId).then(res => {
           if (res.data.code === 0) { //每个彩种玩法
-            let { data: { data: { defaulPlay, lotteryPlayList, lottery: { code, lotteryId } } } } = res;
+            let { data: { data: { defaulPlay, lotteryPlayList, defaulPlay: { lotteryPlayId }, lottery: { code, lotteryId } } } } = res;
+            if (code !== 'pcdd') { //pcdd的父级与自身同级，parentId即为自身lotterPlayId
+              lotteryPlayId = lotteryPlayId.slice(0, 3);
+            }
             this.code = code;
             this.defaultPlay = defaulPlay;
             this.lotteryPlayList = lotteryPlayList;
-            this.subMenu = this.lotteryPlayList.filter(item => item.lotteryPlayId === this.defaultPlay.lotteryPlayId.slice(0, 3))[0].lotteryPlayList;
+            this.parentPlayId = lotteryPlayId; //父级Id
             this.lotteryId = lotteryId;
+            this.subMenu = this.lotteryPlayList.filter(item => item.lotteryPlayId === lotteryPlayId)[0].lotteryPlayList;
             resolve();
           }
         })

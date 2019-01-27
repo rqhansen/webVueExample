@@ -31,7 +31,7 @@
 
 <script>
 export default {
-  props: ['lotteryPlayList', 'defaultPlayId', 'subMenu'],
+  props: ['lotteryPlayList', 'defaultPlayId', 'subMenu', 'parentPlayId'],
   data () {
     return {
       menuPlayId: '',//一级玩法Id
@@ -40,11 +40,13 @@ export default {
     }
   },
   watch: {
-    defaultPlayId (newVal) {
-      this.menuPlayId = newVal.slice(0, 3);
+    defaultPlayId (newVal, oldVal) { //三级菜单Id
       this.lotteryPlayId = newVal
     },
-    subMenu (newVal) {
+    parentPlayId (newId) { //一级菜单Id
+      this.menuPlayId = newId;
+    },
+    subMenu (newVal) { //二三级菜单
       this.playMenu = newVal;
     }
   },
@@ -54,15 +56,15 @@ export default {
      */
     changeTopPlay (item, idx) {
       if (this.menuPlayId === item.lotteryPlayId) return
-      this.menuPlayId = item.lotteryPlayId
+      // this.menuPlayId = item.lotteryPlayId
       this.playMenu = item.lotteryPlayList;
-      //pcdd没有lotteryPlayList
-      if(!this.playMenu){
+      if (!this.playMenu) {//pcdd没有二级菜单lotteryPlayList，改变投注内容
         this.$emit('change-play', item);
       }
+      this.$emit('set-parent-play-id', item.lotteryPlayId);
     },
     /**
-     * 切换玩法,改变玩法的id
+     * 切换玩法
      */
     changePlay (play, idx) {
       if (this.lotteryPlayId === play.lotteryPlayId) return
