@@ -131,11 +131,11 @@ export default {
       flex-direction: column;
       justify-content: center;
       width: 225px;
-      height: 136px;
+      height: 184px;
       padding: 0 10px;
       margin: 15px 7.5px 15px;
       text-align: center;
-      font-size: 30px;
+      font-size: 34px;
       border: 1px solid #e2e2e2;
       border-radius: 12px;
       box-shadow: 0 0 6px 3px rgba(0, 0, 0, 0.1);
@@ -147,6 +147,7 @@ export default {
         }
       }
       .odds {
+        font-size: 28px;
         color: #ec0022;
       }
     }

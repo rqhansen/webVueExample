@@ -213,7 +213,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../common.scss";
 .checkbox-list {
   display: flex;
   padding: 10px 15px;
@@ -232,6 +231,93 @@ export default {
       font-size: 22px;
       &:before {
         vertical-align: -3px;
+      }
+    }
+  }
+}
+//号码样式
+.balls {
+  li {
+    display: flex;
+    align-items: center;
+    padding-bottom: 15px;
+  }
+  .label {
+    @extend li;
+    width: 110px;
+    max-width: 140px;
+    padding-bottom: 0;
+    span {
+      position: relative;
+      display: block;
+      height: 48px;
+      line-height: 48px;
+      padding: 0 10px;
+      text-align: center;
+      color: #999;
+      font-size: 26px;
+      background-color: #eee;
+      &:after {
+        position: absolute;
+        top: 0;
+        right: -47px;
+        display: block;
+        content: "";
+        border: 24px solid #fff;
+        border-left-color: #eee;
+      }
+    }
+  }
+  .balls-wrapper {
+    flex: 1;
+    font-size: 30px;
+    margin-left: 34px;
+    .ball-btns {
+      width: 100%;
+      height: 48px;
+      margin-bottom: 15px;
+      line-height: 48px;
+      font-size: 0;
+      background-color: #f1f1f1;
+      border-radius: 48px;
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+      span {
+        display: inline-block;
+        font-size: 30px;
+        text-align: center;
+        &:hover {
+          color: #fff;
+          background: #ec0022;
+        }
+        &:first-child {
+          border-bottom-left-radius: 48px;
+          border-top-left-radius: 48px;
+        }
+        &:last-child {
+          border-bottom-right-radius: 48px;
+          border-top-right-radius: 48px;
+        }
+      }
+    }
+    .all-balls {
+      @extend li;
+      flex-wrap: wrap;
+      min-height: 48px;
+      padding: 0;
+      span {
+        display: block;
+        width: 72px;
+        height: 72px;
+        margin: 5px;
+        line-height: 72px;
+        text-align: center;
+        border-radius: 50%;
+        border: 1px solid red;
+        &.selected {
+          background: #ec0022;
+          border-color: #e06136;
+          color: #fff;
+        }
       }
     }
   }

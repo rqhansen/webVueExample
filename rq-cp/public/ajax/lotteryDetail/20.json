@@ -2746,7 +2746,7 @@
                             {
                                 "lotteryPlayId": "70130101",
                                 "playName": "三色波",
-                                "playDesc": "对开奖特码的色波进行投注，颜色代表如下： &lt;br/&gt;&lt;span style=&quot;color:red;&quot; &gt;红波&lt;/span&gt;：01,02,07,08,12,13,18,19,23,24,29,30,34,35,40,45,46 &lt;br&gt; &lt;span style=&quot;color:blue;&quot; &gt;蓝波&lt;/span&gt;：03,04,09,10,14,15,20,25,26,31,36,37,41,42,47,48 &lt;br&gt; &lt;span style=&quot;color:green;&quot; &gt;绿波&lt;/span&gt;：05,06,11,16,17,21,22,27,28,32,33,38,39,43,44,49",
+                                "playDesc": "&lt;span style=&quot;display:block;font-size:0.41rem;white-space:nowrap;&quot;&gt;对开奖特码的色波进行投注，颜色代表如下：&lt;/span&gt;&lt;span style=&quot;color:#ec0022;&quot; &gt;红波:&lt;/span&gt;&lt;br/&gt;&lt;span style=&quot;display:block;font-size:0.4rem;white-space:nowrap;&quot;&gt;01,02,07,08,12,13,18,19,23,24,29,30,34,35,40,45,46 &lt;/span&gt;&lt;span style=&quot;color:blue;&quot; &gt;蓝波:&lt;/span&gt;&lt;br/&gt;&lt;span style=&quot;display:block;font-size:0.4rem;white-space:nowrap;&quot;&gt;03,04,09,10,14,15,20,25,26,31,36,37,41,42,47,48&lt;/span&gt;&lt;span style=&quot;color:green;&quot; &gt;绿波:&lt;/span&gt;&lt;br/&gt;&lt;span style=&quot;display:block;font-size:0.4rem;white-space:nowrap;&quot;&gt;05,06,11,16,17,21,22,27,28,32,33,38,39,43,44,49&lt;/span&gt;",
                                 "lotteryBettingId": "70130101",
                                 "lotteryNum": null,
                                 "lotteryNo": null,
