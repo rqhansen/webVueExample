@@ -19,7 +19,7 @@
         <li>
           <van-button type="primary"
                       @click="bet"
-                      :disabled="!bettingInfo.len">投注</van-button>
+                      :disabled="!!!bettingInfo.len">投注</van-button>
         </li>
       </ul>
     </div>
