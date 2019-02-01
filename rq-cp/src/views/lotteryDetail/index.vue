@@ -3,14 +3,17 @@
     <header>
       <top :defaultPlayName="defaultPlay.playName"
            @switch-lottery="switchLotteryTypes"
-           @switch-play="switchPlay"></top>
+           @switch-play="switchPlay"
+           :isShowPlay="isShowPlay"
+           :isShowLottery="isShowLottery"></top>
     </header>
     <!-- 投注区域 -->
     <div class="lottery-detail-wrapper">
       <!-- 投注 -->
       <lottery-betting :code="code"
                        :lotteryPlay="defaultPlay"
-                       :parentPlayId="parentPlayId"></lottery-betting>
+                       :parentPlayId="parentPlayId"
+                       @get-balls="getBalls"></lottery-betting>
 
       <!-- 蒙层 -->
       <!-- 玩法 -->
@@ -22,7 +25,8 @@
                         :subMenu="subMenu"
                         :parentPlayId="parentPlayId"
                         @change-play="changePlay"
-                        @set-parent-play-id="setParentPlayId"></lottery-play>
+                        @set-parent-play-id="setParentPlayId"
+                        @click.native.self="hideLotteryPlay"></lottery-play>
         </div>
       </transition>
       <!-- 彩种 -->
@@ -31,11 +35,16 @@
              v-show="isShowLottery">
           <lottery-types :allLotterys="lotteryTypes"
                          :lotteryId="lotteryId"
-                         @change-lottery="switchLottery"></lottery-types>
+                         @change-lottery="switchLottery"
+                         @click.native.self="hideLotteryTypes"></lottery-types>
         </div>
       </transition>
     </div>
-    <footer class="lottery-detail-footer"></footer>
+    <footer class="lottery-detail-footer">
+      <bottom :bettingInfo="bettingInfo"
+              :code="code"
+              ref="betting-btn"></bottom>
+    </footer>
   </section>
 </template>
 
@@ -44,6 +53,7 @@ import top from './header'
 import lotteryTypes from './lotteryTypes'
 import lotteryPlay from './lotteryPlay'
 import lotteryBetting from './lotteryBetting'
+import bottom from './footer';
 import { getAllLotteryTypes } from '@/api/lottery'
 import { getDefaultPlay } from '@/api/lotteryDetail'
 export default {
@@ -52,7 +62,8 @@ export default {
     top,
     lotteryBetting,
     lotteryTypes,
-    lotteryPlay
+    lotteryPlay,
+    bottom
   },
   data () {
     return {
@@ -65,7 +76,8 @@ export default {
       isShowLottery: false, //切换彩种
       code: '',
       parentPlayId: '', //父级Id
-      bettingPlayId: '' //去betting的父级Id
+      bettingPlayId: '', //去betting的父级Id
+      bettingInfo: { len: 0, maxOdd: 0 } //投注信息
     }
   },
   watch: {
@@ -76,6 +88,37 @@ export default {
     }
   },
   methods: {
+    getBalls (ballsInfo) {
+      this.bettingInfo = ballsInfo;
+    },
+    /**
+     * 上次投注信息归零
+     */
+    clearSelect () {
+      for (let i of Object.keys(this.bettingInfo)) {
+        this.bettingInfo[i] = 0;
+      }
+      this.$refs['betting-btn'].clearSelect();
+    },
+    /**
+     * 点击蒙层其它地方隐藏彩种
+     */
+    hideLotteryTypes () {
+      this.isShowLottery = false;
+    },
+    /**
+     * 点击蒙层其它地方隐藏玩法
+     */
+    hideLotteryPlay () {
+      this.isShowPlay = false;
+    },
+    /**
+     * 隐藏蒙层
+     */
+    hideLayout () {
+      this.isShowPlay && (this.isShowPlay = false);
+      this.isShowLottery && (this.isShowLottery = false);
+    },
     /**
      * 设置父级Id
      */
@@ -87,6 +130,8 @@ export default {
      */
     changePlay (play) {
       this.defaultPlay = play;
+      this.clearSelect();
+      this.isShowPlay && (this.isShowPlay = false);
     },
     /**
      * 显示玩法蒙层
@@ -105,6 +150,8 @@ export default {
      * excluMenu:true表示只请求玩法
      */
     switchLottery (lotteryId) {
+      this.clearSelect();
+      this.hideLayout();
       this.$router.replace({ name: 'lotteryDetail', query: { id: lotteryId, excluMenu: true } });
       this.getDefaultPlay(lotteryId);
     },
@@ -149,8 +196,7 @@ export default {
     this.init(this.$route.query.id);
   },
   deactivated () {
-    this.isShowPlay && (this.isShowPlay = false);
-    this.isShowLottery && (this.isShowLottery = false);
+    this.hideLayout();
   }
 }
 </script>

@@ -6,7 +6,9 @@
     <component :is="lotteryCode"
                :bettingPlay="bettingPlay"
                :code="code"
-               :parentPlayId="parentPlayId"></component>
+               :parentPlayId="parentPlayId"
+               :maxOdd="maxOdd"
+               v-on="$listeners"></component>
   </div>
 </template>
 
@@ -14,6 +16,7 @@
 import { escapeHtml } from '@/assets/js/utils/escape'
 import component from './child_modal/index'
 export default {
+  inheritAttrs: false,
   props: ['code', 'lotteryPlay', 'parentPlayId'],
   components: { ...component },
   data () {

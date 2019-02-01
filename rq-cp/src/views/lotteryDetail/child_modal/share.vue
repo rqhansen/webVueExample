@@ -20,13 +20,16 @@
     <!-- 非手动选号 -->
     <ul v-if="layout.format!=='3'">
       <li v-for="(item,itemIdx) of ballsList"
-          :key="itemIdx">
+          :key="itemIdx"
+          :class="{'lay':toolBtns.length}">
         <!-- label如果存在 -->
         <div class="label"
+             :class="{'top':!toolBtns.length}"
              v-if="item.name">
           <span>{{item.name}}</span>
         </div>
-        <div class="balls-wrapper">
+        <div class="balls-wrapper"
+             :class="{'no-label':!item.name}">
           <!-- 例如pk10的全、大、小、单、双、清 -->
           <div v-if="toolBtns.length"
                class="ball-btns">
@@ -36,11 +39,22 @@
                   @click="chooseBall(itm,itemIdx)">{{itm.operator}}</span>
           </div>
           <!-- 号码球 -->
-          <div class="all-balls">
+          <div class="all-balls"
+               v-if="!isMultipleRate">
             <span v-for="(ball,ballIndex) of item.balls"
                   :key="ballIndex"
                   :class="{'selected':ball.selected}"
                   @click="chooseBall(ball,ballIndex,item,itemIdx)">{{ball.ball}}</span>
+          </div>
+          <div class="all-balls multi-rate"
+               v-else>
+            <div v-for="(ball,ballIndex) of item.balls"
+                 :key="ballIndex"
+                 :class="{'selected':ball.selected,'wide-width':!item.name}"
+                 @click="chooseBall(ball,ballIndex,item,itemIdx)">
+              <span> {{ball.ball}}</span>
+              <span class="odds ellipsis">赔率:{{ball.odds}}</span>
+            </div>
           </div>
         </div>
       </li>
@@ -51,7 +65,7 @@
 
 <script>
 export default {
-  props: ['bettingPlay', 'code'],
+  props: ['bettingPlay', 'code', 'maxOdd'],
   data () {
     return {
       layout: { layout: {} },
@@ -142,8 +156,8 @@ export default {
       let len = result.length;
       if (result.len || result.len === 0) len = result.len;
       if (this.isMultipleRate) odds = result; //处理多赔率 5.5
-      // this.$emit('get-balls', {len: len, balls: balls, odds: odds});
-      console.log({ len: len, balls: balls, odds: odds });
+      let costAmount = this.layout.costAmount;
+      this.$emit('get-balls', { len: len, balls: balls, odds: odds, maxOdd: this.maxOdd });
     },
     // 快捷操作
     quickSelect (type, item, idx, data) {
@@ -239,14 +253,20 @@ export default {
 .balls {
   li {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     padding-bottom: 15px;
+    &.lay {
+      align-items: center;
+    }
   }
   .label {
     @extend li;
     width: 110px;
     max-width: 140px;
     padding-bottom: 0;
+    &.top {
+      margin-top: 5px;
+    }
     span {
       position: relative;
       display: block;
@@ -272,6 +292,9 @@ export default {
     flex: 1;
     font-size: 30px;
     margin-left: 34px;
+    &.no-label {
+      margin-left: 0;
+    }
     .ball-btns {
       width: 100%;
       height: 48px;
@@ -304,7 +327,7 @@ export default {
       flex-wrap: wrap;
       min-height: 48px;
       padding: 0;
-      span {
+      > span {
         display: block;
         width: 72px;
         height: 72px;
@@ -312,11 +335,42 @@ export default {
         line-height: 72px;
         text-align: center;
         border-radius: 50%;
-        border: 1px solid red;
+        border: 1px solid #e2e2e2;
         &.selected {
           background: #ec0022;
           border-color: #e06136;
           color: #fff;
+        }
+      }
+      &.multi-rate {
+        > div {
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          justify-content: center;
+          width: 167px;
+          height: 124px;
+          padding: 0 10px;
+          margin: 0 7.5px 15px;
+          text-align: center;
+          font-size: 34px;
+          border: 1px solid #e2e2e2;
+          border-radius: 12px;
+          box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.1);
+          &.wide-width {
+            width: 225px;
+          }
+          &.selected {
+            background-color: #ec0022;
+            border-color: #e2e2e2;
+            span {
+              color: #fff;
+            }
+          }
+          .odds {
+            font-size: 26px;
+            color: #ec0022;
+          }
         }
       }
     }

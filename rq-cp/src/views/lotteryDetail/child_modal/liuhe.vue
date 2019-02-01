@@ -35,9 +35,10 @@
 <script>
 import formatData from "./format_data.js";
 export default {
-  props: ['bettingPlay', 'code', 'parentPlayId'],
+  props: ['bettingPlay', 'code', 'parentPlayId', 'maxOdd'],
   data () {
     return {
+      costAmount: 0,//单注金额
       result: { num: 0 },// 选中号码计算的结果
       selectedBalls: [], //选择的号码结果
       lotteryPlayId: '',//玩法Id
@@ -89,9 +90,10 @@ export default {
         return
       }
       this.$set(this.balls[ballIndex], 'selected', !ball.selected);
-      this.$set(this.result, "num", num);
+      this.$set(this.result, "len", num);
       this.$set(this.result, "balls", balls.join("|"));
-      // this.$emit("on-change-result", this.result);
+      this.$set(this.result, 'maxOdd', this.maxOdd);
+      this.$emit("get-balls", this.result);
     },
     /**
      * 初始化
@@ -101,6 +103,7 @@ export default {
       this.computeNote = require(`./common_modal/${this.code}.js`).default;
       let { layout, lotteryPlayId, layout: { rates } } = newVal;
       this.lotteryPlayId = lotteryPlayId;
+      this.costAmount = layout.costAmount;
       layout.layout.forEach(item => {
         let arr = [];
         item.balls.forEach(ball => {

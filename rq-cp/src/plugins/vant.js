@@ -8,7 +8,8 @@ import {
     Loading,
     Checkbox,
     CheckboxGroup,
-    Toast
+    Toast,
+    Field
 } from 'vant'
 Vue.component(Swipe.name, Swipe)
 Vue.component(SwipeItem.name, SwipeItem)
@@ -18,3 +19,4 @@ Vue.use(Button)
 Vue.use(Loading)
 Vue.use(Checkbox).use(CheckboxGroup)
 Vue.use(Toast)
+Vue.use(Field)

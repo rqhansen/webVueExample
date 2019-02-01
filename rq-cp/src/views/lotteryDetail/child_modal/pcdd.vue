@@ -76,7 +76,9 @@ export default {
       }
       let balls = this.selectedBalls.map(value => value.ball);
       let num = this.computeNote[this.lotteryPlayId](balls.join(','))
-      this.$set(this.result, 'num', num);
+      this.$set(this.result, 'len', num);
+      this.$set(this.result, 'balls', balls);
+      this.$emit('get-balls', this.result);
       this.ballsList[0].balls[idx].selected = !item.selected;
       // this.betting();
     },

@@ -23,18 +23,25 @@
         </div>
       </div>
     </vux-header>
-
   </div>
 </template>
 
 <script>
 
 export default {
-  props: ['defaultPlayName'],
+  props: ['defaultPlayName', 'isShowPlay', 'isShowLottery'],
   data () {
     return {
       isSwitchPlay: false, //切换玩法
       isSwitchLottery: false,
+    }
+  },
+  watch: {
+    isShowPlay (newVal) {
+      this.isSwitchPlay = newVal;
+    },
+    isShowLottery (newVal) {
+      this.isSwitchLottery = newVal;
     }
   },
   methods: {
