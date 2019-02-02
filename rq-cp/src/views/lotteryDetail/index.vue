@@ -2,15 +2,18 @@
   <section class="rq-lottery-detail">
     <header>
       <top :defaultPlayName="defaultPlay.playName"
+           :isShowPlay="isShowPlay"
+           :isShowLottery="isShowLottery"
+           :bettingInfo="bettingInfo"
            @switch-lottery="switchLotteryTypes"
            @switch-play="switchPlay"
-           :isShowPlay="isShowPlay"
-           :isShowLottery="isShowLottery"></top>
+           @cancel-select-balls="cancleSelectBalls"></top>
     </header>
     <!-- 投注区域 -->
     <div class="lottery-detail-wrapper">
       <!-- 投注 -->
       <lottery-betting :code="code"
+                       ref="bet-wrapper"
                        :lotteryPlay="defaultPlay"
                        :parentPlayId="parentPlayId"
                        @get-balls="getBalls"></lottery-betting>
@@ -43,7 +46,9 @@
     <footer class="lottery-detail-footer">
       <bottom :bettingInfo="bettingInfo"
               :code="code"
-              ref="betting-btn"></bottom>
+              ref="betting-btn"
+              @random-bet="randomBet"
+              @clear-select="clearSelected"></bottom>
     </footer>
   </section>
 </template>
@@ -88,7 +93,16 @@ export default {
     }
   },
   methods: {
-    getBalls (ballsInfo) {
+    cancleSelectBalls () {//取消当前选号
+      this.$refs['bet-wrapper'].$refs['bet-content'].clearSelected();
+    },
+    clearSelected () { //调用投注页的清除选号
+      this.$refs['bet-wrapper'].$refs['bet-content'].clearSelected();
+    },
+    randomBet () { //调用投注页的随机一注
+      this.$refs['bet-wrapper'].$refs['bet-content'].randomBet();
+    },
+    getBalls (ballsInfo) { //子组件的投注信息传过来
       this.bettingInfo = ballsInfo;
     },
     /**
@@ -99,6 +113,7 @@ export default {
         this.bettingInfo[i] = 0;
       }
       this.$refs['betting-btn'].clearSelect();
+      this.$refs['bet-wrapper'].$refs['bet-content'].clearSelected();
     },
     /**
      * 点击蒙层其它地方隐藏彩种

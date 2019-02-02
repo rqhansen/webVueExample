@@ -1,6 +1,6 @@
 <template>
   <div class="lottery-detail-header">
-    <vux-header @click-left="$router.go(-1)">
+    <vux-header @click-left="goBack">
       <div slot="center"
            class="lottery-name-wrapper">
         <div class="lottery-name"
@@ -29,11 +29,12 @@
 <script>
 
 export default {
-  props: ['defaultPlayName', 'isShowPlay', 'isShowLottery'],
+  props: ['defaultPlayName', 'isShowPlay', 'isShowLottery', 'bettingInfo'],
   data () {
     return {
       isSwitchPlay: false, //切换玩法
       isSwitchLottery: false,
+      betInfo: {}
     }
   },
   watch: {
@@ -45,6 +46,24 @@ export default {
     }
   },
   methods: {
+    /**
+     * 后退
+     */
+    goBack () {
+      if (!this.bettingInfo.len) {
+        this.$router.go(-1);
+        return
+      }
+      this.$dialog.confirm({
+        title: '温馨提示',
+        message: '放弃当前的选号吗?'
+      }).then(() => {
+        this.$emit('cancel-select-balls');
+        this.$router.go(-1);
+      }).catch(() => {
+        // cancle
+      });
+    },
     /**
      * 切换玩法
      */

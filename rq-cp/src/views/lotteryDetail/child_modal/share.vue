@@ -78,6 +78,7 @@ export default {
       btnsPosition: [], //计算位置，目前只有时时彩任选,单选时有
       lotteryPlayId: '',//玩法Id
       computeNote: {}, //不同玩法的算法
+      randomNote: {} //随机玩法算法
     }
   },
   watch: {
@@ -89,6 +90,54 @@ export default {
     }
   },
   methods: {
+    randomBet () {
+      this.clearSelected();
+      let ball;
+      let list = [];
+      // 调用随机注数的共用方法
+      let result = this.randomNote[this.lotteryPlayId](this.layout.optballs);
+      // 特殊情况处理 因随机的一个号码有可能够成多注会返回一个对象
+      if (typeof result === "object") {
+        ball = result.ball;
+      } else {
+        ball = result;
+      }
+      ball.split("|").forEach(item => {
+        list.push(item.split(","));
+      });
+      // 判断需要勾选位置的玩法  只有时时彩任选时要处理
+      if (this.layout.positionbar) {
+        this.btnsPosition = list[0];
+        list = [list[1]];
+      }
+      this.ballsList.forEach((item, idx) => {
+        item.balls.forEach(value => {
+          if (list[idx].some(vvv => vvv === value.ball)) {
+            value.selected = true;
+          }
+        });
+      });
+      this.computeLottery(ball);
+    },
+    // 计算注数
+    computeLottery (balls) {
+      let result = this.computeNote[this.lotteryPlayId](balls);
+      let odds;
+      let len = result.length;
+      if (result.len || result.len === 0) len = result.len;
+      if (this.isMultipleRate) odds = result; // 处理多赔率
+      this.$emit('get-balls', { len: len, balls: balls, odds: odds, maxOdd: this.maxOdd });
+    },
+    // 清除选中
+    clearSelected () {
+      this.ballsList.forEach(item => {
+        item.balls.forEach(value => {
+          value.selected = false;
+        });
+      });
+      this.btnsPosition = [];
+      this.$emit('get-balls', { len: 0, balls: '', odds: '', maxOdd: this.maxOdd });
+    },
     hanlderOdds () {
       let rates = this.layout.rates;
       rates.length > 1 ? this.isMultipleRate = true : this.isMultipleRate = false;
@@ -210,7 +259,8 @@ export default {
     },
     init (newVal) {
       this.selectedBalls = [];
-      this.computeNote = require(`./common_modal/${this.code}.js`).default;
+      this.computeNote = require(`./common_modal/bet/${this.code}.js`).default;
+      this.randomNote = require(`./common_modal/random/${this.code}.js`).default;
       let { layout, lotteryPlayId, layout: { positionbar, toolbar } } = newVal;
       this.layout = layout;
       this.lotteryPlayId = lotteryPlayId;

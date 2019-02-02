@@ -6,10 +6,19 @@ import utils from '@/assets/js/utils/index'
     Vue.directive('refresh', {
         bind: function(el, binding) {
             el.options = {}
-            el.options.refresh = binding.value
+            // el.options.refresh = binding.value
+            if (typeof binding.value === 'function') {
+                el.options.refresh = binding.value
+            } else if (typeof binding.value === 'object') {
+                //expression为对象
+                let { funs, changeStyle } = binding.value
+                el.options.refresh = funs
+                el.options.changeStyle = changeStyle
+            }
         },
         inserted: function(el, binding) {
-            if (!binding.value || typeof binding.value !== 'function') return
+            // if (!binding.value || typeof binding.value !== 'function') return
+            if (!binding.value) return
 
             let pos = getComputedStyle(el, null).position //外层容器添加类
             el.style.position = pos !== 'static' ? pos : 'relative'
@@ -81,7 +90,14 @@ import utils from '@/assets/js/utils/index'
 
     function touchMove(e) {
         transLateY = parseInt(e.touches[0].clientY - startY)
-        if (getElePosition.call(this) > 0) return
+        if (getElePosition.call(this) > 0) {
+            //上拉
+            if (this.options.changeStyle) {
+                this.options.changeStyle(transLateY)
+            }
+            return
+        }
+
         /**
          * 阻止默认滑动的条件：
          * 1.第一次滑动

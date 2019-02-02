@@ -19,18 +19,26 @@ export default {
       timer: ''
     }
   },
-  created () {
-    let diffTime = this.nextPrizeTime - this.currTime
-    this.timerInfo = utils.countDown(diffTime);
-    this.timer = setInterval(() => {
-      diffTime -= 1000;
-      if (diffTime < 0) {
-        clearInterval(this.timer);
-        this.timerInfo = {};
-        return
-      }
+  watch: {
+    currTime: {
+      handler: 'getTimerInfo',
+      immediate: true
+    }
+  },
+  methods: {
+    getTimerInfo () {
+      let diffTime = this.nextPrizeTime - this.currTime
       this.timerInfo = utils.countDown(diffTime);
-    }, 1000)
+      this.timer = setInterval(() => {
+        diffTime -= 1000;
+        if (diffTime < 0) {
+          clearInterval(this.timer);
+          this.timerInfo = {};
+          return
+        }
+        this.timerInfo = utils.countDown(diffTime);
+      }, 1000)
+    }
   },
   beforeDestroy () {
     if (this.timer) clearInterval(this.timer);

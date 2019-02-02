@@ -38,11 +38,13 @@ export default {
   props: ['bettingPlay', 'code', 'parentPlayId', 'maxOdd'],
   data () {
     return {
+      optballs: {},
       costAmount: 0,//单注金额
       result: { num: 0 },// 选中号码计算的结果
       selectedBalls: [], //选择的号码结果
       lotteryPlayId: '',//玩法Id
       computeNote: {}, //不同玩法的算法
+      randomNote: {},//随机玩法算法
       ballsInfo: {},//号码球相关信息
       balls: [], //号码球
       isShowType: false //区分css样式
@@ -57,6 +59,51 @@ export default {
     }
   },
   methods: {
+    // 机选一注
+    randomBet () {
+      this.clearSelected();
+      let result = this.randomNote[this.lotteryPlayId](
+        this.optballs,
+        this.lotteryPlayId
+      );
+      let list = result.split("|").reduce((acc, item) => {
+        acc.push(item.split(","));
+        return acc;
+      }, []);
+      let arr = [];
+      for (var j = 0; j < this.balls.length; j++) {
+        if (list[0].some(vvv => vvv === this.balls[j].ball)) {
+          arr.push(this.balls[j]);
+          this.$set(this.balls[j], 'selected', true);
+        } else {
+          this.$set(this.balls[j], 'selected', false);
+        }
+      }
+      this.selectedBalls.push(arr);
+      let balls = this.selectedBalls.reduce((acc, value) => {
+        acc.push(value.map(vvv => vvv.ball).join(","));
+        return acc;
+      }, []);
+      let num = this.computeNote[this.lotteryPlayId](
+        balls.join("|"),
+        this.lotteryPlayId
+      );
+      this.$set(this.result, "len", num);
+      this.$set(this.result, "balls", balls.join("|"));
+      this.$set(this.result, 'maxOdd', this.maxOdd);
+      this.$emit("get-balls", this.result);
+    },
+    // 清除选中
+    clearSelected () {
+      for (let i = 0; i < this.balls.length; i++) {
+        this.$set(this.balls[i], 'selected', false)
+      }
+      this.selectedBalls = [];
+      this.result = {
+        num: 0
+      };
+      this.$emit('get-balls', { len: 0, balls: '', maxOdd: this.maxOdd });
+    },
     /**
      * 选择号码
      */
@@ -100,7 +147,8 @@ export default {
      */
     init (newVal) {
       this.selectedBalls = [];
-      this.computeNote = require(`./common_modal/${this.code}.js`).default;
+      this.computeNote = require(`./common_modal/bet/${this.code}.js`).default;
+      this.randomNote = require(`./common_modal/random/${this.code}.js`).default;
       let { layout, lotteryPlayId, layout: { rates } } = newVal;
       this.lotteryPlayId = lotteryPlayId;
       this.costAmount = layout.costAmount;
@@ -132,8 +180,8 @@ export default {
       } else {
         this.isShowType = false;
       }
-      // debugger;
       let { list, ...ballsInfo } = layout.layout[0];
+      this.optballs = layout.optballs;
       this.balls = list;
       this.ballsInfo = ballsInfo;
     },

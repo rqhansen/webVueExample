@@ -4,6 +4,7 @@
       <span v-html="bettingPlay.playDesc"></span><span>【最大赔率:{{maxOdd}}】</span></header>
     <!-- 号码区 :6hc、pcdd和other-->
     <component :is="lotteryCode"
+               ref="bet-content"
                :bettingPlay="bettingPlay"
                :code="code"
                :parentPlayId="parentPlayId"
@@ -58,7 +59,7 @@ export default {
 .lottery-betting-wrapper {
   height: 100%;
   font-size: 30px;
-  padding: 15px 15px 0;
+  padding: 15px 15px 160px;
   overflow: scroll;
   .tip {
     min-height: 48px;

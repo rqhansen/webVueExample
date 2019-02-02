@@ -14,6 +14,11 @@
         </div>
       </div>
     </section>
+    <footer class="go-betting">
+      <van-button size="large"
+                  type="danger"
+                  @click="goBet">去购彩</van-button>
+    </footer>
   </div>
 </template>
 
@@ -45,6 +50,9 @@ export default {
     }
   },
   methods: {
+    goBet () {
+      this.$router.push({ name: 'lotteryDetail', query: { id: this.$route.query.id } });
+    },
     refresh () {
       return this.$refresh(this.init, { tip: '开奖详情页面刷新成功' })
     },
@@ -76,6 +84,21 @@ export default {
   .prize-detail-wrapper {
     height: calc(100vh - 184px);
     overflow: scroll;
+  }
+  .go-betting {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 96px;
+    box-shadow: 0 -5px 10px -5px rgba(0, 0, 0, 0.1);
+    /deep/ .van-button--large {
+      display: block;
+      height: 96px;
+      line-height: 96px;
+      border-radius: 0;
+      background-color: #ec0022;
+    }
   }
 }
 </style>

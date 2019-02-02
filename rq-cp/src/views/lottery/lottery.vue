@@ -6,8 +6,9 @@
           class="touch-feedback"
           v-feedBackClick="{funs:goPath,lotteryId:lottery.lotteryId}">
         <flex-layout class="lottery-item">
-          <img :src="lottery.lotteryIcon"
-               slot="title">
+          <div slot="title">
+            <img :src="lottery.lotteryIcon">
+          </div>
           <div class="ellipsis"
                slot="top">{{lottery.lotteryName}}</div>
           <div class="ellipsis"

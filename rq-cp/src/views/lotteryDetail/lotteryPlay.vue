@@ -11,7 +11,8 @@
         </ul>
       </div>
       <!-- 二三级菜单列表 -->
-      <div class="sub-menu">
+      <div class="sub-menu"
+           v-if="playMenu&&playMenu.length">
         <dl v-for="item of playMenu"
             :key="item.lotteryPlayId">
           <dt>{{item.playName}}</dt>

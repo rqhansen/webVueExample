@@ -25,7 +25,8 @@ export default {
       result: { num: 0 },// 选中号码计算的结果
       selectedBalls: [], //选择的号码结果
       lotteryPlayId: '',//玩法Id
-      computeNote: {} //不同玩法的算法
+      computeNote: {}, //不同玩法的算法
+      randomNote: {} //随机算法
     }
   },
   watch: {
@@ -40,30 +41,51 @@ export default {
     /**
      * 投注
      */
-    betting () {
-      if (!this.selectedBalls.length) {
-        this.$toast('请先投注');
+    // betting () {
+    //   if (!this.selectedBalls.length) {
+    //     this.$toast('请先投注');
+    //   }
+    //   let costAmount = parseInt(this.layout.costAmount);
+    //   let balls = [];
+    //   let data = this.selectedBalls.reduce((acc, item) => {
+    //     acc.push({
+    //       bettingMoney: costAmount,
+    //       bettingNum: 1,
+    //       odds: item.odds,
+    //       rebate: 0,
+    //       lotteryNumber: item.ball
+    //     })
+    //     balls.push(item.ball);
+    //     return acc
+    //   }, [])
+    //   if (!this.isMultipleRate) { //单赔率
+    //     data[0].lotteryNumber = balls.join(',');
+    //     data = [data[0]];
+    //   }
+    //   console.log(data);
+    //   //清除选中的数据
+    //   // this.clearSelect();
+    // },
+    // 机选一注
+    randomBet () {
+      this.clearSelected();
+      let list = [];
+      let result = this.randomNote[this.lotteryPlayId](this.layout.optballs);
+      let len = this.ballsList[0].balls.length;
+      list = result.split(',');
+      for (var i = 0; i < len; i++) {
+        if (list.some(vvv => vvv === this.ballsList[0].balls[i].ball)) {
+          this.selectedBalls.push(this.ballsList[0].balls[i])
+          this.$set(this.ballsList[0].balls[i], 'selected', true);
+          // debugger;
+        }
       }
-      let costAmount = parseInt(this.layout.costAmount);
-      let balls = [];
-      let data = this.selectedBalls.reduce((acc, item) => {
-        acc.push({
-          bettingMoney: costAmount,
-          bettingNum: 1,
-          odds: item.odds,
-          rebate: 0,
-          lotteryNumber: item.ball
-        })
-        balls.push(item.ball);
-        return acc
-      }, [])
-      if (!this.isMultipleRate) { //单赔率
-        data[0].lotteryNumber = balls.join(',');
-        data = [data[0]];
-      }
-      console.log(data);
-      //清除选中的数据
-      // this.clearSelect();
+      // debugger;
+      let num = this.computeNote[this.lotteryPlayId](result);
+      this.$set(this.result, 'len', num);
+      this.$set(this.result, 'balls', result);
+      this.$emit('get-balls', this.result);
+      // this.computeLottery(result);
     },
     /**
      * 选择号码
@@ -87,7 +109,8 @@ export default {
      */
     init (newVal) {
       this.selectedBalls = [];
-      this.computeNote = require(`./common_modal/${this.code}.js`).default;
+      this.computeNote = require(`./common_modal/bet/${this.code}.js`).default;
+      this.randomNote = require(`./common_modal/random/${this.code}.js`).default;
       let { layout, lotteryPlayId, layout: { rates } } = newVal;
       this.layout = layout;
       this.lotteryPlayId = lotteryPlayId;
@@ -104,12 +127,14 @@ export default {
     /**
      * 清除数据
      */
-    clearSelect () {
+    clearSelected () {
       this.selectedBalls = [];
-      this.$set(this.result, 'num', 0);
       this.ballsList[0].balls.forEach(item => {
         this.$set(item, 'selected', false);
       })
+      this.$set(this.result, 'len', 0);
+      this.$set(this.result, 'balls', '');
+      this.$emit('get-balls', this.result);
     },
   },
   created () {

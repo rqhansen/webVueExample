@@ -82,10 +82,19 @@ const router = new Router({
                 {
                     name: 'prizeDetail',
                     path: '/prizeDetail',
-                    component: () => import('@/views/prizeDetail/index'),
+                    component: () => import('@/views/prizeDetail'),
                     meta: {
                         title: '开奖详情',
                         hasFooter: false
+                    }
+                },
+                {
+                    name: 'trend',
+                    path: '/trend',
+                    component: () => import('@/views/trend'),
+                    meta: {
+                        title: '走势',
+                        hasFooter: true
                     }
                 }
             ]
