@@ -127,6 +127,7 @@ export default {
       ) {
         return true
       }
+
       return false
     },
     login () { //登录
@@ -151,6 +152,10 @@ export default {
           }).catch(() => {
             // on cancel
           });
+        } else {
+          this.showLoading = true;
+          this.SAVE_USER(this.userInfo);
+          setTimeout(() => { this.showLoading = false; this.$router.push({ name: 'home' }) }, 500)
         }
       }
     },

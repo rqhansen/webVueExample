@@ -1,0 +1,22 @@
+{
+    "msg": "",
+    "code": 0,
+    "data": {
+        "disps": [
+            {
+                "displayId": "2009001",
+                "displayName": "开奖号码",
+                "displayCode": "kjhm",
+                "defaultItem": 1,
+                "lotteryId": "5"
+            },
+            {
+                "displayId": "10050052",
+                "displayName": "基本走势 ",
+                "displayCode": "jbzs",
+                "defaultItem": 0,
+                "lotteryId": "5"
+            }
+        ]
+    }
+}

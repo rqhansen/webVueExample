@@ -2,13 +2,12 @@
   <div class="rq-home"
        :class="{'scroll-wrap':true}">
     <!-- 页头 -->
-    <header class="rq-header"
-            :style="{'opacity':opacity}">
+    <header class="rq-header">
       <top></top>
     </header>
     <!-- 轮播 -->
     <div class="rq-home-refresh-wrap">
-      <div v-refresh="{funs:refresh,changeStyle:changeStyle}">
+      <div v-refresh="refresh">
         <section>
           <banner :imgList="bannerList"></banner>
         </section>
@@ -60,19 +59,10 @@ export default {
       bannerList: [],
       hotList: [],
       rankList: [],
-      fastMenus: [],
-      opacity: 0
+      fastMenus: []
     }
   },
   methods: {
-    changeStyle (diff) {
-
-      diff = diff < -200 ? -200 : diff > 200 ? 200 : diff;
-      if (diff < 0) this.opacity = 1 - parseFloat(Math.abs(diff) / 200);
-      console.log(this.opacity);
-      // this.opacity
-      // this.opacity = 
-    },
     refresh () {
       return this.$refresh(this.init, { tip: '主页刷新成功' });
     },

@@ -9,7 +9,8 @@
                 v-else></svg-icon>
     </div>
     <!-- 中间 -->
-    <div class="header-center">
+    <div class="header-center"
+         @click.stop="centerClick">
       <slot name="center"></slot>
     </div>
     <!-- 右边 -->
@@ -31,6 +32,9 @@ export default {
   methods: {
     leftClick () {
       this.$emit("click-left");
+    },
+    centerClick () {
+      this.$emit('click-center');
     },
     rightClick () { //点击右侧
       this.$emit("click-right")

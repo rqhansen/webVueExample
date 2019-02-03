@@ -1,0 +1,15 @@
+{
+    "msg": "",
+    "code": 0,
+    "data": {
+        "disps": [
+            {
+                "displayId": "2007001",
+                "displayName": "开奖号码",
+                "displayCode": "kjhm",
+                "defaultItem": 1,
+                "lotteryId": "20"
+            }
+        ]
+    }
+}

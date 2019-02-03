@@ -11,7 +11,8 @@
             @click="chooseBall(ball,ballIndex)">
 
           <p class="ball">{{ball.ball}}</p>
-          <p class="odds ellipsis"><span>赔率：</span>{{ball.maxOdds}}</p>
+          <p class="odds ellipsis"
+             v-if="user.userName"><span>赔率：</span>{{ball.maxOdds}}</p>
           <p v-if="ball.selfBalls"><span v-for="ball of ball.selfBalls"
                   :key="ball"
                   class="data">{{ball}}</span></p>
@@ -25,7 +26,8 @@
           <p class="ball"
              :class="{'selected':ball.selected}"
              @click="chooseBall(ball,ballIndex)">{{ball.ball}}</p>
-          <p class="odds ellipsis">{{ball.maxOdds}}</p>
+          <p class="odds ellipsis"
+             v-if="user.userName">{{ball.maxOdds}}</p>
         </li>
       </ul>
     </div>
@@ -33,6 +35,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import formatData from "./format_data.js";
 export default {
   props: ['bettingPlay', 'code', 'parentPlayId', 'maxOdd'],
@@ -57,6 +60,9 @@ export default {
       },
       deep: true
     }
+  },
+  computed: {
+    ...mapGetters(['user'])
   },
   methods: {
     // 机选一注

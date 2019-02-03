@@ -53,7 +53,8 @@
                  :class="{'selected':ball.selected,'wide-width':!item.name}"
                  @click="chooseBall(ball,ballIndex,item,itemIdx)">
               <span> {{ball.ball}}</span>
-              <span class="odds ellipsis">赔率:{{ball.odds}}</span>
+              <span class="odds ellipsis"
+                    v-if="user.userName">赔率:{{ball.odds}}</span>
             </div>
           </div>
         </div>
@@ -64,6 +65,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 export default {
   props: ['bettingPlay', 'code', 'maxOdd'],
   data () {
@@ -88,6 +90,9 @@ export default {
       },
       deep: true
     }
+  },
+  computed: {
+    ...mapGetters(['user'])
   },
   methods: {
     randomBet () {

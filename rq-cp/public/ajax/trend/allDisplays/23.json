@@ -1,0 +1,43 @@
+{
+    "msg": "",
+    "code": 0,
+    "data": {
+        "disps": [
+            {
+                "displayId": "2004001",
+                "displayName": "开奖号码",
+                "displayCode": "kjhm",
+                "defaultItem": 1,
+                "lotteryId": "23"
+            },
+            {
+                "displayId": "2004002",
+                "displayName": "双面统计",
+                "displayCode": "smtj",
+                "defaultItem": 0,
+                "lotteryId": "23"
+            },
+            {
+                "displayId": "2004003",
+                "displayName": "长龙统计",
+                "displayCode": "cltj",
+                "defaultItem": 0,
+                "lotteryId": "23"
+            },
+            {
+                "displayId": "2004004",
+                "displayName": "号码分布",
+                "displayCode": "hmfb",
+                "defaultItem": 0,
+                "lotteryId": "23"
+            },
+            {
+                "displayId": "10040042",
+                "displayName": "基本走势",
+                "displayCode": "jbzs",
+                "defaultItem": 0,
+                "lotteryId": "23"
+            }
+        ]
+    }
+}

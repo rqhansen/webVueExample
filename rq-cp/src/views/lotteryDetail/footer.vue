@@ -31,7 +31,7 @@
     </div>
     <!-- 投注金额提醒 -->
     <div class="tip"
-         v-if="bettingInfo.len">
+         v-if="user.userName&&bettingInfo.len">
       <div class="money-info info"
            v-if="code!=='pcdd'">
         每注金额
@@ -49,6 +49,7 @@
     </div>
     <!-- 投注号码提醒 -->
     <div class="tip balls-tip"
+         :class="{'bottom-padding':!user.userName}"
          v-if="bettingInfo.len && code!=='pcdd'">
       <div><span>当前选号</span></div>
       <div>
@@ -68,6 +69,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 export default {
   props: ['bettingInfo', 'code'],
   data () {
@@ -76,6 +78,7 @@ export default {
     }
   },
   computed: {
+    ...mapGetters(['user']),
     prizeMoney () { //单注中奖金额
       if (this.code === 'pcdd') return;
       return Number(this.bettingInfo.maxOdd * this.money).toFixed(2);
@@ -98,6 +101,15 @@ export default {
       this.$refs['balls-wrapper'].scrollLeft = scrollLeft + offLeft;
     },
     bet () { //点击投注
+      if (!this.user.userName) {
+        this.$dialog.alert({
+          title: '温馨提示',
+          message: '您还没有登录'
+        }).then(() => {
+          // on close
+        });
+        return;
+      }
       this.$toast('投注成功');
       this.cancelSelect();
     },
@@ -211,6 +223,9 @@ export default {
     line-height: 80px;
     border-top: 1px solid #c3c3c3;
     border-bottom: 1px solid #c3c3c3;
+    &.bottom-padding {
+      top: -80px;
+    }
     > div {
       width: 146px;
       &:last-child {

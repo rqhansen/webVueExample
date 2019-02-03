@@ -98,6 +98,15 @@ const router = new Router({
                     }
                 }
             ]
+        },
+        {
+            name: '*',
+            path: '*',
+            component: () => import('@/views/404'),
+            meta: {
+                title: '404',
+                hasFooter: false
+            }
         }
     ]
 })

@@ -7,7 +7,8 @@
             :class="{'selected':ball.selected}"
             @click="chooseBall(ball,ballIndex)">
           <p>{{ball.ball}}</p>
-          <p class="odds ellipsis"><span>赔率：</span>{{ball.odds}}</p>
+          <p class="odds ellipsis"
+             v-if="user.userName"><span>赔率：</span>{{ball.odds}}</p>
         </li>
       </ul>
     </div>
@@ -15,6 +16,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 export default {
   props: ['bettingPlay', 'code'],
   data () {
@@ -37,35 +39,10 @@ export default {
       deep: true
     }
   },
+  computed: {
+    ...mapGetters(['user'])
+  },
   methods: {
-    /**
-     * 投注
-     */
-    // betting () {
-    //   if (!this.selectedBalls.length) {
-    //     this.$toast('请先投注');
-    //   }
-    //   let costAmount = parseInt(this.layout.costAmount);
-    //   let balls = [];
-    //   let data = this.selectedBalls.reduce((acc, item) => {
-    //     acc.push({
-    //       bettingMoney: costAmount,
-    //       bettingNum: 1,
-    //       odds: item.odds,
-    //       rebate: 0,
-    //       lotteryNumber: item.ball
-    //     })
-    //     balls.push(item.ball);
-    //     return acc
-    //   }, [])
-    //   if (!this.isMultipleRate) { //单赔率
-    //     data[0].lotteryNumber = balls.join(',');
-    //     data = [data[0]];
-    //   }
-    //   console.log(data);
-    //   //清除选中的数据
-    //   // this.clearSelect();
-    // },
     // 机选一注
     randomBet () {
       this.clearSelected();
@@ -77,7 +54,6 @@ export default {
         if (list.some(vvv => vvv === this.ballsList[0].balls[i].ball)) {
           this.selectedBalls.push(this.ballsList[0].balls[i])
           this.$set(this.ballsList[0].balls[i], 'selected', true);
-          // debugger;
         }
       }
       // debugger;
@@ -85,7 +61,6 @@ export default {
       this.$set(this.result, 'len', num);
       this.$set(this.result, 'balls', result);
       this.$emit('get-balls', this.result);
-      // this.computeLottery(result);
     },
     /**
      * 选择号码
@@ -102,7 +77,6 @@ export default {
       this.$set(this.result, 'balls', balls);
       this.$emit('get-balls', this.result);
       this.ballsList[0].balls[idx].selected = !item.selected;
-      // this.betting();
     },
     /**
      * 初始化

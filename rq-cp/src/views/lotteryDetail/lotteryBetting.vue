@@ -1,7 +1,7 @@
 <template>
   <div class="lottery-betting-wrapper">
     <header class="tip">
-      <span v-html="bettingPlay.playDesc"></span><span>【最大赔率:{{maxOdd}}】</span></header>
+      <span v-html="bettingPlay.playDesc"></span><span v-if="user.userName">【最大赔率:{{maxOdd}}】</span></header>
     <!-- 号码区 :6hc、pcdd和other-->
     <component :is="lotteryCode"
                ref="bet-content"
@@ -14,8 +14,9 @@
 </template>
 
 <script>
-import { escapeHtml } from '@/assets/js/utils/escape'
-import component from './child_modal/index'
+import { escapeHtml } from '@/assets/js/utils/escape';
+import component from './child_modal/index';
+import { mapGetters } from 'vuex';
 export default {
   inheritAttrs: false,
   props: ['code', 'lotteryPlay', 'parentPlayId'],
@@ -28,6 +29,7 @@ export default {
     }
   },
   computed: {
+    ...mapGetters(['user']),
     bettingPlay () {
       if (!this.lotteryPlay.layout) return {} //排除空值
       let layout = JSON.parse(this.lotteryPlay.layout);

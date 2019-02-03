@@ -50,7 +50,7 @@ export default {
         {
           name: "trend",
           title: "走势",
-          url: '/trend'
+          url: '/trend?id=3'
         },
         {
           name: "my",
