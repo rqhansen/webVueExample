@@ -6,9 +6,14 @@ import store from './store/index'
 import './registerServiceWorker'
 import '@/plugins/index'
 import '@/icon/index'
-import '@/directives/index'
+// import '@/directives/index'
 import '@/components/index' //全局组件
 import '@/filters/index'
+
+import * as directive from './directives/index.js'
+Object.keys(directive).forEach(key => {
+    console.log(directive[key])
+})
 
 import FastClick from 'fastclick'
 FastClick.attach(document.body)
