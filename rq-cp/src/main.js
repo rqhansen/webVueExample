@@ -6,13 +6,18 @@ import store from './store/index'
 import './registerServiceWorker'
 import '@/plugins/index'
 import '@/icon/index'
-// import '@/directives/index'
-import '@/components/index' //全局组件
-import '@/filters/index'
 
-import * as directive from './directives/index.js'
+import * as filters from '@/filters' //注册全局过滤器
+Object.keys(filters).forEach(key => {
+    Vue.filter(key, filters[key])
+})
+
+import customComponents from '@/components' //注册全局组件
+Vue.use(customComponents)
+
+import * as directive from './directives' //注册全局指令
 Object.keys(directive).forEach(key => {
-    console.log(directive[key])
+    Vue.use(directive[key])
 })
 
 import FastClick from 'fastclick'

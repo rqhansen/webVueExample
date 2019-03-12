@@ -1,4 +1,3 @@
-import Vue from 'vue'
 import VuxHeader from './header/VuxHeader'
 import flexLayout from './flexLayout/flexLayout'
 const customComponents = {
@@ -7,5 +6,8 @@ const customComponents = {
         Vue.component('flexLayout', flexLayout)
     }
 }
-Vue.use(customComponents)
+
+if (typeof window !== 'undefined' && window.Vue) {
+    Vue.use(customComponents)
+}
 export default customComponents
