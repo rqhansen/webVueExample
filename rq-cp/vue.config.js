@@ -14,6 +14,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
 function resolve(dir) {
     return path.join(__dirname, dir)
 }
+//dhs
 
 /**
  * 2018.12.21 by xiaoren
